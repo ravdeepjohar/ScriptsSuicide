@@ -93,6 +93,8 @@ def label_graph (N, twitter_file):
             break
         tweet = simplejson.loads (line)
         from_user = tweet["doc"]["from_user"]
+        tweet["suicidal_feelings"] = 1
+        outline = simplejson.puts(tweet)
         try:
             to_user = tweet["doc"]["to_user"]
             N.edge[to_user][from_user]["num_messages"] += 1  # followers graph seems to be "backward"
@@ -138,7 +140,8 @@ def main ():
     sys.stdout.write ("\n")
 
     N = initialize_graph (N)
-    N = label_graph(N, "nyc.trim.append.sentiment")
+    #    N = label_graph(N, "nyc.trim.append.sentiment")
+    N = label_graph(N, "nyc.trim.liwc")
          
 
     nx.write_gpickle(N, "graph.pkl")
