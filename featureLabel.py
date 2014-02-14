@@ -23,7 +23,7 @@ def label_feature (twitter_file):
     tweets_json = open(twitter_file)
 
     # initialize a counter for tweets to test
-    count = 0
+    # count = 0
     
     while True:
         # pre-process data
@@ -31,9 +31,9 @@ def label_feature (twitter_file):
         
 
         # comment this part to run for entire dataset
-        count += 1
-        if count > 100000:
-            break
+        # count += 1
+        # if count > 100000:
+        #     break
 
         # TO run whole dataset
         if not line:
@@ -63,9 +63,6 @@ def label_feature (twitter_file):
                 if len(set(keywords).intersection(set(words))) == len(keywords):
                     # change the flag
                     tweet[key] = 1
-
-                   
-                    
 
                     excludeflag = 0 
 
