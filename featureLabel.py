@@ -23,7 +23,7 @@ def label_feature (twitter_file):
     tweets_json = open(twitter_file)
 
     # initialize a counter for tweets to test
-    # count = 0
+    count = 0
     
     while True:
         # pre-process data
@@ -31,9 +31,9 @@ def label_feature (twitter_file):
         
 
         # comment this part to run for entire dataset
-        # count += 1
-        # if count > 100000:
-        #     break
+        count += 1
+        if count > 100000:
+            break
 
         # TO run whole dataset
         if not line:
@@ -64,8 +64,10 @@ def label_feature (twitter_file):
                     # change the flag
                     tweet[key] = 1
 
-                    # update the counter
-                    counts[key] += 1
+                   
+                    
+
+                    excludeflag = 0 
 
                     # exclude and turn flag back to 0
                     for (k, v) in ex_dict.iteritems():
@@ -74,11 +76,14 @@ def label_feature (twitter_file):
 
                             if len(set(t).intersection(set(words))) == len(t):
                                 tweet[key] = 0
-                                counts[key] -= 1            
-                    
+                                excludeflag = 1
 
-                    # print filtered results
-                    print "[" + key + "]--" + from_user + "(" +str(from_user_id) + ")--" + message
+                     # update the counter
+
+                    if excludeflag == 0:
+                        counts[key] += 1
+                        # print filtered results
+                        print "[" + key + "]--" + from_user + "(" +str(from_user_id) + ")--" + message
 
         outline = simplejson.dumps(tweet)
         
