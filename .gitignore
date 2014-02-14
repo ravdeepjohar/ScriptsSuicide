@@ -54,3 +54,4 @@ docs/_build/
 #Dataset
 nyc.trim.liwc
 m_NYC_all.json
+data
