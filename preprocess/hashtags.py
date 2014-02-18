@@ -7,7 +7,7 @@ RETRY_TIME = 20.0
 
 def main():
 	
-	hashtag = "#suicide"
+	hashtag = "#nfl"
 	hashtag = hashtag.strip('#')
 
 	link = "http://www.hashtags.org/analytics/"+ hashtag + "/"
