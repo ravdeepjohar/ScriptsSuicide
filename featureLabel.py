@@ -8,8 +8,8 @@ in_dict = { 'depressive_feelings' : ['me abused depressed', 'me hurt depressed',
 
 ex_dict = { 'feel alone depressed' : ['cockroach', '364'], 'i feel helpless' : ['when', 'without','girl'], 'i feel sad' : ['epidose', 'when', 'lakers', 'about', 'game', 'you', 'sorry', 'for', 'bad', 'bieber'], 'i feel empty' : ['stomach', 'phone', 'hungry', 'food'], 'sleeping a lot lately' : ['have not been'], 'i feel irritable' : ['was'], 'depressed' : ['ronan'], 'sertraline' : ['special class', 'viagra', 'study', 'clinical', 'http'], 'zoloft' : ['toma', 'para', 'necesito', 'siempre', 'gracioso', 'desde', 'decirle', 'palabra', 'vida', 'sabor', 'aborto', 'gusta'], 'prozac' : ['toma', 'para', 'necesito', 'siempre', 'gracioso', 'desde', 'decirle', 'palabra', 'vida', 'sabor', 'aborto', 'gusta'], 'pills depressed' : ['http'], 'suicide once more' : ['will', 'by', 'live'], 'pain suicide' : ['http'], 'mom suicide tried' : ['dog', 'cat', 'fish', 'who'], 'sister suicide tried' : ['dog', 'cat', 'fish'], 'brother suicide tried' : ['dog', 'cat', 'fish', 'big brother'], 'friend suicide' : ['hold still'], 'suicide attempted sister' : ['paperback'], 'thought suicide before' : ['http'], 'had thoughts suicide' : ['http', 'never'], 'had thoughts killing myself' : ['not'], 'stop cutting myself' : ['off', 'shaving', 'hair', 'shave', 'slack', 'accidentally'], 'i am being bullied' : ['straightophobic'], 'feel bullied i am' : ['lol'], 'stop bullying me' : ['#stop'], 'always getting bullied' : ['lol'], 'gun suicide' : ['zimmerman', 'news', 'you', 'water', 'nerf'], 'been diagnosed anorexia' : ['http'], 'i diagnosed ocd' : ['never', 'cdo', 'check'], 'i diagnosed bipolar' : ['not'], 'dad fight again' : ['food'], 'parents fight again' : ['sartan', 'bradley', 'pacquiao', 'gas'], 'i impulsive' : ['clementine'], 'i am impulsive' : ['clementine'] }
 
-f1 = open('exclude.txt', 'w+')
-f2 = open('include.txt', 'w+')
+f1 = open('outputs/exclude.txt', 'w+')
+f2 = open('outputs/include.txt', 'w+')
 
 def label_feature (twitter_file):
     "Labels Twitter data with features"
@@ -45,6 +45,7 @@ def label_feature (twitter_file):
         message = tweet["doc"]["text"].encode("utf-8")
         from_user = tweet["doc"]["from_user"]
         from_user_id = tweet["doc"]["from_user_id"]
+        created_at = tweet["doc"]["created_at"]
 
         
         for (key, value) in in_dict.iteritems():
@@ -74,14 +75,14 @@ def label_feature (twitter_file):
                             if len(set(t).intersection(set(words))) == len(t):
                                 tweet[key] = 0
                                 excludeflag = 1
-                                f1.write("[" + key + "]--" + from_user + "(" + str(from_user_id) + ")--" + message + "\n")
+                                f1.write("[" + key + "]--" + from_user + "(" + str(from_user_id) + ")--" + message + " AT " + created_at + "\n")
 
                      # update the counter
 
                     if excludeflag == 0:
                         counts[key] += 1
                         # print filtered results
-                        f2.write("[" + key + "]--" + from_user + "(" + str(from_user_id) + ")--" + message + "\n")
+                        f2.write("[" + key + "]--" + from_user + "(" + str(from_user_id) + ")--" + message + " AT " + created_at + "\n")
 
         outline = simplejson.dumps(tweet)
         
