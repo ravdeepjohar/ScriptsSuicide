@@ -5393,6 +5393,7 @@ xtreme  -   extreme
 xyz  -   examine your zipper
 xyzpdq  -   Examine Your Zipper Pretty Darn Quick
 yua  -   you ugly a**
+yung -  young
 yuo  -   you
 yup  -   yes
 yur  -   your

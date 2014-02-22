@@ -1,6 +1,8 @@
-import re, string, os, pickle, sys
+import re, string, os, sys
 from datetime import datetime
 from collections import defaultdict
+import cPickle as pickle
+
 
 
 
@@ -9,7 +11,7 @@ def getuser_tweet_history ():
    
     os.chdir("../")
 
-    dictionaryusers = pickle.load( open('outputs/usertweethistory.pickle', 'r') )
+    dictionaryusers = pickle.load( open('outputs/usertweethistory.pickle', 'rb') )
     suicideTweets = open('outputs/include.txt','r')
 
     for line in suicideTweets:
@@ -19,7 +21,7 @@ def getuser_tweet_history ():
         time = re.findall(r'AT (.*)$', line)
 
         if userid and time:
-            usrid =  userid[0].strip('\(\)')            
+            usrid = userid[0].strip('\(\)')            
             include_tweet = twee[0][0].strip(' --')
             userTweets = dictionaryusers[int(usrid)]
             sizeoflist = len(userTweets)
