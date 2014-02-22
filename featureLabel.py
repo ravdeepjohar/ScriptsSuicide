@@ -2,6 +2,9 @@ import sys
 import simplejson
 from collections import defaultdict
 import string
+import time 
+from datetime import datetime
+import pickle  
 
 
 in_dict = { 'depressive_feelings' : ['me abused depressed', 'me hurt depressed', 'feel hopeless depressed', 'feel alone depressed', 'i feel helpless', 'i feel worthless', 'i feel sad', 'i feel empty', 'i feel anxious'], 'depression_symptoms' : ['sleeping a lot lately', 'i feel irritable', 'i feel restless'], 'drug_abuse' : ['depressed alcohol', 'sertraline', 'zoloft', 'prozac', 'pills depressed'], 'prior_suicide_attempts' : ['suicide once more', 'me abused suicide', 'pain suicide', 'i have tried suicide before'], 'suicide_around_individual' : ['mom suicide tried', 'sister suicide tried', 'brother suicide tried', 'friend suicide', 'suicide attempted sister'], 'suicide_ideation' : ['suicide thought about before', 'thought suicide before', 'had thoughts suicide', 'had thoughts killing myself', 'used thoughts suicide', 'once thought suicide', 'past thoughts suicide', 'multiple thought suicide'], 'self_harm' : ['stop cutting myself'], 'bullying' : ['i am being bullied', 'i have been cyber bullied', 'feel bullied i am', 'stop bullying me', 'keeps bullying me', 'always getting bullied'], 'gun_ownership' : ['gun suicide', 'shooting range went', 'gun range my'], 'psychological_disorders' : ['i was diagnosed schizophrenia', 'been diagnosed anorexia', 'diagnosed bulimia', 'i diagnosed ocd', 'i diagnosed bipolar', 'i diagnosed ptsd', 'diagnosed borderline personality disorder', 'diagnosed panic disorder', 'diagnosed social anxiety disorder'], 'family_violence_discord' : ['dad fight again', 'parents fight again'], 'impulsivity' : ['i impulsive', 'i am impulsive'] }
@@ -14,6 +17,8 @@ f2 = open('outputs/include.txt', 'w+')
 def label_feature (twitter_file):
     "Labels Twitter data with features"
 
+    dictionaryusers = defaultdict(list)
+
     # initialize a counter for inclusion terms
     counts = dict()
     for (key, value) in in_dict.iteritems():
@@ -23,7 +28,7 @@ def label_feature (twitter_file):
     tweets_json = open(twitter_file)
 
     # initialize a counter for tweets to test
-    # count = 0
+    count = 0
     
     while True:
         # pre-process data
@@ -32,7 +37,7 @@ def label_feature (twitter_file):
 
         # comment this part to run for entire dataset
         # count += 1
-        # if count > 100000:
+        # if count > 10:
         #     break
 
         # TO run whole dataset
@@ -46,6 +51,12 @@ def label_feature (twitter_file):
         from_user = tweet["doc"]["from_user"]
         from_user_id = tweet["doc"]["from_user_id"]
         created_at = tweet["doc"]["created_at"]
+        lastpart = created_at.split()[-1]
+        convertedDate = time.mktime(datetime.strptime(created_at, "%a, %d %b %Y %H:%M:%S " + lastpart).timetuple()) 
+        info = message + ',' + str(convertedDate)
+
+        # Add tweets in dictionary 
+        dictionaryusers[from_user_id].append(info)
 
         
         for (key, value) in in_dict.iteritems():
@@ -75,18 +86,19 @@ def label_feature (twitter_file):
                             if len(set(t).intersection(set(words))) == len(t):
                                 tweet[key] = 0
                                 excludeflag = 1
-                                f1.write("[" + key + "]--" + from_user + "(" + str(from_user_id) + ")--" + message + " AT " + created_at + "\n")
+                                f1.write("[" + key + "]--" + from_user + "(" + str(from_user_id) + ")--" + message + " AT " + str(convertedDate) + "\n")
 
                      # update the counter
 
                     if excludeflag == 0:
                         counts[key] += 1
                         # print filtered results
-                        f2.write("[" + key + "]--" + from_user + "(" + str(from_user_id) + ")--" + message + " AT " + created_at + "\n")
+                        f2.write("[" + key + "]--" + from_user + "(" + str(from_user_id) + ")--" + message + " AT " + str(convertedDate) + "\n")
 
         outline = simplejson.dumps(tweet)
         
     f2.write(str(counts))
+    pickle.dump(dictionaryusers, open('outputs/usertweethistory.pickle' , 'w'))
 
 # f1.close()
 # f2.close()
