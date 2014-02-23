@@ -42,9 +42,9 @@ def label_feature (twitter_file):
         
 
         # comment this part to run for entire dataset
-        # count += 1
-        # if count > 100000:
-        #     break
+        count += 1
+        if count > 100:
+            break
 
         # TO run whole dataset
         if not line:

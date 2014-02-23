@@ -4,8 +4,6 @@ from nltk.corpus import wordnet
 
 def main():
 
-
-
     slang = dict()
     slangfile = open('slang.txt','rb')
     for line in slangfile:
@@ -26,5 +24,6 @@ def main():
     nonSlangMessage = nonSlangMessage[:-1]
     
     print nonSlangMessage
+
 if __name__ == '__main__':
     main()
