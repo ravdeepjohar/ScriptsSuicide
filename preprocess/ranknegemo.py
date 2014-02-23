@@ -1,36 +1,59 @@
-import sys
-import simplejson
-from datetime import datetime
-import math
+import sys, string, time, pickle, re, simplejson, os, operator
 from collections import defaultdict
-import re
-import string
-from sets import Set
-from operator import itemgetter
-import os
+from datetime import datetime
+# from stemming.porter2 import stem
+from nltk.corpus import wordnet
 
 
+class tweetObject:
+
+    def __init__(self,negemoscore,sadscore,message,username,userid,timestamp):
+        self.negemoscore = negemoscore
+        self.sadscore = sadscore
+        self.message = message
+        self.username = username
+        self.userid = userid
+        self.timestamp = timestamp
+
+def ranknegemo (tweetDict): 
+
+    emofile = open("outputs/negemo.txt", 'wb')
+
+    for w in sorted(tweetDict, key = lambda name: float(tweetDict[name].negemoscore), reverse=True):
+         emofile.write( tweetDict[w].username + "(" + str(tweetDict[w].userid) + ")--" + 
+            tweetDict[w].message + " AT " + str(tweetDict[w].timestamp) + " With Score:" + 
+            tweetDict[w].negemoscore + "\n")  
+
+    emofile.close()
+
+def ranksadscore (tweetDict):   
+
+    sadfile = open("outputs/sad.txt", 'wb')
+
+    for w in sorted(tweetDict, key = lambda name: float(tweetDict[name].sadscore), reverse=True):
+         sadfile.write( tweetDict[w].username + "(" + str(tweetDict[w].userid) + ")--" + 
+            tweetDict[w].message + " AT " + str(tweetDict[w].timestamp) + " With Score:" + 
+            tweetDict[w].sadscore + "\n")
+
+    sadfile.close()
 
 
-def ranknegemo (twitter_file):
-    
-    # open the data file
+def main ():
+
+    tweetDict = dict()
+
     os.chdir("../")
-    tweets_json = open(twitter_file,'r')
-
-
-    # initialize a counter for tweets to test
+    tweets_json = open("nyc.trim.liwc",'r')
     count = 0
 
-    setofnegative = dict()
-    
     while True:
+
         # pre-process data
         line = tweets_json.readline().lower().strip()
         
         count += 1
-        if count > 10000:
-            break
+        # if count > 10:
+        #     break
 
         # TO run whole dataset
         if not line:
@@ -40,42 +63,19 @@ def ranknegemo (twitter_file):
         
         # read each text message
         message = tweet["doc"]["text"].encode("utf-8")
-        # matches = re.findall(r'#\w*', message)
-        # from_user = tweet["doc"]["from_user"]
-        # from_user_id = tweet["doc"]["from_user_id"]
+        username = tweet["doc"]["from_user"]
+        userid = tweet["doc"]["from_user_id"]
         negemoscore = tweet["negemo"]
-        # sadscore = tweet["sad"]
+        sadscore = tweet["sad"]
+        created_at = tweet["doc"]["created_at"]
+        lastpart = created_at.split()[-1]
+        timestamp = time.mktime(datetime.strptime(created_at, "%a, %d %b %Y %H:%M:%S " + lastpart).timetuple()) 
 
-        for line in setofnegative:
-            setofnegative.update({negemoscore:message})
+        tweetDict[count] = tweetObject(negemoscore,sadscore,message, username, userid, timestamp)
 
-
-
-
-
-            
-            print setofnegative
-
-
-
-    for key, value in sorted(setofnegative.items(), key=itemgetter(1), reverse=True):
-        negemoscore = key.split(" ")[0]
-        message = key.split(" ")[1]
-
-        print negemoscore, value
-
-    # for s in setofhashtags:
-    #     print s, setofhashtags[s]
-
-        # print negemoscore + " " + message
-        # print sadscore
-        # print "*****" 
-
-
-def main ():
     
-    ranknegemo("nyc.trim.liwc")
-
+    ranknegemo(tweetDict)
+    #ranksadscore(tweetDict)
          
 
 if __name__ == "__main__":
