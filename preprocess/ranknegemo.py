@@ -18,29 +18,41 @@ class tweetObject:
 def ranknegemo (tweetDict): 
 
     emofile = open("outputs/negemo.txt", 'wb')
+    nooftweets = 0
 
     for w in sorted(tweetDict, key = lambda name: float(tweetDict[name].negemoscore), reverse=True):
-         emofile.write( tweetDict[w].username + "(" + str(tweetDict[w].userid) + ")--" + 
-            tweetDict[w].message + " AT " + str(tweetDict[w].timestamp) + " With Score:" + 
-            tweetDict[w].negemoscore + "\n")  
+
+        nooftweets += 1
+
+        if(nooftweets < 5000): 
+
+            emofile.write( tweetDict[w].username + "(" + str(tweetDict[w].userid) + ")--" + 
+                tweetDict[w].message + " AT " + str(tweetDict[w].timestamp) + " With Score:" + 
+                tweetDict[w].negemoscore + "\n")  
 
     emofile.close()
 
 def ranksadscore (tweetDict):   
 
     sadfile = open("outputs/sad.txt", 'wb')
+    nooftweets = 0
 
     for w in sorted(tweetDict, key = lambda name: float(tweetDict[name].sadscore), reverse=True):
-         sadfile.write( tweetDict[w].username + "(" + str(tweetDict[w].userid) + ")--" + 
-            tweetDict[w].message + " AT " + str(tweetDict[w].timestamp) + " With Score:" + 
-            tweetDict[w].sadscore + "\n")
+
+        nooftweets += 1
+
+        if(nooftweets < 5000): 
+            sadfile.write( tweetDict[w].username + "(" + str(tweetDict[w].userid) + ")--" + 
+                tweetDict[w].message + " AT " + str(tweetDict[w].timestamp) + " With Score:" + 
+                tweetDict[w].sadscore + "\n")
 
     sadfile.close()
 
 
 def main ():
 
-    tweetDict = dict()
+    tweetDictNeg = dict()
+    tweetDictSad = dict()
 
     os.chdir("../")
     tweets_json = open("nyc.trim.liwc",'r')
@@ -71,11 +83,15 @@ def main ():
         lastpart = created_at.split()[-1]
         timestamp = time.mktime(datetime.strptime(created_at, "%a, %d %b %Y %H:%M:%S " + lastpart).timetuple()) 
 
-        tweetDict[count] = tweetObject(negemoscore,sadscore,message, username, userid, timestamp)
+        if int(negemoscore) > 0:
+            tweetDictNeg[count] = tweetObject(negemoscore,sadscore,message, username, userid, timestamp)
+
+        # if int(sadscore) > 0:
+        #     tweetDictSad[count] = tweetObject(negemoscore,sadscore,message, username, userid, timestamp)
 
     
-    ranknegemo(tweetDict)
-    #ranksadscore(tweetDict)
+    ranknegemo(tweetDictNeg)
+    #ranksadscore(tweetDictSad)
          
 
 if __name__ == "__main__":
