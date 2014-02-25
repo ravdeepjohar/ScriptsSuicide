@@ -60,10 +60,12 @@ def getuser_tweet_history ():
                 else:
                     for tw in userTweets[location::sizeoflist]:
                         print tw.rsplit(',',1)[0]
+
+                print "\n"
                
 
         #remove for whole dataset 
-        break
+        # break
 
 
 def main ():
