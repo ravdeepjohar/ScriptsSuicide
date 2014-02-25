@@ -39,27 +39,26 @@ def getuser_tweet_history ():
                     location = twee
 
                 # if thistweettimestamp == time[0]:
-                #     print 'reached here!'
                 #     location = twee
 
             # print the tweets 
             if location != -1: 
 
                 if location-5 > 0:
-                    for tw in userTweets[location-5:location]:
-                        print tw.rsplit(',',1)[0]
+                    for tw in userTweets[location-3:location]:
+                        print "    " + tw.rsplit(',',1)[0]
                 else:
                     for tw in userTweets[0:location]:
-                        print tw.rsplit(',',1)[0]
+                        print "    " + tw.rsplit(',',1)[0]
 
-                print "***" + userTweets[location].rsplit(',',1)[0]
+                print userTweets[location].rsplit(',',1)[0]
 
                 if location+5 < sizeoflist:
-                    for tw in userTweets[location+1:location+6]:
-                        print tw.rsplit(',',1)[0]
+                    for tw in userTweets[location+1:location+4]:
+                        print "    " + tw.rsplit(',',1)[0]
                 else:
                     for tw in userTweets[location::sizeoflist]:
-                        print tw.rsplit(',',1)[0]
+                        print "    " + tw.rsplit(',',1)[0]
 
                 print "\n"
                
