@@ -93,9 +93,10 @@ def label_feature (twitter_file):
         from_user = tweet["doc"]["from_user"]
         from_user_id = tweet["doc"]["from_user_id"]
         created_at = tweet["doc"]["created_at"]
+        msg_id = tweet["id"]
         lastpart = created_at.split()[-1]
         convertedDate = time.mktime(datetime.strptime(created_at, "%a, %d %b %Y %H:%M:%S " + lastpart).timetuple()) 
-        info = message + ',' + str(convertedDate)
+        info = message + ',' + str(convertedDate) + ',' + msg_id
 
         # Add tweets in dictionary 
         dictionaryusers[from_user_id].append(info)
