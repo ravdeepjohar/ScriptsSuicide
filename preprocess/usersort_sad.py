@@ -32,7 +32,7 @@ def sort_userTweetHistory():
 
             cur_sadsum = 0 
             tweet_list = []
-
+            noofNA = 0
 
             for loc in range(location-3,location+4):
 
@@ -40,35 +40,53 @@ def sort_userTweetHistory():
                 if loc < 0:
                     cur_sadsum += 0 
                     tweet_list.append("N/A")
+                    noofNA += 1
 
-                elif loc > sizeoflist:
+                elif loc > sizeoflist-1:
                     cur_sadsum += 0 
                     tweet_list.append("N/A")
+                    noofNA += 1
 
                 else:
 
                     cur_sadsum += float(userTweets[loc][5])
                     tweet_list.append(userTweets[loc][0])
 
-            sadavg = cur_sadsum / 7.0
-            sad_tweet_info = [usrtweet_msg_id,tweet_list,sadavg]
+            sadavg = cur_sadsum / 7.0 - float(noofNA)
+            sad_tweet_info = [usrtweet_msg_id,tweet_list,sadavg, usrtweet_sadscore]
 
 
-            if sadavg! = 0.0
+            if sadavg != 0.0:
                 dicionarySadTweets[count] = sad_tweet_info
+                count += 1
 
-    finalsaddict=dict()
+    print count
+
+    finalsaddict = dict()
     nooftweets = 0
 
-    for w in sorted(dicionarySadTweets, key = lambda x float(dicionarySadTweets[x][0]).reverse=True):
+    for w in sorted(dicionarySadTweets, key = lambda x:float(dicionarySadTweets[x][3]), reverse=True):
        
 
-        if(nooftweets < 3000): 
+        if(nooftweets < 20000): 
             finalsaddict[nooftweets] = dicionarySadTweets[w]
 
         nooftweets += 1
 
-    pickle.dump(sadTweets, open('outputs/finalsad.pickle' , 'wb'))
+    pickle.dump(finalsaddict, open('outputs/finalsad2.pickle' , 'wb'))
+
+    finalsaddict1 = dict()
+    nooftweets = 0
+
+    for w in sorted(finalsaddict, key = lambda x:float(finalsaddict[x][2]), reverse=True):
+       
+
+        if(nooftweets < 3000): 
+            finalsaddict1[nooftweets] = finalsaddict[w]
+
+        nooftweets += 1
+
+    pickle.dump(finalsaddict1, open('outputs/finalsad.pickle' , 'wb'))
 
 
 def main():
