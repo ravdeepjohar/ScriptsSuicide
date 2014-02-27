@@ -1,7 +1,7 @@
 import re, string, os, sys, time
 from datetime import datetime
 from collections import defaultdict
-import cPickle as pickle
+import pickle
 
 
 
@@ -50,28 +50,25 @@ def sort_userTweetHistory():
                     cur_sadsum += float(userTweets[loc][5])
                     tweet_list.append(userTweets[loc][0])
 
-            sadavg = tweet_list/7
+            sadavg = cur_sadsum / 7.0
             sad_tweet_info = [usrtweet_msg_id,tweet_list,sadavg]
 
 
-            print sad_tweet_info
+            if sadavg! = 0.0
+                dicionarySadTweets[count] = sad_tweet_info
 
-            break
-        break
+    finalsaddict=dict()
+    nooftweets = 0
 
+    for w in sorted(dicionarySadTweets, key = lambda x float(dicionarySadTweets[x][0]).reverse=True):
+       
 
+        if(nooftweets < 3000): 
+            finalsaddict[nooftweets] = dicionarySadTweets[w]
 
+        nooftweets += 1
 
-
-
-
-
-
-
-
-
-
-             
+    pickle.dump(sadTweets, open('outputs/finalsad.pickle' , 'wb'))
 
 
 def main():
