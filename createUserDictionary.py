@@ -30,7 +30,10 @@ def label_feature (twitter_file):
         from_user_id = tweet["doc"]["from_user_id"]
         created_at = tweet["doc"]["created_at"]
         msg_id = tweet["doc"]["id"]
-        info = [message, created_at, msg_id, from_user]
+        negemoscore = tweet["negemo"]
+        sadscore = tweet["sad"]
+        info = [message, created_at, msg_id, from_user, negemoscore, sadscore]
+
 
         # Add tweets in dictionary 
         dictionaryusers[from_user_id].append(info)
