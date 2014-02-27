@@ -39,11 +39,11 @@ def sort_userTweetHistory():
 
                 if loc < 0:
                     cur_sadsum += 0 
-                    tweet_list.append["N/A"]
+                    tweet_list.append("N/A")
 
                 elif loc > sizeoflist:
                     cur_sadsum += 0 
-                    tweet_list.append["N/A"]
+                    tweet_list.append("N/A")
 
                 else:
 
@@ -57,7 +57,7 @@ def sort_userTweetHistory():
             print sad_tweet_info
 
             break
-        break=
+        break
 
 
 
