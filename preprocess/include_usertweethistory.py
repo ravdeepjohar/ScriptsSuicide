@@ -12,8 +12,7 @@ def getuser_tweet_history ():
 
     os.chdir("../")
     dictionaryusers = pickle.load( open('outputs/usertweethistory.pickle', 'rb') )
-    globalTweet = 1  
-
+    
     slang = dict()
     slangfile = open('preprocess/slang.txt','rb')
 
@@ -23,7 +22,8 @@ def getuser_tweet_history ():
         #print sl + mean
         slang[sl] = mean   
 
-    
+    ditionary_include = dict()
+    count = 0
 
     for user in dictionaryusers:
 
@@ -87,57 +87,36 @@ def getuser_tweet_history ():
 
             if len(suicidefactors) > 0:                
 
-                tweetcount = 1                
-
-                print str(globalTweet) + ": Date:" , usrtweet_date + " Msg_id:", str(usrtweet_msg_id) + " Category:", suicidefactors
-
-                if location-5 > 0:
-                    for tw in userTweets[location-3:location]: 
-
-                        tw_date = tw[1]
-                        tw_lastpart = str(tw_date.split()[-1])
-                        tw_timestamp = time.mktime(datetime.strptime(tw_date, "%a, %d %b %Y %H:%M:%S " + tw_lastpart).timetuple()) 
-                        tw_timestamp = datetime.fromtimestamp(tw_timestamp) 
-                        
-                        print "    " + str(tweetcount) +': ' + tw[0] + " [-" + str(cur_timestamp - tw_timestamp) + "]"
-                        tweetcount += 1
-                else:
-                    for tw in userTweets[0:location]:
-                        
-                        tw_date = tw[1]
-                        tw_lastpart = tw_date.split()[-1]
-                        tw_timestamp = time.mktime(datetime.strptime(tw_date, "%a, %d %b %Y %H:%M:%S " + tw_lastpart).timetuple()) 
-                        tw_timestamp = datetime.fromtimestamp(tw_timestamp)
-                        
-                        print "    " + str(tweetcount) +': ' + tw[0] + " [-" + str(cur_timestamp - tw_timestamp) + "]"
-                        tweetcount += 1
-
-                print userTweets[location][0]
-
-                if location+5 < sizeoflist:
-                    for tw in userTweets[location+1:location+4]:
-                        tw_date = tw[1]
-                        tw_lastpart = str(tw_date.split()[-1])
-                        tw_timestamp = time.mktime(datetime.strptime(tw_date, "%a, %d %b %Y %H:%M:%S " + tw_lastpart).timetuple()) 
-                        tw_timestamp = datetime.fromtimestamp(tw_timestamp)
-                        
-                        print "    " + str(tweetcount) +': ' + tw[0] + " [" + str(tw_timestamp - cur_timestamp) + "]"
-                        tweetcount += 1
-                else:
-                    for tw in userTweets[location::sizeoflist]:
-                        tw_date = tw[1]
-                        tw_lastpart = str(tw_date.split()[-1])
-                        tw_timestamp = time.mktime(datetime.strptime(tw_date, "%a, %d %b %Y %H:%M:%S " + tw_lastpart).timetuple()) 
-                        tw_timestamp = datetime.fromtimestamp(tw_timestamp)   
-                        
-                        print "    " + str(tweetcount) +': ' + tw[0] + " [" + str(tw_timestamp - cur_timestamp) + "]"
-                        tweetcount += 1
-
+               
+                tweet_list = []
                 
-                print "[Distress:,Sad: ]"
-                print "\n"
 
-                globalTweet += 1 
+                for loc in range(location-3,location+4):
+
+                    if loc < 0:
+                        cur_sadsum += 0 
+                        tweet_list.append("N/A")
+                        
+
+                    elif loc > sizeoflist-1:
+                        cur_sadsum += 0 
+                        tweet_list.append("N/A")
+                       
+                    else:
+                        tweet_list.append(userTweets[loc][0])
+
+                include_tweet_info = [usrtweet_msg_id,tweet_list,sadavg, suicidefactors]
+                  
+                ditionary_include[count] = include_tweet_info
+                count += 1 
+
+
+    pickle.dump(ditionary_include, open('outputs/finalinclude.pickle' , 'wb'))
+
+        
+                
+ 
+               
 
         
 def main():
