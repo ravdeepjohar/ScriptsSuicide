@@ -39,18 +39,18 @@ def sort_userTweetHistory():
 
                 if loc < 0:
                     cur_sadsum += 0 
-                    tweet_list.append("N/A")
+                    tweet_list.append(["N/A"," "])
                     noofNA += 1
 
                 elif loc > sizeoflist-1:
                     cur_sadsum += 0 
-                    tweet_list.append("N/A")
+                    tweet_list.append(["N/A"," "])
                     noofNA += 1
 
                 else:
 
                     cur_sadsum += float(userTweets[loc][5])
-                    tweet_list.append(userTweets[loc][0])
+                    tweet_list.append([userTweets[loc][0],str(userTweets[loc][1])])
 
             sadavg = cur_sadsum / 7.0 - float(noofNA)
             sad_tweet_info = [usrtweet_msg_id,tweet_list,sadavg, usrtweet_sadscore]
