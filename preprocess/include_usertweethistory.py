@@ -89,17 +89,17 @@ def getuser_tweet_history ():
 
                
                 tweet_list = []
-                
+                for loc in range(location-3,location+4):
 
-                if loc < 0:
-                    tweet_list.append(["N/A"," "])
-                    
+                    if loc < 0:
+                        tweet_list.append(["N/A"," "])
+                        
 
-                elif loc > sizeoflist-1:                   
-                    tweet_list.append(["N/A"," "])
-                    
-                else:              
-                    tweet_list.append([userTweets[loc][0],str(userTweets[loc][1])])
+                    elif loc > sizeoflist-1:                   
+                        tweet_list.append(["N/A"," "])
+                        
+                    else:              
+                        tweet_list.append([userTweets[loc][0],str(userTweets[loc][1])])
 
                 include_tweet_info = [usrtweet_msg_id,tweet_list,suicidefactors]
                   
