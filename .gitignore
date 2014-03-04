@@ -56,4 +56,5 @@ nyc.trim.liwc
 m_NYC_all.json
 data/
 *.pickle
+*.pdf
 
