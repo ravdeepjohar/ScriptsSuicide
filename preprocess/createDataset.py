@@ -93,7 +93,7 @@ def createDataset():
 
             sillyCount += 1
 
-        print "Msg_id: " + str(includeDict[key][0]) + "  [Distress: ,Thematic Category: ]"
+        print "Msg_id: " + str(includeDict[key][0]) + "  [Distress: , " + str(includeDict[key][2][0]) +": ]"
         print " "
 
         data1count += 1
@@ -133,7 +133,7 @@ def createDataset():
 
             sillyCount += 1
 
-        print "Msg_id: " + str(sadDict[key][0]) + "  [Distress: ,Thematic Category: ]"
+        print "Msg_id: " + str(sadDict[key][0]) + "  [Distress: , LIWC Sad: ]"
         print " "
 
         data1count += 1
@@ -186,7 +186,7 @@ def createDataset():
 
             sillyCount += 1
 
-        print "Msg_id: " + str(includeDict[key][0]) + "  [Distress: ,Thematic Category: ]"
+        print "Msg_id: " + str(includeDict[key][0]) + "  [Distress: , " + str(includeDict[key][2][0]) +": ]"
         print " "
 
         data1count += 1
@@ -226,7 +226,7 @@ def createDataset():
 
             sillyCount += 1
 
-        print "Msg_id: " + str(sadDict[key][0]) + "  [Distress: ,Thematic Category: ]"
+        print "Msg_id: " + str(sadDict[key][0]) + "  [Distress: , LIWC Sad: ]"
         print " "
 
         data1count += 1
@@ -274,7 +274,7 @@ def createDataset():
 
             sillyCount += 1
 
-        print "Msg_id: " + str(includeDict[key][0]) + "  [Distress: ,Thematic Category: ]"
+        print "Msg_id: " + str(includeDict[key][0]) + "  [Distress: , " + str(includeDict[key][2][0]) +": ]"
         print " "
 
         data2count += 1
@@ -314,7 +314,7 @@ def createDataset():
 
             sillyCount += 1
 
-        print "Msg_id: " + str(sadDict[key][0]) + "  [Distress: ,Thematic Category: ]"
+        print "Msg_id: " + str(sadDict[key][0]) + "  [Distress: , LIWC Sad: ]"
         print " "
 
         data2count += 1
@@ -367,7 +367,7 @@ def createDataset():
 
             sillyCount += 1
 
-        print "Msg_id: " + str(includeDict[key][0]) + "  [Distress: ,Thematic Category: ]"
+        print "Msg_id: " + str(includeDict[key][0]) + "  [Distress: , " + str(includeDict[key][2][0]) +": ]"
         print " "
 
         data2count += 1
@@ -407,7 +407,7 @@ def createDataset():
 
             sillyCount += 1
 
-        print "Msg_id: " + str(sadDict[key][0]) + "  [Distress: ,Thematic Category: ]"
+        print "Msg_id: " + str(sadDict[key][0]) + "  [Distress: , LIWC Sad: ]"
         print " "
 
         data2count += 1
