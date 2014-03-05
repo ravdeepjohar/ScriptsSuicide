@@ -2,6 +2,7 @@ import re, string, os, sys, time
 from datetime import datetime
 from collections import defaultdict
 import pickle
+from sets import Set
 
 
 
@@ -13,11 +14,14 @@ def main():
     dictionaryusers = pickle.load( open('outputs/usertweethistory.pickle', 'rb'))
     trainfile = open('data/train.txt','rb')
 
-    train = []
+    train = set()
 
     for msg in trainfile:
 
-        train.append(msg)
+        train.add(long(msg.strip().split()[1]))
+
+        # print long(msg.strip().split()[1])
+
 
     traindict = dict()
 
@@ -31,7 +35,7 @@ def main():
         for location in range(len(userTweets)):
 
             message = userTweets[location][0]
-            usrtweet_msg_id = userTweets[location][2]
+            usrtweet_msg_id = long(userTweets[location][2])
             usrtweet_date = str(userTweets[location][1]) 
             usrtweet_negemo = str(userTweets[location][4]) 
             usrtweet_sadscore =  float(userTweets[location][5])     
@@ -45,6 +49,8 @@ def main():
             noofNA = 0
 
             if usrtweet_msg_id in train:
+                #print "fucking works"
+                #exit()
 
                 for loc in range(location-3,location+4):
 
@@ -71,7 +77,7 @@ def main():
                 count += 1
 
 
-    pickle.dump(finalsaddict1, open('outputs/train.pickle' , 'wb'))
+    pickle.dump(traindict, open('outputs/train.pickle' , 'wb'))
 
 
 
