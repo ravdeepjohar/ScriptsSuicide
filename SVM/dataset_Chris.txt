@@ -36,7 +36,7 @@ Msg_id: 15741748880  [Distress: LD, depressive_feelings:NO ]
      1: &quot;aint gotta like me&quot; video shoot fri..starring myself and ashley logan.#letsgo!! [+0:19:42]
      2: rt @afoti: rt @j_hood_odg: s.o to my boi @afoti we bout to make u haters even more mad..&lt;&lt;&lt;creative hurricane en route&lt;def [+0:32:25]
      3: my nigga @stikk_man_odg said fuck niggaz hood do ya thing..if they hate then let em hate nigga #odg the gang!!!! [+0:36:56]
-Msg_id: 14290485167  [Distress: H, suicide_ideation: NO]
+Msg_id: 14290485167  [Distress: HD, suicide_ideation: NO]
  
 5: Date: fri, 28 may 2010 05:21:29 +0000 Category: depression_symptoms
     -3: @mr_magu i was just with her [-0:14:23]
@@ -46,7 +46,7 @@ Msg_id: 14290485167  [Distress: H, suicide_ideation: NO]
      1: i wanna do something today :-( [+12:22:50]
      2: rt @moneymakinchris: @taishanicole m 2&lt;-lol! [+12:25:28]
      3: rt @xmelissaivette: rt @taishanicole: i wanna do something today :-( «this friday seems dull. idk&lt;-i know smh! [+12:25:51]
-Msg_id: 14886287521  [Distress: H, depression_symptoms: NO]
+Msg_id: 14886287521  [Distress: HD, depression_symptoms: NO]
  
 6: Date: tue, 01 jun 2010 23:29:36 +0000 Category: depression_symptoms
     -3: money out the ass no homo but i'm rich [-1:15:47]
@@ -286,7 +286,7 @@ Msg_id: 14292400126  [Distress: NO, depressive_feelings: NO]
      1: @heyacowboy get in line! [+1 day, 1:42:48]
      2: finally home from vegas. can someone move my car for street cleaning in morning? great, keys are on the dash. [+1 day, 2:59:18]
      3: @birthdaytwin dammmmmn! sounds so good today. but alas i'm in hp. raincheck [+1 day, 14:34:03]
-Msg_id: 15533053952  [Distress: H, suicide_ideation: NO]
+Msg_id: 15533053952  [Distress: HD, suicide_ideation: NO]
  
 30: Date: fri, 11 jun 2010 00:15:26 +0000 Category: suicide_ideation
     -3: new earrings from @vt411 ....look at her part she has a lace front wig... http://twitpic.com/1vmhcb [-3:33:40]
@@ -316,7 +316,7 @@ Msg_id: 14778603190  [Distress: LD, depressive_feelings: NO]
      1: rt @latinatita: good moaanin :) lol at goodmoanin gm right back at cha lol [+0:07:43]
      2: @latinatita hope ya dayyy runs smoove miss [+0:16:09]
      3: rt @jiiggly_puff: &quot;gotta give it to ya however you want... turn around let me get up on it&quot; huh is dat u talkin i got goosbumps jus now lmao [+0:26:12]
-Msg_id: 14762412991  [Distress: H, depressive_feelings: NO]
+Msg_id: 14762412991  [Distress: HD, depressive_feelings: NO]
  
 33: Date: thu, 17 jun 2010 14:47:01 +0000 Category: depressive_feelings
     -3: rt @signatureswan: god moves in mysterious ways~u can say that again!!! [-0:19:38]
@@ -426,7 +426,7 @@ Msg_id: 16500166673  [Distress: ND, depressive_feelings: NO]
      1: @un_defined1 lmaooo but i can't stop scratching i'll deal with the reprocussions in the am [+0:24:11]
      2: #thatisall rt @stilettojill: i would like to request that big baby keep his tongue in his mouth while on the court. ick [+0:26:25]
      3: they're playing like college ball!! messy!!! [+0:32:11]
-Msg_id: 15892636698  [Distress: H, suicide_ideation: NO]
+Msg_id: 15892636698  [Distress: HD, suicide_ideation: NO]
  
 44: Date: thu, 17 jun 2010 03:09:20 +0000 Category: suicide_ideation
     -3: #iconfess i was drunk dat night wen i smashed da ugly shawty standin nxt to u...... i blame it on the alcohol [-6:37:31]
@@ -2256,7 +2256,7 @@ Msg_id: 16351494619  [Distress: ND, depressive_feelings: NO]
      1: rt @djcapone: rt @danikaelaine_: rt @chineylei: rt @southern_icon: “@chineylei: #followerquestion do you think (cont) http://tl.gd/1cm0gc [+0:00:37]
      2: rt @mr_eatda_pussay: @uniqueafrika nothing chillin ... what you doin shortyy?** chilling too [+0:36:02]
      3: i'm being so fuccin sloppy and messy rite now. wtf. i need to this shit together [+19:53:25]
-Msg_id: 14323851569  [Distress: H, depressive_feelings: NO]
+Msg_id: 14323851569  [Distress: HD, depressive_feelings: NO]
  
 227: Date: sat, 12 jun 2010 01:30:57 +0000 Category: depressive_feelings
     -3: i just had a play day in m.a.c :) [-7:02:45]
@@ -2336,7 +2336,7 @@ Msg_id: 16193828542  [Distress: ND, depressive_feelings: NO]
      1: men hurt womens feelings so much that u wud think that's their main objective ! [+10:30:53]
      2: i wanna rock right now !! roc roc right now !! [+1 day, 12:34:00]
      3: @tsomaze where u @ [+1 day, 13:21:52]
-Msg_id: 15028790120  [Distress: H, depression_symptoms: NO]
+Msg_id: 15028790120  [Distress: HD, depression_symptoms: NO]
  
 235: Date: wed, 16 jun 2010 14:45:26 +0000 Category: self_harm
     -3: rt @madisonsworld: why does every gurl on twitter think their models? models get paid 2 take pictures not pay 4 summ fake bum ass photoshoot [-0:06:34]
@@ -2416,7 +2416,7 @@ Msg_id: 14990952561  [Distress: ND, depressive_feelings: NO]
      1: tru rt @zodiacfacts: #zodiacfacts #cancers are known to be psychic, and can almost guess things before they actually happen. [+5:42:04]
      2: getting my hair done then off to pick up my queen!!! i ♥her [+5:44:46]
      3: where ? rt @nickibunz: got the grill poppin early..i'm hungry! food makes me happy :) [+6:18:40]
-Msg_id: 14968812434  [Distress: H, depression_symptoms: NO]
+Msg_id: 14968812434  [Distress: HD, depression_symptoms: NO]
  
 243: Date: tue, 15 jun 2010 14:21:45 +0000 Category: depressive_feelings
     -3: lmao u sound like gutta but he got family who always comes out rt @yeaimcandy: am i wrong cuz i only support ppl (cont) http://tl.gd/1t29an [-0:27:42]
@@ -2796,7 +2796,7 @@ Msg_id: 14374303819  [Distress: NO, self_harm: MAYBE]
      1: usually do, unfortunately =/ rt @jsu2: all good things must come to an end? [+0:00:31]
      2: jorge looked out, we in there next week he hooked it up w.the free drinks @pinky_17 @ms_ileen @sasha218 @kaitisur @kathelin_pikus @itz_orqui [+0:03:01]
      3: @g0ogu ily very much don't forget to call tomorrow!! =] [+0:05:00]
-Msg_id: 14812450035  [Distress: H, depression_symptoms: NO]
+Msg_id: 14812450035  [Distress: HD, depression_symptoms: NO]
  
 281: Date: fri, 18 jun 2010 03:11:12 +0000 Category: depressive_feelings
     -3: rt @nofuhreal: rt this is a terrible twitter name - &gt; @mr1hittaquitta roooonnnnndddooooooo !!! [-0:13:08]
@@ -3656,7 +3656,7 @@ Msg_id: 15374890085  [Distress: ND, LIWC Sad: NO]
      1: #nowplaying bt - flaming june (reuben halsey chillout mix) http://www.youtube.com/watch#!v=ukvn_qhtvpk #trancefamily [+0:08:47]
      2: #nowplaying james horner vs ali wilson - i see pandora (curtmonster mashup) \o/ \o/ [+0:21:12]
      3: @curtmonster nice work matt, tracks go well together. [+0:29:13]
-Msg_id: 14547719965  [Distress: H, LIWC Sad: ND]
+Msg_id: 14547719965  [Distress: HD, LIWC Sad: ND]
  
 367: Date: sat, 05 jun 2010 04:10:56 +0000 Category: LIWC Sad 
     -3: so i fell asleep watching how high...woke up and felt like i was high!!! #smh lol [-1:05:14]
@@ -4426,7 +4426,7 @@ Msg_id: 15744538942  [Distress: ND, LIWC Sad: NO]
      1: cleaning the crib and literally dancing to this.....http://www.youtube.com/watch?v=zmtpkzyigmm 1991&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;2010 [+0:08:16]
      2: @lovelymizb lol two-way street girl!.....but u right and now i think i've #failed smh [+0:09:02]
      3: and strictly business was a classic too halle berry was right.....was [+0:10:31]
-Msg_id: 14987011520  [Distress: H, LIWC Sad: NO]
+Msg_id: 14987011520  [Distress: HD, LIWC Sad: NO]
  
 444: Date: wed, 16 jun 2010 03:40:53 +0000 Category: LIWC Sad 
     -3: @don2fly what happen ? [-0:07:05]
@@ -5276,7 +5276,7 @@ Msg_id: 15139320737  [Distress: LD, LIWC Sad: MAYBE]
      1: rt @pageolovechild: thank you victoria #yr &gt; was wishing for a slap!!! [+0:00:21]
      2: @girlsgetaways lol i have been watching so long i dont know what i would do without it!! [+0:02:36]
      3: @ellepiari i dont have any, i will just go and take a nap! lol [+0:03:19]
-Msg_id: 14373305164  [Distress: H, LIWC Sad: NO]
+Msg_id: 14373305164  [Distress: HD, LIWC Sad: NO]
  
 529: Date: sun, 23 may 2010 16:19:01 +0000 Category: LIWC Sad 
     -3: rt @big_daddy_ken: @queenborne9 i hope night either lol!! &lt;&lt;lol night??? we still hungover huh??? [-0:03:22]
@@ -5806,7 +5806,7 @@ Msg_id: 14658231834  [Distress: ND, LIWC Sad: NO]
      1: oh man so many #haters on the loose #celticfans its ok now take the blown out #l [+0:03:53]
      2: @yesceekah yea i can tell u right now wat i say.....i told u so lol [+0:13:36]
      3: do anybody remember wat the score was lol [+0:14:45]
-Msg_id: 16278026688  [Distress: H, LIWC Sad: NO]
+Msg_id: 16278026688  [Distress: HD, LIWC Sad: NO]
  
 582: Date: sat, 22 may 2010 12:51:18 +0000 Category: LIWC Sad 
     -3: what a f*ckin day... [-4:05:07]
@@ -5816,7 +5816,7 @@ Msg_id: 16278026688  [Distress: H, LIWC Sad: NO]
      1: fresh outta work, wassup?!?!? [+7:14:41]
      2: rt @shessoflawless: i love my #iphone..theres an app for everything :-) [+7:16:51]
      3: bonny always tryna show off http://twitpic.com/1q4f72 [+7:59:43]
-Msg_id: 14491578772  [Distress: H, LIWC Sad: NO]
+Msg_id: 14491578772  [Distress: HD, LIWC Sad: NO]
  
 583: Date: thu, 03 jun 2010 17:14:34 +0000 Category: LIWC Sad 
     -3: @jaziejoyce45 lmaoo! yeah i didn't kno you were violent! feel bad for those mexicans &amp; their buggies! [-0:13:27]
@@ -6076,7 +6076,7 @@ Msg_id: 15902983308  [Distress: HD, LIWC Sad: YES]
      1: @london_bi_babe that's why u gotta have plan b and c outfit ready i kno you'll look lovely ethier way [+0:01:22]
      2: rt @ashyxkneezx: good morning everyone :)mourning [+0:49:54]
      3: @london_bi_babe happy bday gorgeous i wish u many many more stay safe n blessed [+9:26:38]
-Msg_id: 15554881411  [Distress: H, LIWC Sad: NO]
+Msg_id: 15554881411  [Distress: HD, LIWC Sad: NO]
  
 609: Date: wed, 02 jun 2010 21:46:23 +0000 Category: LIWC Sad 
     -3: just washed my hair it hasnt been 5 mins &amp; this shit is already od wild.. ughh i wish summer wasnt humid so i can wear straight hair always [-1:57:11]
@@ -8156,7 +8156,7 @@ Msg_id: 16235637425  [Distress: ND, LIWC Sad: NO]]
      1: i'm so aggy!!! goodnight [+7:09:43]
      2: N/A [+0:00:00]
      3: N/A [+0:00:00]
-Msg_id: 16497020920  [Distress: H, LIWC Sad: NO]
+Msg_id: 16497020920  [Distress: HD, LIWC Sad: NO]
  
 817: Date: sun, 30 may 2010 22:43:28 +0000 Category: LIWC Sad 
     -3: rt @thekillertruth: a lie can travel all the way across the world and back ..while the truth is still putting on it's shoes. [-1:11:21]
@@ -8276,7 +8276,7 @@ Msg_id: 15213357931  [Distress: ND, LIWC Sad: NO]
      1: @jermaineirving the one time i gave a second chance #iconfess i regret till this day ... hey u live, u learn [+0:02:30]
      2: #iconfess @viki_nosecret is so hot ! #thatsall [+0:06:26]
      3: #iconfess theres something about a chocolate slim girl that makes me coocoo for coco ..... puffs yea lol [+0:11:44]
-Msg_id: 16350537207  [Distress: H, LIWC Sad: NO]
+Msg_id: 16350537207  [Distress: HD, LIWC Sad: NO]
  
 829: Date: tue, 01 jun 2010 06:43:45 +0000 Category: LIWC Sad 
     -3: #ihatefemaleswho wear leggings 6 days a week [-7:11:55]
@@ -8456,7 +8456,7 @@ Msg_id: 15028393249  [Distress: LD, LIWC Sad: MAYBE]
      1: @dooce welp it's going to be in the high 80s so i think you'll be ok! [+11:46:35]
      2: i’m burning up!: is it sad that the first thought that crossed my mind this morning when my alarm went off was “ye... http://bit.ly/biu4go [+11:50:35]
      3: my office is a germ fest [+14:02:11]
-Msg_id: 16192916120  [Distress: H, LIWC Sad: NO]
+Msg_id: 16192916120  [Distress: HD, LIWC Sad: NO]
  
 847: Date: sat, 29 may 2010 01:08:58 +0000 Category: LIWC Sad 
     -3: @repodon was good homie [-1:25:39]
@@ -8866,7 +8866,7 @@ Msg_id: 15965511912  [Distress: ND, LIWC Sad: NO]
      1: fresh hair cut n ready to go! http://tweetphoto.com/24418902 [+0:01:53]
      2: cuddlein wit the best cuddler in he world :) my mommy... yawnn nap time n then off to hoboken :p [+0:55:30]
      3: out to hoboken!!!! ;) [+3:15:12]
-Msg_id: 14938898131  [Distress: H, LIWC Sad: NO]
+Msg_id: 14938898131  [Distress: HD, LIWC Sad: NO]
  
 888: Date: mon, 14 jun 2010 01:50:14 +0000 Category: LIWC Sad 
     -3: @cyberrbully awww shit i'm hype lol .. how you tho? [-0:04:39]
@@ -9716,7 +9716,7 @@ Msg_id: 15375082079  [Distress: ND, LIWC Sad: NO]
      1: @sinfullygrinch whats good stranger [+0:01:55]
      2: @prettybrwnangel uhh, what is it? [+0:03:37]
      3: @sinfullygrinch whats good? how u been? how is life? [+0:03:58]
-Msg_id: 14404905135  [Distress: H, LIWC Sad: NO]
+Msg_id: 14404905135  [Distress: HD, LIWC Sad: NO]
  
 973: Date: fri, 18 jun 2010 06:53:53 +0000 Category: LIWC Sad 
     -3: celtics gettin them charggeess leggooo [-4:12:16]
