@@ -1,0 +1,4 @@
+Annotating data
+SVM bootstrapping
+Retrieving twitter data
+Retrieving social graphs

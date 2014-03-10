@@ -11,7 +11,7 @@ deg = defaultdict(int)
 indeg = defaultdict(int)
 outdeg = defaultdict(int)  # seems to be the followers
 
-fields = ["swear",   "social",  "family",  "friend",  "humans",  "affect",  "posemo",  "negemo",  "anx",     "anger",   "sad",     "cogmech", "insight", "cause",   "discrep", "tentat",  "certain", "inhib",   "incl",    "excl",    "percept", "see",    "hear",    "feel",    "bio",     "body",    "health",  "sexual",  "ingest",  "relativ", "motion",  "space",   "time",    "work",    "achieve", "leisure", "home",    "money",   "relig",   "death", "calc_sentiment"]
+fields = ["swear",   "social",  "family",  "friend",  "humans",  "affect",  "posemo",  "negemo",  "anx",     "anger",   "sad",     "cogmech", "insight", "cause",   "discrep", "tentat",  "certain", "inhib",   "incl",    "excl",    "percept", "see",    "hear",    "feel",    "bio",     "body",    "health",  "sexual",  "ingest",  "relativ", "motion",  "space",   "time",    "work",    "achieve", "leisure", "home",    "money",   "relig",   "death"] #, "calc_sentiment"]
 
 def initialize_graph (G):
     "Initial node and edge labels"
@@ -44,11 +44,13 @@ def initialize_graph (G):
             G.node[node]["from"]["messages"][field] = 0
             G.node[node]["from"]["tweets"][field] = 0
             
+    
     for (u,v) in G.edges_iter():
-        G.edge[u][v]['num_messages'] = 0 # total messages sent along edge
-        G.edge[u][v]['numwords'] = 0  # total words
+        G.edge[u][v][0]['num_messages'] = 0 # total messages sent along edge
+        G.edge[u][v][0]['numwords'] = 0  # total words
         for field in fields:
-            G.edge[u][v][field] = 0
+            G.edge[u][v][0][field] = 0
+
             
     return G
 
@@ -93,18 +95,18 @@ def label_graph (N, twitter_file):
             break
         tweet = simplejson.loads (line)
         from_user = tweet["doc"]["from_user"]
-        tweet["suicidal_feelings"] = 1
-        outline = simplejson.puts(tweet)
+        #tweet["suicidal_feelings"] = 1
+        #outline = simplejson.puts(tweet)
         try:
             to_user = tweet["doc"]["to_user"]
-            N.edge[to_user][from_user]["num_messages"] += 1  # followers graph seems to be "backward"
-            N.edge[to_user][from_user]["numwords"] += tweet["numwords"]  # followers graph seems to be "backward"
+            N.edge[to_user][from_user][0]["num_messages"] += 1  # followers graph seems to be "backwards"
+            N.edge[to_user][from_user][0]["numwords"] += tweet["numwords"]  # followers graph seems to be "backward"
             N.node[to_user]["to"]["messages"]["num"] += 1
             N.node[from_user]["from"]["messages"]["num"] += 1
             N.node[to_user]["to"]["messages"]["numwords"] += tweet["numwords"]
             N.node[from_user]["from"]["messages"]["numwords"] += tweet["numwords"]
             for field in fields:
-                N.edge[to_user][from_user][field] += float(tweet[field]) * tweet["numwords"]
+                N.edge[to_user][from_user][0][field] += float(tweet[field]) * tweet["numwords"]
                 N.node[to_user]["to"]["messages"][field] += float(tweet[field]) * tweet["numwords"]
                 N.node[from_user]["from"]["messages"][field] += float(tweet[field]) * tweet["numwords"]
         except KeyError:
@@ -140,7 +142,7 @@ def main ():
     sys.stdout.write ("\n")
 
     N = initialize_graph (N)
-    #    N = label_graph(N, "nyc.trim.append.sentiment")
+    #N = label_graph(N, "nyc.trim.append.sentiment")
     N = label_graph(N, "nyc.trim.liwc")
          
 
