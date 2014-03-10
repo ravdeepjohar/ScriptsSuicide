@@ -51,6 +51,30 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Latex
+*.aux
+*.glo
+*.idx
+*.log
+*.toc
+*.ist
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc1
+*.out
+*.synctex.gz
 #Dataset
 nyc.trim.liwc
 m_NYC_all.json
