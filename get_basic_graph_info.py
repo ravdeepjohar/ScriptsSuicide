@@ -125,7 +125,7 @@ def node_to_array (node):
     "Converts node data to a numpy array"
 
 def main ():
-    G = pgv.AGraph("MERGED.dot", directed=True, strict=True)
+    G = pgv.AGraph("data/MERGED.dot", directed=True, strict=True)
     N = nx.from_agraph(G)
 
     sys.stdout.write ("Graph size: %d\n" % len(N))
@@ -143,7 +143,7 @@ def main ():
 
     N = initialize_graph (N)
     #N = label_graph(N, "nyc.trim.append.sentiment")
-    N = label_graph(N, "nyc.trim.liwc")
+    N = label_graph(N, "data/nyc.trim.liwc")
          
 
     nx.write_gpickle(N, "graph.pkl")

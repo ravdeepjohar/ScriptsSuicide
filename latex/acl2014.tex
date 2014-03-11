@@ -172,7 +172,29 @@ chi2 feature selection
 \subsection{SVM part}
 -scikit learn sth....
 
+\subsection{Network Features}
+One of the fundamental properties of social networks appears to be \emph{tie strength}, or how ``close'' socially two people are. A large body of literature suggests that people are more likely to share personal information with stronger ties, and that weak ties play an important role in providing new information.  
+Measuring tie strength is problematic, as there is no gold standard here. Social networking services seem to exacerbate the disparity between strong and weak ties, as many have ``friends'' or ``followers'' whom they may not even know personally, and also create their own problems and opportunities for estimating tie strength. In large-scale network analysis, researchers have sometimes characterized tie strength by the 
+\emph{embeddedness} of an edge, which is the number of friends in common that two actors sharing a tie have. Highly embedded links are part of a strong social fabric, and represent strong ties. Another method of estimating tie strength is to measure the amount of activity between users. In this study, we investigate both the role that embeddness and activity play in corrolating suicide-related language. 
+
 \section{Results}
+\subsection{Strength of Ties}
+Table~\ref{tab:strength} shows how the use of sad language (measure by the LIWC sad feature) correlates among users sharing different tie strength and between personal and broadcast messages.
+
+\begin{table}
+  \centering
+  \begin{tabular}{l|r|r}
+Embeddedness    &Broadcast&Personal\\
+\hline
+0 & 0.046 & 0.098\\
+\hline
+1 & 0.061 & 0.13\\
+\hline
+5& 0.082 & 0.23
+  \end{tabular}
+\label{tab:strength}
+\caption{Pearson correlation coefficient of LIWC sad (aggegrated over all tweets collected) of broadcast and reciprocated personal tweets.}
+\end{table}
 \section{Discussion}
 \subsection{Limitations}
 \section{Conclusion and Future Work}
