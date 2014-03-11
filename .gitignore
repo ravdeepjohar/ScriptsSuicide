@@ -51,6 +51,13 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# mac files
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+
 # Latex
 *.aux
 *.glo
