@@ -50,23 +50,28 @@ def main():
     outfile2 = open('svm/testdataforSVM.txt',"wb")
     
 
-    for i in range(10):#len(X_train_arr)):
+    for i in range(len(X_train_arr)):
 
-        line =  str(y_test[i]) + " "
+        line =  str(y_train[i]) + " "
 
         for tfidf in range(len(X_train_arr[i])):
-            line = line + str(tfidf+1) + ":" + str(X_train_arr[i][tfidf]) + " "
+
+            if (float(X_train_arr[i][tfidf]) != 0.0):                
+                line = line + str(tfidf+1) + ":" + str(X_train_arr[i][tfidf]) + " "
+        
         line = line + "\n"
         outfile1.write(line)  
 
-    exit() 
-   
+     
     for i in range(len(X_test_arr)):
 
         line =  str(y_test[i]) + " "
 
         for tfidf in range(len(X_test_arr[i])):
-            line = line + str(tfidf+1) + ":" + str(X_test_arr[i][tfidf]) + " "
+
+            if (float(X_test_arr[i][tfidf]) != 0.0):
+                line = line + str(tfidf+1) + ":" + str(X_test_arr[i][tfidf]) + " "
+        
         line = line + "\n"
         outfile2.write(line)
   
