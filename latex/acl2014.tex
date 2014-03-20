@@ -20,7 +20,9 @@
 \usepackage{url}
 \usepackage{latexsym}
 \usepackage{tabulary}
+\usepackage{tabulary}
 \usepackage{comment}
+\usepackage{graphicx}
 %\setlength\titlebox{5cm}
 
 % You can expand the titlebox if you need extra space
@@ -28,28 +30,25 @@
 % smaller than 5cm (the original size); we will check this
 % in the camera-ready version and ask you to change it back.
 
+\title{Toward Macro-Insights  for Suicide Prevention: \\ Anaylzing Fine-Grain Distress at Scale}
 
-\title{Modeling the Fine-Grained Expression of Suicide-Related Ideas at Scale}
-
-\author{Ravdeep Johar\\
-  Department of Computer Science \\
-  Rochester Institute of Technology \\
-  {\tt rsj7209@rit.edu} \\\And
- Christopher M. Homan\\
-  Department of Computer Science \\
-  Rochester Institute of Technology \\
-  {\tt cmh@cs.rit.edu}\\\And
-  Second Author \\
-  Affiliation / Address line 1 \\
-  Affiliation / Address line 2 \\
-  Affiliation / Address line 3 \\
-  {\tt email@domain} \\}
+%\author{Ravdeep Johar\\
+ % Department of Computer Science \\
+ % Rochester Institute of Technology \\
+ % {\tt rsj7209@rit.edu} \And
+ %Christopher M. Homan\\
+ % Department of Computer Science \\
+ % Rochester Institute of Technology \\
+  %{\tt cmh@cs.rit.edu}\\\\ 
+ %}
 
 \date{March 21, 2014}
 
 \begin{document}
 \maketitle
 \begin{abstract}
+
+This paper is an initial exploratory research 
  \end{abstract}
 
 \section{Introduction}
@@ -89,8 +88,8 @@ In contrast to the way that suicide is detecting in clinical settings [Megan, ho
 \end{description}
 \end{comment}
 
-\subsection{Related Work}
-\subsubsection{Clinical [Megan]}
+\section{Related Work}
+\subsection{Clinical}
 Based on what we already know, it is reasonable to expect that a better understanding of risk factors for suicidal behaviors (i.e., suicidal ideation and suicide attempt) will lead to more effective clinical practices. For example, approximately one third of individuals who reported lifetime suicidal ideation made a plan and nearly three-quarters of those who reported having a suicide plan went on to attempt suicide \cite{kessler1999prevalence}. According to Kessler, Borges, and Walters  \cite{kessler1999prevalence}, the odds of attempting suicide increased exponentially when individuals endorsed three of more risk factors (e.g., having a mood or substance abused disorder). Might traces of suicide plans and other risk factors leave detectable, meaningful traces in social media?
 
 Data on suicide was traditionally collected primarily from healthcare organizations or large-scale studies that are often limited depending on providers' ability to assess and document suicide risk, or from self-report measures \cite{crosby2011self,horowitz2009suicide}.  Traditional methods for researching suicidal behavior is influenced by sociocultural barriers such as stigma and shame, as well as issues with methodology \cite{crosby2011self}. For these reasons, and because of the fundamentally subjective nature of the problem, data on suicide is never particularly reliable. 
@@ -102,8 +101,8 @@ Suicide is a complex phenomenon with a low base rate; therefore, many researcher
 	Since the stress-diathesis model was developed using risk factors for suicidal behavior, it is the ideal framework to analyze publically available linguistic data from social media outlets such as Twitter. While traditional methods are limited by survey questions or clinical reports, data from social media can be used as a natural experiment to examine depression and suicidal ideation without being constrained by such sample biases as individuals who are willing take part in research and/or seek out formal sources of support. Moreover, this natural experiment method may provide information about individuals who are unlikely to engage in formal help-seeking behaviors and eventually it could be used to identify effective methods in natural helping. Hence, this universal approach to screening for suicidal behaviors may have future implications not only for identifying individuals who have a higher prevalence for suicidal behaviors but it could eventually lead to the methods for enhancing protective factors against suicide.  
 
 
-\subsubsection{Computational-Linguistic [Cissi]}
-\subsubsection{Affect in Social Media [Chris]}
+\subsection{Affect Detection and Clinical Expertise}
+\subsection{Affect in Social Media}
 
 Sentiment analysis has been widely studied in a number of computational settings, including on various social networking sites. Relatively little of this work has focused on suicide or related psychological conditions. \cite{masuda2013suicide} study suicide on mixi. \cite{cheng2012opportunities} consider the ethical and political implications of online data collection for suicide prevention. \cite{Jay} show correlations between frequency in tweets related to suicide and actual suicide in the 50 United States of America. \cite{sadilek2014modeling} study depression on Twitter. De Choudhury and collaborators studied depression---in general and post-partem---in Twitter~\cite{de2012not,de2012happy,de2013major,de2013understanding} and Facebook~\cite{de2014characterizing}. Homan et al. investigate depression in TrevorSpace~\cite{homan2014social}. A number of social theories of suicide have been proposed~\cite{wray2011sociology}. Most of this work was with respect to offline social systems. 
 
@@ -167,30 +166,7 @@ Twitter is a worldwide popular social networking and microblogging service. Twit
 \textbf{CMH: \cite{Jay}. It is important to give them credit for what they did, and to note that the scheme you describe was adopted from them almost verbatim.}
 
 To identify suspected suicide tweets, we created a list of inclusive search terms/phrases according to various risk factors and warning signs linked to suicide. [Table 1]
-\begin{table*}
-    \centering
-    \begin{tabulary}{500pt}{|C|C|}
-    \hline
-    \textbf{Suicide Risk Factor Category} & \textbf{Search Terms and Phrases} \\ \hline
-    Depressive Feelings & ~  me abused depressed, tired of living,so depressed,leave this world, wanna die,me hurt depressed, feel hopeless depressed, feel alone depressed, i feel helpless, i feel worthless, i feel sad, i feel empty, i feel anxious, hate my job, feeling guilty, deserve to die, desire to end own life, feeling ignored, tired of everything, feeling blue, have blues                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \hline
-    Depression Symptoms                   & sleeping pill, sleeping a lot, i feel irritable, i feel restless, have insomnia, sleep forever,sleep disorder                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             \\ \hline
-   Drug Abuse                            & depressed alcohol, sertraline, zoloft, prozac, pills depressed, clonazepam, drug overdose, imipramine                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\ \hline
-  Prior Suicide Attempts                & suicide once more, me abused suicide, pain suicide, tried suicide                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \hline
-  Suicide Around Individual             & mom suicide tried, sister suicide tried, brother suicide tried, friend suicide, suicide attempted, suicide attempt                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        \\ \hline
-   Suicide Ideation                      & commit suicide,committing suicide,feeling suicidal, suicide thought about, thoughts suicide, think suicide, thought killing myself, used thought suicide, once thought suicide, past thought suicide, multiple thought suicide, want to suicide, shoot myself, a gun to head, hang myself, intention to die                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \hline
-   Self Harm                             & stop cutting myself, hurt myself, cut myself                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \hline
-   Bullying                              & i am being bullied, i have been cyber bullied, was bullied, feel bullied, stop bullying me, keeps bullying me, always getting bullied                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\ \hline
-   Gun Ownership                         & gun suicide, shooting range went, gun range my                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            \\ \hline
-   Psychological Disorders               & diagnosed schizophrenia, diagnosed anorexia, diagnosed bulimia, i diagnosed ocd, i diagnosed bipolar, i diagnosed ptsd, diagnosed borderline personality disorder, diagnosed panic disorder, diagnosed social anxiety disorder, diagnosed post traumatic stress disorder, sleep apnea                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\ \hline
-   Family Violence Discord               & dad fight again, parents fight again, lost my friend, argument with wife, argument with husband, shouted at each other                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    \\ \hline
-   Impulsivity                           & i impulsive, i am impulsive                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \hline
-   Sad                                   & abandon, ache, aching, agoniz, agony, alone, broke,cried, cries, crushed, cry, crying, damag, defeat, depress, depriv, despair, devastat, disadvantage, disappoint, discourag, dishearten, disillusion, dissatisf, doom, dull, empt, fail, fatigu, flunk, gloom, grave, grief, griev, grim, heartbreak, heartbroke, helpless, homesick, hopeless, hurt, inadequa, inferior, isolat, lame, lone, longing, lose, loser, loses, losing, loss, lostlow, melanchol, miser, miss, missed, misses, missing, mourn, neglectoverwhelm, pathetic, pessimis, piti, pity , regret, reject, remorse, resign, ruin, sad, sadde, sadly, sadness, sob, sobbed, sobbing, sobs, solemn, sorrow, suffer, suffered, sufferer, suffering, tears, traged, tragic , unhapp,unimportant, unsuccessful, useless, weep, wept, whine, whining, woe, worthless, yearn \\ \hline
 
-  
-    \end{tabulary}
-\caption{Search phrases for categories}
-  \label{Table:1}
-\end{table*}
 
 
 Among these, terms in Sad category were generated from LIWC [http://www.liwc.net/index.php]. All the rest were concluded from depression and other psychological disorders (Lewinsohn, Rohde, \& Seely, 1994), prior suicide attempts (Lewinsohn et al., 1994), family violence, family history of drug abuse, firearms in the home, and exposure to the suicidal behavior of others (National Insti- tute of Mental Health, 2012). Other search terms included common antidepressants, as well as phrases that indicated suicide (Hawton, Zahl, \& Weaterall, 2003), ideation (American Foundation for Suicide Prevention, 2012a), deliberate self-harm (Zahl \& Hawton, 2004), bullying (Klomek, Sourander, \& Gould, 2011), feelings of isolation (CDC, 2012), and impulsiveness (American Foundation for Suicide Prevention, 2012b). [Self-directed Violence Surveillance: Uniform Definitions and Recommended Data Elements, report from Megan]
@@ -207,26 +183,70 @@ Using Scikit-learn package(http://scikit-learn.org/stable/about.html\#citing-sci
 At the same time, we kept original words without any word stemming, i.e.: ``computers'', ``computing'', and ``compute'', neither of these words will be mapped to the same stem ``comput''. The reason here is: a tweet containing like ``soooooooooo sad!" is supposed to convey stronger emotions than simple ``so sad''.
 
 \subsection{Ground Truth}
-\textbf{CMH: Explain the annotation procedure here.}
 
- 
-\subsection{Analysis}
--topic modeling \cite{Blei}
+The dataset is divided into two equal parts, each set is annotated by two experts. The first dataset is annotated by experts in Computing Science and Linguistics  the other set by clinical experts in Psychology. Each dataset was annotated by male and female pairs. The reasoning behind this method is to analyze the difference of perceptions between male and female, and, also between experts VS non-experts in psychology.
 
-\subsection{features}
--unigram, bigram, trigram
--tf-idf
-As features, we used unigram, bigram and trigram tokens in the whole training data as the attributes. For example, a simple tweet ``I am so depressed'' is represented as the following feature vector: \{I, am, so, depressed, I am, am so, so depressed, I am so, am so depressed\}. The tf-idf values were calculated for each attribute: tf-idf stands for ``term frequency - inverse document frequency'', which is a numerical statistic to reflect how important a tokenization is to a document in a collection or corpus. The tf-idf value increases proportionally to the number of times a tokenization appears in the dataset, but is offset by the frequency of the tokenization in the corpus, which helps to control for the fact that some words are generally more common than others. With the help of Scikit-learn package(http://scikit-learn.org/stable/about.html\#citing-scikit-learn), there values can be easily acquired. 
 
-\subsection{feature selection}
-chi2 feature selection
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{ChrisCissi4cat.jpg}
+\end{figure}
 
-\subsection{Annotation}
--expert VS non-expert
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{ChrisMegan4Cat.jpg}
+\end{figure}
+
+For annotation process each tweet was provided with a context, i.e. three tweets before and after the tweet to be annotated, along with timestamp of these tweets and thematic category to which the tweet belonged to. Each tweet was annotated for distress level and thematic category. The distress level was divided into four categories: High Distress(HD), Low Distress(LD), No Distress(ND) and Happy(H), whereas, for the thematic category the annotaters labeled just yes or no based on whether the thematic category applied to the tweet or not.
+
+\begin{table}
+    \centering
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+    Annotator    & H   & ND   & LD   & HD  \\ \hline
+    Annotator 1  & 2.0 & 75.4 & 18.8 & 3.8 \\ \hline
+    Annotator 2  & 4.3 & 63.3 & 28.0 & 4.4 \\ \hline
+    Annotator 3  & 2.3 & 42.8 & 51.3 & 3.4 \\ \hline
+    Annotator 4  & ~   & ~    & ~    & ~   \\ \hline
+    \end{tabular}
+    \caption {percentage of distress labels }
+
+\label{tab:percentage}
+\end{table}
+
+
+\subsection{Topic Modeling}
+
+Toping modeling is often used to analyze text data by finding topics within a corpus of documents. Each topic consists of words that occur together frequently. These models are capable of connecting words with similar meanings and distinguish words with multiple meanings. We utilize  Latent Dirichlet Algorithm  \cite{Blei} to create these topics, in this method the documents (in our case tweets) are represented as random mixtures over latent topic where each topic is characterized by a distribution over words (REPHRASE). 
+
+We perform topic modeling on our dataset to compare the topics within high distress and everyday tweets. Before performing the topic modeling, the stop words and words that occur only once in the dataset are removed. The LDA algorithm is then applied to create $5$ topics using $100$ iterations, Table \ref{tab:tm} shows the results.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.7cm}|p{4cm}|}
+    \hline
+    \textbf{Topic No } & \textbf{Words} \\ \hline
+    \vfill \vfill Topic 1 & miss u, leave alone, sleep forever, win lose, gon lose, left alone, \#iconfess hate, lost best, best friend, think insomnia \\ \hline
+    \vfill \vfill Topic 2 & hate job, feel sad, don't wanna, feel helpless, bed lonely, feel better, miss you, sad =/, tired everything, miss love\\ \hline
+    \vfill \vfill Topic 3 & miss you!, wanna cry, committing suicide, tired living, miss 2, one person, broke bitches, worst feeling, leave world, bout go \\ \hline
+    \vfill \vfill Topic 4 & commit suicide, get hurt, miss baby, feel empty, :( miss, lost phone, don't let, drug overdose, can't wait, \@ work \\ \hline
+     \vfill \vfill Topic 5 & feel like, tummy hurts, lost friend, ima miss, deserve die, right now..., hurts :(, get fat, every day, like crying  \\ \hline
+    \end{tabular}
+ \caption {Topic Analysis on bigrams of High Distress Tweets }
+
+\label{tab:tm}
+\end{table}
+
+\subsection{Features for classifier}
+
+
+To prepare the tweets for the classifier, we extract features using the unigram, bigram and trigram model. For example, a simple tweet ``I am so happy'' is represented as the following feature vector: \{I, am, so, happy, I am, am so, so happy, I am so, am so happy\}. The tf-idf values were calculated for each attribute: tf-idf stands for ``term frequency - inverse document frequency'', which is a numerical statistic to reflect how important a tokenization is to a document in a collection or corpus. The tf-idf value increases proportionally to the number of times a tokenization appears in the dataset, but is offset by the frequency of the tokenization in the corpus, which helps to control for the fact that some words are generally more common than others. With the help of Scikit-learn package(http://scikit-learn.org/stable/about.html\#citing-scikit-learn), there values can be easily acquired. 
+
+
 
 
 \subsection{SVM part}
--scikit learn sth....
+
 
 \subsection{Network Features}
 One of the fundamental properties of social networks appears to be \emph{tie strength}, or how ``close'' socially two people are. A large body of literature suggests that people are more likely to share personal information with stronger ties, and that weak ties play an important role in providing new information.  
@@ -271,5 +291,30 @@ Higher levels of suicidal ideation have an inverse relationship with all types o
 %  remember to run:
 % latex bibtex latex latex
 % to resolve all references
+
+\begin{table*}
+    \centering
+    \begin{tabulary}{500pt}{|C|C|}
+    \hline
+    \textbf{Suicide Risk Factor Category} & \textbf{Search Terms and Phrases} \\ \hline
+    Depressive Feelings & ~  me abused depressed, tired of living,so depressed,leave this world, wanna die,me hurt depressed, feel hopeless depressed, feel alone depressed, i feel helpless, i feel worthless, i feel sad, i feel empty, i feel anxious, hate my job, feeling guilty, deserve to die, desire to end own life, feeling ignored, tired of everything, feeling blue, have blues                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \hline
+    Depression Symptoms                   & sleeping pill, sleeping a lot, i feel irritable, i feel restless, have insomnia, sleep forever,sleep disorder                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             \\ \hline
+   Drug Abuse                            & depressed alcohol, sertraline, zoloft, prozac, pills depressed, clonazepam, drug overdose, imipramine                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\ \hline
+  Prior Suicide Attempts                & suicide once more, me abused suicide, pain suicide, tried suicide                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \hline
+  Suicide Around Individual             & mom suicide tried, sister suicide tried, brother suicide tried, friend suicide, suicide attempted, suicide attempt                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        \\ \hline
+   Suicide Ideation                      & commit suicide,committing suicide,feeling suicidal, suicide thought about, thoughts suicide, think suicide, thought killing myself, used thought suicide, once thought suicide, past thought suicide, multiple thought suicide, want to suicide, shoot myself, a gun to head, hang myself, intention to die                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \hline
+   Self Harm                             & stop cutting myself, hurt myself, cut myself                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \hline
+   Bullying                              & i am being bullied, i have been cyber bullied, was bullied, feel bullied, stop bullying me, keeps bullying me, always getting bullied                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\ \hline
+   Gun Ownership                         & gun suicide, shooting range went, gun range my                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            \\ \hline
+   Psychological Disorders               & diagnosed schizophrenia, diagnosed anorexia, diagnosed bulimia, i diagnosed ocd, i diagnosed bipolar, i diagnosed ptsd, diagnosed borderline personality disorder, diagnosed panic disorder, diagnosed social anxiety disorder, diagnosed post traumatic stress disorder, sleep apnea                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\ \hline
+   Family Violence Discord               & dad fight again, parents fight again, lost my friend, argument with wife, argument with husband, shouted at each other                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    \\ \hline
+   Impulsivity                           & i impulsive, i am impulsive                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \hline
+   Sad                                   & abandon, ache, aching, agoniz, agony, alone, broke,cried, cries, crushed, cry, crying, damag, defeat, depress, depriv, despair, devastat, disadvantage, disappoint, discourag, dishearten, disillusion, dissatisf, doom, dull, empt, fail, fatigu, flunk, gloom, grave, grief, griev, grim, heartbreak, heartbroke, helpless, homesick, hopeless, hurt, inadequa, inferior, isolat, lame, lone, longing, lose, loser, loses, losing, loss, lostlow, melanchol, miser, miss, missed, misses, missing, mourn, neglectoverwhelm, pathetic, pessimis, piti, pity , regret, reject, remorse, resign, ruin, sad, sadde, sadly, sadness, sob, sobbed, sobbing, sobs, solemn, sorrow, suffer, suffered, sufferer, suffering, tears, traged, tragic , unhapp,unimportant, unsuccessful, useless, weep, wept, whine, whining, woe, worthless, yearn \\ \hline
+
+  
+    \end{tabulary}
+\caption{Search phrases for categories}
+  \label{Table:1}
+\end{table*}
 
 \end{document}
