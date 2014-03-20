@@ -19,10 +19,12 @@
 \usepackage{times}
 \usepackage{url}
 \usepackage{latexsym}
+
 \usepackage{tabulary}
 \usepackage{tabulary}
 \usepackage{comment}
 \usepackage{graphicx}
+\usepackage{array}
 %\setlength\titlebox{5cm}
 
 % You can expand the titlebox if you need extra space
@@ -254,7 +256,6 @@ One of the fundamental properties of social networks appears to be \emph{tie str
 Measuring tie strength is problematic, as there is no gold standard here. Social networking services seem to exacerbate the disparity between strong and weak ties, as many have ``friends'' or ``followers'' whom they may not even know personally, and also create their own problems and opportunities for estimating tie strength. In large-scale network analysis, researchers have sometimes characterized tie strength by the 
 \emph{embeddedness} of an edge, which is the number of friends in common that two actors sharing a tie have. Highly embedded links are part of a strong social fabric, and represent strong ties. Another method of estimating tie strength is to measure the amount of activity between users. In this study, we investigate both the role that embeddness and activity play in corrolating suicide-related language. 
 
-\begin{comment}
 \section{Results}
 \subsection{Geography and Emotional Language}
 \begin{figure}
@@ -267,19 +268,19 @@ Measuring tie strength is problematic, as there is no gold standard here. Social
 Table~\ref{tab:strength} shows how the use of sad language (measure by the LIWC sad feature) correlates among users sharing different tie strength and between personal and broadcast messages.
 
 \begin{figure}
-\begin{array}{cc}
+\centering
+\begin{tabular}{cc}
 \includegraphics[scale=.2]{sad_corr.pdf} &
 \includegraphics[scale=.2]{anx_corr.pdf} \\
 \includegraphics[scale=.2]{negemo_corr.pdf} &
 \includegraphics[scale=.2]{posemo_corr.pdf}\\
 \includegraphics[scale=.2]{health_corr.pdf} &
 \includegraphics[scale=.2]{family_corr.pdf}
-\end{array}
+\end{tabular}
   \caption{Correlations between twitter friends of various LIWC scores increase as the strength of ties increase, while others behave very differently. Interestingly, two of the LIWC scores most closely associated with distress, sadness and anxiety, are among those most strongly affected by ignoring those friendships having fewer than a certain number mutal friends (i.e., embeddedness).}
-  
 \end{figure}
 
-\end{comment}
+
 
 
 \section{Discussion}
