@@ -155,12 +155,9 @@ Twitter is a worldwide popular social networking and microblogging service. Twit
 \label{table::dataset}
 \end{table}
 \subsection{Data Collection}
--slang replace
--strip punctuations
 
-\textbf{CMH: \cite{Jay}. It is important to give them credit for what they did, and to note that the scheme you describe was adopted from them almost verbatim.}
 
-To identify suspected suicide tweets, we created a list of inclusive search terms/phrases according to various risk factors and warning signs linked to suicide. [Table 1]
+To identify suspected suicide tweets, we created a list of inclusive search terms/phrases according to various risk factors and warning signs linked to suicide. This search methodoly was used first by Jashinsky et al. (2013) [Table 1].
 
 
 
@@ -216,24 +213,26 @@ We perform topic modeling on our dataset to compare the topics within high distr
 
 \begin{table}[h]
     \centering
-    \begin{tabular}{|p{0.7cm}|p{4cm}|}
+    \tiny 
+    \begin{tabular}{|p{0.5cm}|p{3cm}|p{3cm}|}
     \hline
-    \textbf{Topic No } & \textbf{Words} \\ \hline
-    \vfill \vfill Topic 1 & miss u, leave alone, sleep forever, win lose, gon lose, left alone, \#iconfess hate, lost best, best friend, think insomnia \\ \hline
-    \vfill \vfill Topic 2 & hate job, feel sad, don't wanna, feel helpless, bed lonely, feel better, miss you, sad =/, tired everything, miss love\\ \hline
-    \vfill \vfill Topic 3 & miss you!, wanna cry, committing suicide, tired living, miss 2, one person, broke bitches, worst feeling, leave world, bout go \\ \hline
-    \vfill \vfill Topic 4 & commit suicide, get hurt, miss baby, feel empty, :( miss, lost phone, don't let, drug overdose, can't wait, \@ work \\ \hline
-     \vfill \vfill Topic 5 & feel like, tummy hurts, lost friend, ima miss, deserve die, right now..., hurts :(, get fat, every day, like crying  \\ \hline
+    \textbf{Topic No } & \textbf{Words} & \textbf {random}  \\ \hline
+    \vfill \vfill Topic 1 & miss u, leave alone, sleep forever, win lose, gon lose, left alone, \#iconfess hate, lost best, best friend, think insomnia & let-know, don't-want, bout-2, even-tho, right-now, jus-got, gotta-go, don't-wanna, wit-da\\ \hline
+    \vfill \vfill Topic 2 & hate job, feel sad, don't wanna, feel helpless, bed lonely, feel better, miss you, sad =/, tired everything, miss love &  feel-like, look-like, let's-go, last-night, looks-like, don't-get, fuck-wit, show-love, smile-face, gonna-start \\ \hline
+    \vfill \vfill Topic 3 & miss you!, wanna cry, committing suicide, tired living, miss 2, one person, broke bitches, worst feeling, leave world, bout go & time-get, go-sleep, know-(cont), can't-wait, even-though, hip-hop, big-baby, lil-wayne, listen-2, don't-think \\ \hline
+    \vfill \vfill Topic 4 & commit suicide, get hurt, miss baby, feel empty, :( miss, lost phone, don't let, drug overdose, can't wait, \@ work & don't-know, make-sure, dont-see, wats-good, hell-yea, r-u?, need-new, yall-niggas, can't-get, don't-care\\ \hline
+     \vfill \vfill Topic 5 & feel like, tummy hurts, lost friend, ima miss, deserve die, right now..., hurts :(, get fat, every day, like crying  & good-morning, happy-birthday, bout-go, what's-good, jus-w, chris-brown, right-now!, 2-da, don't-feel, don't-understand \\ \hline
     \end{tabular}
- \caption {Topic Analysis on bigrams of High Distress Tweets }
+ \caption {Topic Analysis on bigrams of High Distress and Random Tweets }
 
 \label{tab:tm}
 \end{table}
 
 \subsection{Analysis}
--topic modeling \cite{Blei}
 
-\subsection{features}
+
+
+\subsection{Features}
 
 To prepare the tweets for the classifier, we extract features using the unigram, bigram and trigram model. For example, a simple tweet ``I am so happy'' is represented as the following feature vector: \{I, am, so, happy, I am, am so, so happy, I am so, am so happy\}. The tf-idf values were calculated for each attribute: tf-idf stands for ``term frequency - inverse document frequency'', which is a numerical statistic to reflect how important a tokenization is to a document in a collection or corpus. The tf-idf value increases proportionally to the number of times a tokenization appears in the dataset, but is offset by the frequency of the tokenization in the corpus, which helps to control for the fact that some words are generally more common than others. With the help of Scikit-learn package(http://scikit-learn.org/stable/about.html\#citing-scikit-learn), there values can be easily acquired. 
 
@@ -244,14 +243,18 @@ chi2 feature selection
 
 There are unique challenges in annotating data from Twitter.  Aside from having to become familiar with different types of slang and abbreviations that could have multiple meanings, this format provides limited background context to inform the annotation process.  Outside of the theoretical informed annotation process, there were emerging themes of aggression, privilege and oppression, and daily struggles, among other.  As a result of the aggressive context, personal bias may have impacted annotation decisions. For instance, numerous tweets contained sarcasm and dark humor which may result in annotators underestimating or overlooking actual distress. In addition, by pulling data from Twitter, critical information such as pictures and the context behind information that has been retweeted.  Specifically, a few individuals retweeted in a humorous manner about what to say to someone who considering suicide; however, without any knowing the circumstances of the original message it was difficult to classify this tweet.  It could represent dark humor or it could be a form of bullying.
 
-\subsection{SVM part}
--scikit learn sth....
+\subsection{Prediction Model}
+
+We use Support Vector Machines (SVM) for our prediction model. SVM are proven to perform better, while working with text data \cite{svmJoachims}.
+
+Describe the model [WIP]
 
 \subsection{Network Features}
 One of the fundamental properties of social networks appears to be \emph{tie strength}, or how ``close'' socially two people are. A large body of literature suggests that people are more likely to share personal information with stronger ties, and that weak ties play an important role in providing new information.  
 Measuring tie strength is problematic, as there is no gold standard here. Social networking services seem to exacerbate the disparity between strong and weak ties, as many have ``friends'' or ``followers'' whom they may not even know personally, and also create their own problems and opportunities for estimating tie strength. In large-scale network analysis, researchers have sometimes characterized tie strength by the 
 \emph{embeddedness} of an edge, which is the number of friends in common that two actors sharing a tie have. Highly embedded links are part of a strong social fabric, and represent strong ties. Another method of estimating tie strength is to measure the amount of activity between users. In this study, we investigate both the role that embeddness and activity play in corrolating suicide-related language. 
 
+\begin{comment}
 \section{Results}
 \subsection{Geography and Emotional Language}
 \begin{figure}
@@ -275,6 +278,8 @@ Table~\ref{tab:strength} shows how the use of sad language (measure by the LIWC 
   \caption{Correlations between twitter friends of various LIWC scores increase as the strength of ties increase, while others behave very differently. Interestingly, two of the LIWC scores most closely associated with distress, sadness and anxiety, are among those most strongly affected by ignoring those friendships having fewer than a certain number mutal friends (i.e., embeddedness).}
   
 \end{figure}
+
+\end{comment}
 
 
 \section{Discussion}
