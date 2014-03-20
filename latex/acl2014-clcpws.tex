@@ -169,6 +169,9 @@ Before searching, we did some kinds of preprocess work:  (1) converted all text 
 
 
 \subsection{Preprocess}
+
+Move this section to other sections:
+
 -stopwords
 -keep stemming words
 
@@ -177,7 +180,7 @@ Using Scikit-learn package(http://scikit-learn.org/stable/about.html\#citing-sci
 At the same time, we kept original words without any word stemming, i.e.: ``computers'', ``computing'', and ``compute'', neither of these words will be mapped to the same stem ``comput''. The reason here is: a tweet containing like ``soooooooooo sad!" is supposed to convey stronger emotions than simple ``so sad''.
 
 \subsection{Ground Truth}
-The dataset is divided into two equal parts, each set is annotated by two experts. The first dataset is annotated by experts in Computing Science and Linguistics  the other set by clinical experts in Psychology. Each dataset was annotated by male and female pairs. The reasoning behind this method is to analyze the difference of perceptions between male and female, and, also between experts VS non-experts in psychology.
+The dataset is divided into two equal parts, each set is then annotated. The first dataset is annotated by experts in Computing Science and Linguistics while  the other set by a clinical expert in Psychology. Each dataset was annotated by male and female pairs. The reasoning behind this method is to analyze the difference in perception of distress between male and female, and, also between experts VS non-experts in psychology.
 
 \begin{figure}
 \centering
@@ -189,7 +192,9 @@ The dataset is divided into two equal parts, each set is annotated by two expert
 \includegraphics[scale=0.7]{ChrisMegan4Cat.jpg}
 \end{figure}
 
-For annotation process each tweet was provided with a context, i.e. three tweets before and after the tweet to be annotated, along with timestamp of these tweets and thematic category to which the tweet belonged to. Each tweet was annotated for distress level and thematic category. The distress level was divided into four categories: High Distress(HD), Low Distress(LD), No Distress(ND) and Happy(H), whereas, for the thematic category the annotaters labeled just yes or no based on whether the thematic category applied to the tweet or not.
+For annotation process each tweet was provided with a context, i.e. three tweets before and after the tweet to be annotated, along with the timestamp of these tweets and thematic category to which the tweet belonged to. Each tweet was annotated for distress level and thematic category. The distress level was divided into four categories: High Distress(HD), Low Distress(LD), No Distress(ND) and Happy(H), whereas, for the thematic category the annotaters labeled just yes or no based on whether the thematic category applied to the tweet or not.
+
+Add example.
 
 \begin{table}
     \centering
@@ -205,6 +210,10 @@ For annotation process each tweet was provided with a context, i.e. three tweets
 
 \label{tab:percentage}
 \end{table}
+
+\subsection{Challenges with Annotation}
+
+There are unique challenges in annotating data from Twitter.  Aside from having to become familiar with different types of slang and abbreviations that could have multiple meanings, this format provides limited background context to inform the annotation process.  Outside of the theoretical informed annotation process, there were emerging themes of aggression, privilege and oppression, and daily struggles, among other.  As a result of the aggressive context, personal bias may have impacted annotation decisions. For instance, numerous tweets contained sarcasm and dark humor which may result in annotators underestimating or overlooking actual distress. In addition, by pulling data from Twitter, critical information such as pictures and the context behind information that has been retweeted.  Specifically, a few individuals retweeted in a humorous manner about what to say to someone who considering suicide; however, without any knowing the circumstances of the original message it was difficult to classify this tweet.  It could represent dark humor or it could be a form of bullying.
 
 
 \subsection{Topic Modeling}
@@ -240,10 +249,6 @@ To prepare the tweets for the classifier, we extract features using the unigram,
 
 \subsection{feature selection}
 chi2 feature selection
-
-\subsection{Challenges with Annotation}
-
-There are unique challenges in annotating data from Twitter.  Aside from having to become familiar with different types of slang and abbreviations that could have multiple meanings, this format provides limited background context to inform the annotation process.  Outside of the theoretical informed annotation process, there were emerging themes of aggression, privilege and oppression, and daily struggles, among other.  As a result of the aggressive context, personal bias may have impacted annotation decisions. For instance, numerous tweets contained sarcasm and dark humor which may result in annotators underestimating or overlooking actual distress. In addition, by pulling data from Twitter, critical information such as pictures and the context behind information that has been retweeted.  Specifically, a few individuals retweeted in a humorous manner about what to say to someone who considering suicide; however, without any knowing the circumstances of the original message it was difficult to classify this tweet.  It could represent dark humor or it could be a form of bullying.
 
 \subsection{Prediction Model}
 
@@ -281,8 +286,6 @@ Table~\ref{tab:strength} shows how the use of sad language (measure by the LIWC 
 \end{figure}
 
 
-
-
 \section{Discussion}
 
 As previously mentioned, many of the risk factors for suicidal behavior may be linked to other expressions of distress such as aggression and interpersonal violence (Mann et al., 1999).  The goal of this study is to classify whether or not tweets were related to distress in order to determine the feasibility of classifying suicidal behaviors.  However, due to the overlap between internal and external expressions of anger, it is difficult to classify suicidal behavior without more contextual information.  Consistent with the stress diathesis model for suicidal behavior, aggression was an emerging theme that arose from the data. A number of individuals tweeted about feeling empty, hopeless, angry, frustrated, and alone.  While these are risk factors for internalizing aggression (i.e., suicidal behavior); these states are also associated with externalizing aggression.  In addition to overt expressions of anger and violence, many of the humorous tweets had an aggressive undertone.  Individuals often exert dominance by using pejorative and derogatory language, and the content of these tweets was often suggestive of past or current distress.  
@@ -294,6 +297,9 @@ As ground truth, we rely on tweets hand-annotated by experts and non-experts. Ho
 
 Higher levels of suicidal ideation have an inverse relationship with all types of help-seeking and a positive correlation with the decision to not seek support \cite{deane2001suicidal}. Thus we would expect suicidal individuals to generally be less active on social media than those who are not. (One ray of sunshine is that a number of studies have shown a positive correlation between online social network use and negative mood. Perhaps this means in part that individuals who are depressed are slower to disengage on- rather than off-line.)
  Part of the problem in assessing the effectiveness of self-reporting is the relative rareness by which suicide occurs, and by the inherent subjectivity of the act, which makes any data on suicide fuzzy.
+
+
+\subsection{Tools Used}
  
 \section{Conclusion and Future Work}
 \section*{Acknowledgments}
