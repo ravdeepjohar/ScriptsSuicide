@@ -253,26 +253,33 @@ Measuring tie strength is problematic, as there is no gold standard here. Social
 \emph{embeddedness} of an edge, which is the number of friends in common that two actors sharing a tie have. Highly embedded links are part of a strong social fabric, and represent strong ties. Another method of estimating tie strength is to measure the amount of activity between users. In this study, we investigate both the role that embeddness and activity play in corrolating suicide-related language. 
 
 \section{Results}
+\subsection{Geography and Emotional Language}
+\begin{figure}
+  \centering
+  \includegraphics[scale=.4]{nyc-emo.pdf}
+  \caption{Heatmaps showing the most common tweet location for those individuals who (clockwise from upper left) are among the top 25\% in using negative and positive emotional language, in the bottom 25\%  of both categories, in the top 25\% of negative language and bottom 25\% of positive language, and in the top 25\% of positive language and bottom 25\% of negative language.}
+  \label{fig:geo}
+\end{figure}
 \subsection{Strength of Ties}
 Table~\ref{tab:strength} shows how the use of sad language (measure by the LIWC sad feature) correlates among users sharing different tie strength and between personal and broadcast messages.
 
-\begin{table}
-  \centering
-  \begin{tabular}{l|r|r}
-Embeddedness    &Broadcast&Personal\\
-\hline
-0 & 0.046 & 0.098\\
-\hline
-1 & 0.061 & 0.13\\
-\hline
-5& 0.082 & 0.23
-  \end{tabular}
-\label{tab:strength}
-\caption{Pearson correlation coefficient of LIWC sad (aggegrated over all tweets collected) of broadcast and reciprocated personal tweets.}
-\end{table}
+\begin{figure}
+\begin{array}{cc}
+\includegraphics[scale=.2]{sad_corr.pdf} &
+\includegraphics[scale=.2]{anx_corr.pdf} \\
+\includegraphics[scale=.2]{negemo_corr.pdf} &
+\includegraphics[scale=.2]{posemo_corr.pdf}\\
+\includegraphics[scale=.2]{health_corr.pdf} &
+\includegraphics[scale=.2]{family_corr.pdf}
+\end{array}
+  \caption{Correlations between twitter friends of various LIWC scores increase as the strength of ties increase, while others behave very differently. Interestingly, two of the LIWC scores most closely associated with distress, sadness and anxiety, are among those most strongly affected by ignoring those friendships having fewer than a certain number mutal friends (i.e., embeddedness).}
+  
+\end{figure}
+
+
 \section{Discussion}
 
-As previously mentioned, many of the risk factors for suicidal behavior may be linked to other expressions of distress such as aggression and interpersonal violence (Mann et al., 1999).  The goal of this study is to classify whether tweets were related to distress or not in order to determine the feasibility of classifying suicidal behaviors.  However, due to the overlap between internal and external expressions of anger, it is difficult to classify suicidal behavior without more contextual information.  Consistent with the stress diathesis model for suicidal behavior, aggression was an emerging theme that arose from the data. A number of individuals tweeted about feeling empty, hopeless, angry, frustrated, and alone.  While these are risk factors for internalizing aggression (i.e., suicidal behavior); these states are also associated with externalizing aggression.  In addition to overt expressions of anger and violence, many of the humorous tweets had an aggressive undertone.  Individuals often exert dominance by using pejorative and derogatory language, and the content of these tweets was often suggestive of past or current distress.  
+As previously mentioned, many of the risk factors for suicidal behavior may be linked to other expressions of distress such as aggression and interpersonal violence (Mann et al., 1999).  The goal of this study is to classify whether or not tweets were related to distress in order to determine the feasibility of classifying suicidal behaviors.  However, due to the overlap between internal and external expressions of anger, it is difficult to classify suicidal behavior without more contextual information.  Consistent with the stress diathesis model for suicidal behavior, aggression was an emerging theme that arose from the data. A number of individuals tweeted about feeling empty, hopeless, angry, frustrated, and alone.  While these are risk factors for internalizing aggression (i.e., suicidal behavior); these states are also associated with externalizing aggression.  In addition to overt expressions of anger and violence, many of the humorous tweets had an aggressive undertone.  Individuals often exert dominance by using pejorative and derogatory language, and the content of these tweets was often suggestive of past or current distress.  
 
 
 \subsection{Limitations}
@@ -289,7 +296,7 @@ Higher levels of suicidal ideation have an inverse relationship with all types o
 % include your own bib file like this:
 
 \bibliographystyle{acl}
-\bibliography{acl2014}
+\bibliography{acl2014-clcpws}
 
 \begin{table*}
     \centering
