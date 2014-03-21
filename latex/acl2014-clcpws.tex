@@ -55,82 +55,70 @@ This paper is an initial exploratory research
 \section{Introduction}
 
 
-Suicide is among the top ten---top five for indiviuals 10--44 years in age---leading causes of death in the United States \cite{heron2009deaths}. Indeed, while mortality rates for most illnesses decreased between 2008 and 2009, the rate of suicide increased by 2.4\%  \cite{heron2009deaths}. The lifetime prevalence for suicidal ideation is between 5.6 and 14.3 percent in the general population, and as high as 19.8--24.0\% among youth~\cite{nock2008suicide}. 
+Suicide is among the leading causes of death for individuals 10--44 years of age in the United States \cite{heron2009deaths}. Indeed, while mortality rates for most illnesses decreased between 2008 and 2009, the rate of suicide increased by 2.4\%  \cite{heron2009deaths}. The lifetime prevalence for suicidal ideation is between 5.6 and 14.3 percent in the general population, and as high as 19.8--24.0\% among youth~\cite{nock2008suicide}. 
 
-The first step toward prevention is to identify, ideally in consultation with clinical experts, the risk factors associated with suicide.  Due to social stigma and the impact on self -judgement and -awareness due to such risk factors as depression or drug use, individuals with suicidal ideation may not always reach out to professionals or, if they do, provide them with accurate information. They may not even realize their own level of suicide risk before it is too late. Self-reporting, then, is not a reliable means of detecting and assessing suicide risk.
+The first step toward suicide \emph{prevention} is to identify, ideally in consultation with clinical experts, the risk factors associated with suicide.  Due to social stigma and the impact on self-judgement and self-awareness caused by such risk factors as depression or drug use, individuals with suicidal ideation may not always reach out to professionals or, if they do, provide them with accurate information. They may not even realize their own level of suicide risk before it is too late. Self-reporting, then, is not a reliable means of detecting and assessing suicide risk.
 
  Individuals may be more inclined to seek support from informal resources, such as social media, instead of seeking treatment (Crosby et al., 2011; Bruffaerts et al., 2011; Ryan et al., 2010). Evidence suggests that youth and emerging adults usually prefer to seek help from their friends and families; however, higher levels of suicidal ideation are associated with lower levels of help-seeking from both formal or informal resources (Deane et al., 2001).  
 
 These trends in help-seeking behavior suggests that social media might be a rich outlet for learning about support seeking.
-Internet- and telecommunications-driven activity is revolutionizing the social sciences by providing data---much of it publicly available---on human activity in situ, at volumes and a level of time and space granularity never before approached. Can such data improve clinical preventative measures by providing access to at-risk individuals who would otherwise go undected, and by leading to better science about suicide risk behaviors? 
+Internet- and telecommunications-driven activity is revolutionizing the social sciences by providing data---much of it publicly available---on human activity in situ, at volumes and a level of time and space granularity never before approached. Can such data improve clinical preventative measures by providing access to at-risk individuals who would otherwise go undetected, and by leading to better science about suicide risk behaviors? 
+
+\newcite{mann1999toward} developed the stress diathesis model for suicidal behavior, using many of the aforementioned risk factors.  This model suggests (1) that objective states, such as depression or life events, as well as subjective states and traits, such as family history of depression, suicide, or substance abuse, were among the risk factors that contributed to suicidal ideation and (2) that the presence of these factors could eventually lead to either externalizing (e.g., interpersonal violence) or internalizing aggression (e.g., attempting suicide).
+
+	Since the stress-diathesis model was developed using risk factors for suicidal behavior and because it makes a connection between internalized and externalized acts, it is a suitable framework to analyze publicly available linguistic data from social media outlets such as Twitter. Data from social media can be used as a natural experiment to examine depression and suicidal ideation without being constrained by such sample biases as individuals who are willing take part in research and/or seek out formal sources of support. Moreover, this natural experiment method may provide information about individuals who are unlikely to engage in formal help-seeking behaviors and eventually could be used to identify effective methods of natural helping. Hence, this universal approach to screening for suicidal behaviors may have future implications not only for identifying individuals who have a higher prevalence for suicidal behaviors but it could eventually lead to the methods for enhancing protective factors against suicide.  
 
 In this paper, we take steps toward the automatic detection of suicide risk among individuals via social media. We use various lexicon-based methods to retreive microblog posts (tweets) from Twitter and compare the performance of human annotators---some of
-whom are experts, and some of whom are not---to rate the level of distress of each tweet. Distress is an important risk factor in suicide that is relatively easy to observe from microblog text, though admittedly observing suicide risk behavior is a highly subjective and noisy venture. Expert annotation---rather than general-purpose tools for content and sentiment analysis such as LIWC (linguistic inquiry and work count), provides a measure of ground truth for language-based statistical modeling that is free of the sort of self-reporting biases that plague suicidality. We show that a principled approach for retrieving such training data results in better interannotator aggreement between non-experts and between experts and non-experts.
+whom are experts, and some of whom are not---to rate the level of distress of each tweet. Distress is an important risk factor in suicide that is observeable from microblog text, though admittedly observing suicide risk behavior is a highly subjective and noisy venture.  Expert annotation, rather than general-purpose tools for content and sentiment analysis such as LIWC (Linguistic Inquiry and Word Count), provides a basis for language-based statistical modeling.
+% that is free of the sort of self-reporting biases that plague suicidality. 
+We show that keyword based retrieval of training data results in better interannotator aggreement between non-experts and between experts and non-experts when the keywords are tuned toward the task at hand.
 
-We also discover social and geographic patterns related to mood that microblogging sites such as Twitter reveal. Social support theory suggests that suicide and related mental health problems are strongly affected by one's physical and social environment~\cite{wellman1990different}. Twitter provides a very noisy frame into the offline state of its participants. The trick to using it effectively is in aggregating the data in a manner that is appropriate to the task at hand, based on appropriate principles. We show that otherwise weak correlations in the use of affective language between friends become very strong when one uses social networking concepts such as embeddedness to control for friendship strength.
-
-Finally, we use our hand-annotated data to classify, at the level of individual tweets, risk factors for suicidal  behavior from a highly-connected, geographically dense collection of over 2.5 million tweets from 6,000 highly active Twitter users. We use time-series analysis of these noisily classified tweets to detecting individuals who express high-distress episodes. Our outperforms very reasonable and baseline approaches.
+We also discover social and geographic patterns related to mood that microblogging sites such as Twitter reveal. Social support theory suggests that suicide and related mental health problems are strongly affected by one's physical and social environment~\cite{wellman1990different}. Twitter provides a very noisy frame into the offline state of its participants. The trick to using it effectively is in aggregating the data in a manner that is appropriate to the task at hand, based on appropriate principles. We show that otherwise weak correlations in the use of affective language between friends become very strong when one considers only friendships that are strongly \emph{embedded} (informally speaking, in a relatively dense region of a social network) in the social network.
 
 \begin{comment}
-\textbf{[CMH: Vince or Megan, please elaborate. I'm looking for terse, citable facts about suicide]} Suicide is epidemic in some populations. It is the th leading cause of death. In nearly all populations, it is on the rise.
-
-\textbf{[CMH: Vince or Megan, I'm making a lot of claims about clinical practice complete ad hoc. Please rewrite as necessary.]} From a clinical perspective, suicide is a social-behavioral problem one that is related to other social-behavioral problems, such as depression or drug addiction. Unfortunately, due to a number of reasons, including social stigma, individuals afflicted with such pre-suicidal conditions can often not be replied upon to report their behavior.  Suicidal behavior is usually not discovered until the victim acts, and even then diagnosis is muddy. 
-
-Suicide is extremely infrequent and usually the result of psychological distress that takes several weeks at the very least to manifest. How can social media and its primary virtues, namely high sample rates and volume [maybe a reference here to that Alex Pentland diagram, Vince?], help to detect suicidality? Certainly, one would expect that within the sheer volume of data that the most popular social media services produce must lie some evidence of suicide ideation. Suicidal behavior, however, is extremely difficult to diagnose even in the best of situations. Rather than pick out obvious rare cases, our goal here is to detect in the language of microblog users expressions 
-of behavior or ideas related to suicide. Most of this language will, of course, not indicate actual suicide ideation... [something about painting a picture of how factors related to suicide lie in a virtual social space.]
-
-In contrast to the way that suicide is detecting in clinical settings [Megan, hopefully you will say something about this in the clinical subsection above], the high sample rates that social media provide allow us to detect clues of suicide-related behavior as they occur, without relying on self reporting by often highly unreliable sources. 
-
-
-\subsection{Research Questions}
-\begin{description}
-\item[R1] Using support vector machines trained on primarily linguistic features, can we learn to classify tweets as whether or not they express ideas related to suicide?
-\item[R2] Can network structure enhance such classification models?
-\item[R3] Can we predict the expression of suicide-related ideas in the future?
-\end{description}
+Finally, we use our hand-annotated data to classify, at the level of individual tweets, risk factors for suicidal  behavior from a highly-connected, geographically dense collection of over 2.5 million tweets from 6,000 highly active Twitter users. We use time-series analysis of these noisily classified tweets to detecting individuals who express high-distress episodes. Our outperforms very reasonable and baseline approaches.
 \end{comment}
 
 \section{Related Work}
-Data on suicide is traditionally collected from healthcare organizations, large-scale studies, or self reporting \cite{crosby2011self,horowitz2009suicide}. These approaches are limited by sociocultural barriers, such as stigma and shame, among other factors \cite{crosby2011self}. For these reasons, and because of the fundamentally subjective nature of the problem, data on suicide is never particularly reliable. 
+Data on suicide traditionally comes from healthcare organizations, large-scale studies, or self reporting \cite{crosby2011self,horowitz2009suicide}. These sources are limited by sociocultural barriers, such as stigma and shame, among other reasons \cite{crosby2011self}. Moreover, suicide is a fundamentally subjective, complex phenomenon with a low base rate. For these reasons, data on suicide is never particularly reliable and many researchers tend to focus on the relationship between risk factors and suicidal behavior, without relying heavily on theoretical models \cite{nock2008suicide}.
 
-Approximately one-third of all individuals who reported suicidal ideation in their lifetime made a plan. Nearly three-quarters of those who reported making a suicide plan actually attempted suicide \cite{kessler1999prevalence}. According to Kessler, Borges, and Walters  \cite{kessler1999prevalence}, the odds of attempting suicide increased exponentially when individuals endorsed three of more risk factors (e.g., having a mood or substance abused disorder). 
+Approximately one-third of all individuals who reported suicidal ideation in their lifetime made a plan to commit suicide. Nearly three-quarters of those who reported making a suicide plan actually attempted suicide \cite{kessler1999prevalence}. According to Kessler, Borges, and Walters  \cite{kessler1999prevalence}, the odds of attempting suicide increased exponentially when individuals endorsed three of more risk factors (e.g., having a mood or substance abused disorder). 
 
 Other established risk factors include demographics, previous suicide attempts, mental health concerns (i.e., depression, substance abuse, suicidal ideation, self-harm, and impulsivity), family history of suicide, interpersonal conflicts (i.e., family violence and bullying), mechanism or means for suicidal behavior (e.g., firearms)  are commonly cited risk factors for suicidal behavior \cite{nock2008suicide,crosby2011self,gaynes2004screening,harriss2005suicidal,shaffer2004columbia,shaffer2004columbia,brown2000risk}. 
 
-Suicide is a complex phenomenon with a low base rate; therefore, many researchers tend to focus the relationship between risk factors and suicidal behavior, without relying heavily on theoretical models \cite{nock2008suicide}. However, Mann, Waternaux, Haas, and Malone (1999), developed the stress diathesis model for suicidal behavior using many of the aforementioned risk factors.  Specifically, this framework suggests that objective states such as(e.g.,  depression and life events) as well as subjective states and traits such as a (e.g., family history of depression and/or suicide as well as substance abuse) were among the risk factors that contributed to suicidal ideation and could eventually lead to either externalizing (e.g., interpersonal violence) or internalizing aggression (e.g., attempting suicide) (Mann et al., 1999).
-
-	Since the stress-diathesis model was developed using risk factors for suicidal behavior, it is the ideal framework to analyze publically available linguistic data from social media outlets such as Twitter. While traditional methods are limited by survey questions or clinical reports, data from social media can be used as a natural experiment to examine depression and suicidal ideation without being constrained by such sample biases as individuals who are willing take part in research and/or seek out formal sources of support. Moreover, this natural experiment method may provide information about individuals who are unlikely to engage in formal help-seeking behaviors and eventually it could be used to identify effective methods in natural helping. Hence, this universal approach to screening for suicidal behaviors may have future implications not only for identifying individuals who have a higher prevalence for suicidal behaviors but it could eventually lead to the methods for enhancing protective factors against suicide.  
 
 
-\subsection{Affect Detection and Clinical Expertise}
-\subsection{Affect in Social Media}
 
-Sentiment analysis has been widely studied in a number of computational settings, including on various social networking sites. Relatively little of this work has focused on suicide or related psychological conditions. \cite{masuda2013suicide} study suicide on mixi. \cite{cheng2012opportunities} consider the ethical and political implications of online data collection for suicide prevention. \cite{Jay} show correlations between frequency in tweets related to suicide and actual suicide in the 50 United States of America. \cite{sadilek2014modeling} study depression on Twitter. De Choudhury and collaborators studied depression---in general and post-partem---in Twitter~\cite{de2012not,de2012happy,de2013major,de2013understanding} and Facebook~\cite{de2014characterizing}. Homan et al. investigate depression in TrevorSpace~\cite{homan2014social}. A number of social theories of suicide have been proposed~\cite{wray2011sociology}. Most of this work was with respect to offline social systems. 
+Evidence suggests that when it comes to judgments that involve clinical phenomena, experts and novices behave differently. For example, in a medical image inspection task, \newcite{li2012learning} identified differences in perceptual expertise patterns between novices (students) and clinically trained physicians. Similarly, \newcite{womack2012disfluencies} identified  differences linguistic behaviors between experienced, attending dermatologists vs.\ resident dermatologists-in-training based on diagnostic verbal narratives. Such distinctions intuitively make sense, as the learning of medical domain knowledge requires advanced education in conjunction with substantial practical field experience. In a task such as medical image inspection, the subtle cues that point an observer to evidence that allow them to identify a clinical condition, while accessible to experts with training and perceptual expertise to guide their exploration, are likely to be missed by novices who lack that background and clinical understanding. Such expertise can then be integrated into human-centered health-IT systems \cite{guo2014infusing}, in order to introduce novel ways to retrieve medical images and take advantage of an understanding of which information is useful. It is reasonable to assume that this knowledge gap also applies to other knowledge-intensive clinical domains such as mental health. In this study, we explore this question and study if novice vs. expert annotation makes a difference for identifying distress in social media texts, as well as what the impact of expert vs.\ novice annotation is for subsequent computational modeling with the annotated data.
+
+
+Affect in language is a phenomenon that has been studied both in speech and in the text analysis domain, as well as in many other modalities \cite{calvodmello2010}. Clearly, emotion is a key element in the human experience, but it is notoriously difficult to pin down and scholars in the affective sciences lack a single agreed-upon definition for emotion. Accordingly, different theoretical constructs have been proposed to describe affect and affect-related behaviors \cite{picard1997}. In addition, research on affect in language has shown that such phenomena tend to be subjective, lack real ground truth (often resulting in moderate kappa scores), and have particularly fuzzy semantics in the gray zone where neutrality and emotion meet \cite{alm08}. These kinds of problem characteristics bring with them their own set of demanding challenges from a computational perspective \cite{alm2011}. Yet, the nature of such problems make them incredibly important to study, despite the challenges involved. 
+
+Level of distress is a key element to consider when evaluating at-risk behaviors with respect to suicidality or depression. \newcite{lehrmanetal2011} conducted a first study on the computational modeling of distress based on short forum texts, yet left many areas wide open for continued study. For example, analysis at scale is one such open issue. More specifically, Pestian and colleagues \cite{pestinaetal2009,pestinaetal2008} used computational methods to understand suicide notes. However, when it comes to preventive contexts, such data are less insightful. For preventive health, access to real time health-related data that dynamically evolves can allow us to address macro-level analysis, and social media texts provide the additional opportunity to model the phenomena of interest at scale.
+
+Sentiment analysis has been widely studied in a number of computational settings, including on various social networking sites. Relatively little of this work has focused on suicide or related psychological conditions. \newcite{masuda2013suicide} study suicide on mixi. \newcite{cheng2012opportunities} consider the ethical and political implications of online data collection for suicide prevention. \newcite{Jay} show correlations between frequency in tweets related to suicide and actual suicide in the 50 United States of America. \newcite{sadilek2014modeling} study depression on Twitter. De Choudhury and collaborators studied depression---in general and post-partem---in Twitter~\cite{de2012not,de2012happy,de2013major,de2013understanding} and Facebook~\cite{de2014characterizing}. \newcite{homan2014social} investigate depression in TrevorSpace. A number of social theories of suicide have been proposed~\cite{wray2011sociology}. Most of this work was with respect to offline social systems. 
 
 A rather substantial body of work already exists on the use of Twitter to study emotion~\cite{bollen2011twitter,dodds2011temporal,wang2012harnessing,pfitzner2012emotional,kim2012you,bollen2011happiness,pfitzner2012emotional,bollen2011modeling,mohammad2012emotional,golder2011diurnal,de2012not,de2012happy,de2013major,de2013understanding,hannak2012tweetin,thelwall2011sentiment,pak2010twitter}. For instance,
-Golder and and Macy study aggregate global trends in ``mood,'' and show, for example, that people wake up in a relatively good mood that decays as the day progresses \cite{golder2011diurnal}, Bollen et al.~\cite{bollen2011modeling} show that POMS-scored tweets are often tied to current events, such as elections and holidays.
+Golder and and Macy study aggregate global trends in ``mood,'' and show, among other , that people wake up in a relatively good mood that decays as the day progresses \cite{golder2011diurnal}, Bollen et al.~\cite{bollen2011modeling} show that tweets from users who took a standard diagnostic instrument for mood are often tied to current events, such as elections and holidays.
 
 A common theme in social network analysis is that actors who share ties generally share similar properties. A widely-used~\cite{bliss2012twitter,coviello2014,bollen2011happiness} metric for testing the overall similarity between 
-actors in a network for some property $X$ is \emph{assortativity}, defined as  the Pearson correlation coefficient~\cite{newman2002assortative} of $X$ over all pairs of actors who share a tie.  One line of research seeks
+actors in a network for some property $X$ is \emph{assortativity}, defined as  the Pearson correlation coefficient of $X$ over all pairs of actors who share a tie~\cite{newman2002assortative}.  One line of research seeks
 to discover the mechanism through which such correlations occur~\cite{newman2002assortative}. 
 At the most fundamental level, this is a matter of whether like individuals seek each other out (called selection, or---confusingly enough---homophily) or whether related individuals influence one another. Teasing apart which of these two processes can be rather challenging and generally requires some level of experimental design~\cite{centola2010spread,centola2011experimental}
-For instance, Coviello et al. study the spread of mood in Twitter~\cite{coviello2014}. They notice a very small---but statistically significant---spreading of mood over Facebook. 
+For instance, \newcite{coviello2014} study the spread of mood in Twitter. They notice a very small---but statistically significant---spreading of mood over Facebook. 
 
-From the clinical perspective of detecting individuals who exhibit a high risk for committing suicide, determining  causality remains a challenge to this multidimensional problem; however, finding patterns in the social interactions of individuals who commit suicide may provide additional insight. For our purposes, then a more relevant theory is perhaps that of social support~\cite{wellman1990different} which seeks to clarify the social forces---protective, preventative, persuasive, or coercive---that affect behavior. 
+From the clinical perspective of detecting individuals who exhibit a high risk for committing suicide, determining  causality remains a challenge to this multidimensional problem; however, finding patterns in the social interactions of individuals who exhibit distress and/or talk about suicide or suicide risk factors may provide additional insight. For our purposes, then a more relevant theory is perhaps that of social support~\cite{wellman1990different} which seeks to clarify the social forces---protective, preventative, persuasive, or coercive---that affect behavior. 
 
 At the most basic level, one can distinguish between \emph{weak} and \emph{strong} social ties and observe different behavior and effects between them.  
 
 Following in the work of Bliss et al.~\cite{coviello2014} and Bollen et al.~\cite{bollen2011happiness} we show that 
 mood is assortative. We additionally consider the predictive power of various measureable notions of tie strength.
-We study suicide risk factors here but we would expect our methods would apply to other domains.
+We study suicide risk levels here but we would expect our methods would apply to other domains.
 
 
 
 \section{Methods}
-\subsection{Overview}
-\textbf{CMH: Mention coding as the method of obtaining ground truth; provide justification for it.}
-\subsection{Data}
-Twitter is a worldwide popular social networking and microblogging service. Twitter message contains up to 140 words each and such words limit encourages users to update frequently. User's regular posts on Twitter have been used to predict depression[Munmun De Choudhury et al., 2013], influenza-like illnesses[Adam Sadilek et al., 2012] in previous studies. Our research looked into an old Twitter dataset originated from the New York City, which covered a month long period since May 18, 2010, total with about 2.5 million tweets from 6,237 unique users. See Table~\ref{table::dataset}.
+In this section, we describe the methods we use to label and detect distress in Twitter data. Our process involves four main phases: (1) We filter a corpus, obtained from~\newcite{sadilek2012predicting}, of approximately 2.5 million tweets from 6,237 unique users in the New York City area that were sent during a 1-month period between May and June, 2010, into a set of 2,000 tweets that are relatively likely to be centered around suicide risk factors. (2) We annotated each of these 2,000 tweets with their level of distress. (3) We then train support vector machines and topic models with the annotated data, except for a held-out subset of 200 tweets. (4) Finally, we assess the effectiveness of these methods on the held-out set.
 
 \begin{table}[t]
 \small
@@ -157,35 +145,73 @@ Twitter is a worldwide popular social networking and microblogging service. Twit
 \textbf{``Friends'' relationships}&   31,874   \\
 \textbf{between geo-active users}&\\
 \end{tabular}
-\caption{\small Summary statistics of the data collected from NYC. Geo-active users are people who geo-tag their tweets relatively frequently (more than 100 times per month). Note that the reciprocity rate in the social graph is about 31\%, which is consistent with previous findings  cite what is twitter.} 
+\caption{\small Summary statistics of the data collected from NYC. Geo-active users are those who geo-tag their tweets (i.e., include the location from where they tweet) relatively frequently (more than 100 times per month).} 
 \label{table::dataset}
 \end{table}
-\subsection{Data Collection}
+\subsection{Filtering tweets}
+
+We first preprocessed each tweet in the corpus by (a) converting all text to lower case; (b) stripping out punctuation and special characters; and (c) building a dictionary of more than 5,400 terms that captured informal Twitter registers, such as abbreviations and netspeak, based on http://www.noslang.com/dictionary. 
+
+In order to test the effectiveness of various methods of capturing training data, we used two different methods to filter for tweets that are relatively likely to center on suicide risk factors (Table~\ref{tab:filter}). The first method, we used the Linguistic Inquiry and Word Count (LIWC) to... capture 1,370 tweets. LIWC has been widely used to estimate emotion in online social networks, and specifically capture mood. 
+
+Next, we adopted a collection of of inclusive search terms/phrases from \cite{Jay}, which was designed specifically for capturing tweets related to suicide risk factors, and applied them to our source corpus. These terms yielded 630 tweets.
 
 
-To identify suspected suicide tweets, we created a list of inclusive search terms/phrases according to various risk factors and warning signs linked to suicide. This search methodoly was used first by Jashinsky et al. (2013) [Table 1].
+\subsection{Novice and Expert Tweet Annotation}
+\begin{figure}[h]
+  \centering
+{\small
+\begin{verbatim}
+978: Date: fri, 04 jun 2010 13:46:21 +00 
+    -3: dat man on maury is overreacting
+    -2: @XXXX cedes!!! [-0:21:25]
+    -1: yesssss! da weatherman was wronq
+>>> @tragedytm812 awwww thanks trae-trae
+     1: rt @XXXX: abt 2 hop in a kab to 
+     2: @XXXX yeaa [+0:03:59]
+     3: @XXXX wassup? [+0:05:28]
+Msg_id: 15416569951  [Distress: ND, LIWC
+\end{verbatim}}
+  \caption{Example input for annotator. Each line is one tweet. The tweet being annotated is indicated by $>>>$.}
+  \label{fig:annotateeg}
+\end{figure}
+
+We then divided the resulting set of 2,000 filtered tweets (1,370 from the LIWC sad dimension and 630 from suicide-specific search terms), into two sets of 1,000 tweets each. Two non-experts annotated the first set and a clinical psychologist specializing in suicide prevent annotated the second set. Each tweet in each set was rated on a four-point scale (H, ND, LD, HD) according to the level of distress evident (Table~\ref{tab:distress}).
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}[h]{ll}
+   \textbf{Code}&\textbf{Distress Level}\\
+\hline
+ H & happy \\
+ND & no distress\\
+ LD & low distress\\
+HD &high distress
+  \end{tabular}
+  \caption{Distress-related categories used to annotate the tweets.}
+  \label{tab:distress}
+\end{table}
+
+
+For the annotation process itself each tweet was provided with a context, i.e., three tweets before and after the tweet to be annotated, along with the timestamp of these tweets and thematic category to which the tweet belonged (Figure~\ref{fig:annotateeg}).
 
 
 
-Among these, terms in Sad category were generated from LIWC [http://www.liwc.net/index.php]. All the rest were concluded from depression and other psychological disorders (Lewinsohn, Rohde, \& Seely, 1994), prior suicide attempts (Lewinsohn et al., 1994), family violence, family history of drug abuse, firearms in the home, and exposure to the suicidal behavior of others (National Insti- tute of Mental Health, 2012). Other search terms included common antidepressants, as well as phrases that indicated suicide (Hawton, Zahl, \& Weaterall, 2003), ideation (American Foundation for Suicide Prevention, 2012a), deliberate self-harm (Zahl \& Hawton, 2004), bullying (Klomek, Sourander, \& Gould, 2011), feelings of isolation (CDC, 2012), and impulsiveness (American Foundation for Suicide Prevention, 2012b). [Self-directed Violence Surveillance: Uniform Definitions and Recommended Data Elements, report from Megan]
-
-Before searching, we did some kinds of preprocess work:  (1) converted all text to lower case (2) stripped out all the punctuations and special characters; (3) built a slang dictionary which contains 5424 text slang based on online resources [http://www.noslang.com/dictionary/], Internet slang, and abbreviations. We replaced all the matching items fount in the dataset with corresponding easy read words. These two steps helped us extract more suicide-related tweets for analysis in the following process.
 
 
-\subsection{Preprocess}
 
-Move this section to other sections:
+\subsection{Modeling}
+We represent each tweet as a collection of  all unigram, bigram and trigram in the message. For example, a simple tweet ``I am so happy'' is represented as the following \emph{feature vector}: \{I, am, so, happy, I am, am so, so happy, I am so, am so happy\}. This method allows one to construct prior probabilities on pairs and triples of consecutive words and thus model the probability spaces of arbitrarily long utterances, in a way that is natural and often effective in representing linguistic data for the purpose of classification or topic modeling
 
--stopwords
--keep stemming words
 
-Using Scikit-learn package(http://scikit-learn.org/stable/about.html\#citing-scikit-learn), it is very simple to remove stop words (like ``and'', ``the'', etc.) with parameter ``stop\_words'' tuned as ``string \{`english'\}''. 
 
-At the same time, we kept original words without any word stemming, i.e.: ``computers'', ``computing'', and ``compute'', neither of these words will be mapped to the same stem ``comput''. The reason here is: a tweet containing like ``soooooooooo sad!" is supposed to convey stronger emotions than simple ``so sad''.
+We perform topic modeling on our dataset to compare the topics. Topic modeling is often used to analyze text data by finding topics within a corpus of documents. A topic is characterized by lexical items that are likely to occur with the topic. These models are capable of connecting words with similar meanings and distinguish words with multiple meanings. We utilize  Latent Dirichlet Algorithm (LDA) \cite{Blei} to create these topics, in this method the documents (in our case tweets) are represented as random mixtures over latent topic where each topic is characterized by a distribution over words. Before performing the topic modeling, the stop words and words that occur only once in the dataset are removed. The LDA algorithm then establishes three topics using $100$ iterations. 
 
-\subsection{Ground Truth}
-The dataset is divided into two equal parts, each set is then annotated. The first dataset is annotated by experts in Computing Science and Linguistics while  the other set by a clinical expert in Psychology. Each dataset was annotated by male and female pairs. The reasoning behind this method is to analyze the difference in perception of distress between male and female, and, also between experts VS non-experts in psychology.
+We use Support Vector Machines (SVM) to evaluate the statistical power of our annotations. SVMs treat each tweet as a point in an extremely high dimensional space (one dimension per uni-, bi-, and tri- gram in the corpus). SVMs are a form of \emph{linear separator}. They have proven to be an extremely effect tool in classifying text in numerous settings, including Twitter. 
 
+
+\section{Results}
 \begin{figure}
 \centering
 \includegraphics[scale=0.7]{ChrisCissi4cat.jpg}
@@ -196,35 +222,93 @@ The dataset is divided into two equal parts, each set is then annotated. The fir
 \includegraphics[scale=0.7]{ChrisMegan4Cat.jpg}
 \end{figure}
 
-For annotation process each tweet was provided with a context, i.e. three tweets before and after the tweet to be annotated, along with the timestamp of these tweets and thematic category to which the tweet belonged to. Each tweet was annotated for distress level and thematic category. The distress level was divided into four categories: High Distress(HD), Low Distress(LD), No Distress(ND) and Happy(H), whereas, for the thematic category the annotaters labeled just yes or no based on whether the thematic category applied to the tweet or not.
-
-Add example.
-
-\begin{table}
-    \centering
-    \begin{tabular}{|l|l|l|l|l|}
-    \hline
-    Annotator    & H   & ND   & LD   & HD  \\ \hline
-    Annotator 1  & 2.0 & 75.4 & 18.8 & 3.8 \\ \hline
-    Annotator 2  & 4.3 & 63.3 & 28.0 & 4.4 \\ \hline
-    Annotator 3  & 2.3 & 42.8 & 51.3 & 3.4 \\ \hline
-    Annotator 4  & ~   & ~    & ~    & ~   \\ \hline
-    \end{tabular}
-    \caption {percentage of distress labels }
-
-\label{tab:percentage}
+\subsection{Annotation}
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Group}                    & \textbf{Kappa}  \\ \hline
+LIWC              & 0.3562 \\ \hline
+Thematic Category & 0.5567 \\ \hline
+250 Tweets               & 0.4925 \\ \hline
+\end{tabular}
+\caption {Inter Annotator Agreement for Novice 1 and 2}
 \end{table}
 
-\subsection{Challenges with Annotation}
 
-There are unique challenges in annotating data from Twitter.  Aside from having to become familiar with different types of slang and abbreviations that could have multiple meanings, this format provides limited background context to inform the annotation process.  Outside of the theoretical informed annotation process, there were emerging themes of aggression, privilege and oppression, and daily struggles, among other.  As a result of the aggressive context, personal bias may have impacted annotation decisions. For instance, numerous tweets contained sarcasm and dark humor which may result in annotators underestimating or overlooking actual distress. In addition, by pulling data from Twitter, critical information such as pictures and the context behind information that has been retweeted.  Specifically, a few individuals retweeted in a humorous manner about what to say to someone who considering suicide; however, without any knowing the circumstances of the original message it was difficult to classify this tweet.  It could represent dark humor or it could be a form of bullying.
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|l|l|l|}
+\cline{2-5}
+                         & H                       & ND & LD & HD \\ \hline
+\multicolumn{1}{|c|}{H}  & 0                       & 2  & 0  & 0  \\ \hline
+\multicolumn{1}{|c|}{ND} & 1                       & 85 & 2  & 1  \\ \hline
+\multicolumn{1}{|c|}{LD} & 0                       & 22 & 9  & 0  \\ \hline
+\multicolumn{1}{|l}{HD}  & \multicolumn{1}{|l|}{0} & 1  & 0  & 2  \\ \hline
+\end{tabular}
+\caption {Confusion Matrix for LIWC for Novice 1 and 2}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|l|l|l|}
+\cline{2-5}
+                         & H                       & ND & LD & HD \\ \hline
+\multicolumn{1}{|c|}{H}  & 4                       & 6  & 0  & 0  \\ \hline
+\multicolumn{1}{|c|}{ND} & 0                       & 55 & 12 & 1  \\ \hline
+\multicolumn{1}{|c|}{LD} & 0                       & 12 & 22 & 5  \\ \hline
+\multicolumn{1}{|l}{HD}  & \multicolumn{1}{|l|}{0} & 1  & 0  & 4  \\ \hline
+\end{tabular}
+\caption {Confusion Matrix for Thematic Category for Novice 1 and 2}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|l|l|l|}
+\cline{2-5}
+                         & H                       & ND  & LD & HD \\ \hline
+\multicolumn{1}{|c|}{H}  & 4                       & 8   & 0  & 0  \\ \hline
+\multicolumn{1}{|c|}{ND} & 0                       & 150 & 14 & 2  \\ \hline
+\multicolumn{1}{|c|}{LD} & 0                       & 34  & 31 & 5  \\ \hline
+\multicolumn{1}{|l}{HD}  & \multicolumn{1}{|l|}{0} & 2   & 3  & 4  \\ \hline
+\end{tabular}
+\caption {Confusion Matrix for 250 tweets for Novice 1 and 2}
+\end{table}
 
 
-\subsection{Topic Modeling}
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|l|}
+\cline{2-3}
+                         & ND  & D   \\ \hline
+\multicolumn{1}{|c|}{ND} & 153 & 16  \\ \hline
+\multicolumn{1}{|c|}{D}  & 36  & 150 \\ \hline
+\end{tabular}
+\caption {Confusion Matrix for 250 tweets for Novice 1 and 2}
+\end{table}
 
-Toping modeling is often used to analyze text data by finding topics within a corpus of documents. Each topic consists of words that occur together frequently. These models are capable of connecting words with similar meanings and distinguish words with multiple meanings. We utilize  Latent Dirichlet Algorithm  \cite{Blei} to create these topics, in this method the documents (in our case tweets) are represented as random mixtures over latent topic where each topic is characterized by a distribution over words (REPHRASE). 
 
-We perform topic modeling on our dataset to compare the topics within high distress and everyday tweets. Before performing the topic modeling, the stop words and words that occur only once in the dataset are removed. The LDA algorithm is then applied to create $5$ topics using $100$ iterations, Table \ref{tab:tm} shows the results.
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|l|}
+\cline{2-3}
+                         & ND & D  \\ \hline
+\multicolumn{1}{|c|}{ND} & 88 & 3  \\ \hline
+\multicolumn{1}{|c|}{D}  & 23 & 45 \\ \hline
+\end{tabular}
+\caption {Confusion Matrix for LIWC tweets for Novice 1 and 2}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|l|}
+\cline{2-3}
+                         & ND & D  \\ \hline
+\multicolumn{1}{|c|}{ND} & 65 & 13 \\ \hline
+\multicolumn{1}{|c|}{D}  & 23 & 34 \\ \hline
+\end{tabular}
+\caption {Confusion Matrix for Thematic Category tweets for Novice 1 and 2}
+\end{table}
 
 \begin{table}[h]
     \centering
@@ -243,29 +327,6 @@ We perform topic modeling on our dataset to compare the topics within high distr
 \label{tab:tm}
 \end{table}
 
-\subsection{Analysis}
-
-
-
-\subsection{Features}
-
-To prepare the tweets for the classifier, we extract features using the unigram, bigram and trigram model. For example, a simple tweet ``I am so happy'' is represented as the following feature vector: \{I, am, so, happy, I am, am so, so happy, I am so, am so happy\}. The tf-idf values were calculated for each attribute: tf-idf stands for ``term frequency - inverse document frequency'', which is a numerical statistic to reflect how important a tokenization is to a document in a collection or corpus. The tf-idf value increases proportionally to the number of times a tokenization appears in the dataset, but is offset by the frequency of the tokenization in the corpus, which helps to control for the fact that some words are generally more common than others. With the help of Scikit-learn package(http://scikit-learn.org/stable/about.html\#citing-scikit-learn), there values can be easily acquired. 
-
-\subsection{feature selection}
-chi2 feature selection
-
-\subsection{Prediction Model}
-
-We use Support Vector Machines (SVM) for our prediction model. SVM are proven to perform better, while working with text data \cite{svmJoachims}.
-
-Describe the model [WIP]
-
-\subsection{Network Features}
-One of the fundamental properties of social networks appears to be \emph{tie strength}, or how ``close'' socially two people are. A large body of literature suggests that people are more likely to share personal information with stronger ties, and that weak ties play an important role in providing new information.  
-Measuring tie strength is problematic, as there is no gold standard here. Social networking services seem to exacerbate the disparity between strong and weak ties, as many have ``friends'' or ``followers'' whom they may not even know personally, and also create their own problems and opportunities for estimating tie strength. In large-scale network analysis, researchers have sometimes characterized tie strength by the 
-\emph{embeddedness} of an edge, which is the number of friends in common that two actors sharing a tie have. Highly embedded links are part of a strong social fabric, and represent strong ties. Another method of estimating tie strength is to measure the amount of activity between users. In this study, we investigate both the role that embeddness and activity play in corrolating suicide-related language. 
-
-\section{Results}
 \subsection{Geography and Emotional Language}
 \begin{figure}
   \centering
@@ -274,7 +335,11 @@ Measuring tie strength is problematic, as there is no gold standard here. Social
   \label{fig:geo}
 \end{figure}
 \subsection{Strength of Ties}
-Table~\ref{tab:strength} shows how the use of sad language (measure by the LIWC sad feature) correlates among users sharing different tie strength and between personal and broadcast messages.
+One of the fundamental properties of social networks appears to be \emph{tie strength}, or how ``close'' socially two people are. A large body of literature suggests that people are more likely to share personal information with stronger ties, and that weak ties play an important role in providing new information.  
+Measuring tie strength is problematic, as there is no gold standard here. Social networking services seem to exacerbate the disparity between strong and weak ties, as many have ``friends'' or ``followers'' whom they may not even know personally, and also create their own problems and opportunities for estimating tie strength. In large-scale network analysis, researchers have sometimes characterized tie strength by the 
+\emph{embeddedness} of an edge, which is the number of friends in common that two actors sharing a tie have. Highly embedded links are part of a strong social fabric, and represent strong ties. Another method of estimating tie strength is to measure the amount of activity between users. In this study, we investigate both the role that embeddness and activity play in corrolating suicide-related language. 
+
+Figure~\ref{fig:strength} shows how the use of sad language (measure by the LIWC sad feature) correlates among users sharing different tie strength and between personal and broadcast messages.
 
 \begin{figure}
 \centering
@@ -286,6 +351,7 @@ Table~\ref{tab:strength} shows how the use of sad language (measure by the LIWC 
 \includegraphics[scale=.2]{health_corr.pdf} &
 \includegraphics[scale=.2]{family_corr.pdf}
 \end{tabular}
+\label{fig:strength}
   \caption{Correlations between twitter friends of various LIWC scores increase as the strength of ties increase, while others behave very differently. Interestingly, two of the LIWC scores most closely associated with distress, sadness and anxiety, are among those most strongly affected by ignoring those friendships having fewer than a certain number mutal friends (i.e., embeddedness).}
 \end{figure}
 
@@ -293,6 +359,10 @@ Table~\ref{tab:strength} shows how the use of sad language (measure by the LIWC 
 \section{Discussion}
 
 As previously mentioned, many of the risk factors for suicidal behavior may be linked to other expressions of distress such as aggression and interpersonal violence (Mann et al., 1999).  The goal of this study is to classify whether or not tweets were related to distress in order to determine the feasibility of classifying suicidal behaviors.  However, due to the overlap between internal and external expressions of anger, it is difficult to classify suicidal behavior without more contextual information.  Consistent with the stress diathesis model for suicidal behavior, aggression was an emerging theme that arose from the data. A number of individuals tweeted about feeling empty, hopeless, angry, frustrated, and alone.  While these are risk factors for internalizing aggression (i.e., suicidal behavior); these states are also associated with externalizing aggression.  In addition to overt expressions of anger and violence, many of the humorous tweets had an aggressive undertone.  Individuals often exert dominance by using pejorative and derogatory language, and the content of these tweets was often suggestive of past or current distress.  
+
+\subsection{Challenges with Annotation}
+
+There are unique challenges in annotating data from Twitter.  Aside from having to become familiar with different types of slang and abbreviations that could have multiple meanings, this format provides limited background context to inform the annotation process.  Outside of the theoretical informed annotation process, there were emerging themes of aggression, privilege and oppression, and daily struggles, among other.  As a result of the aggressive context, personal bias may have impacted annotation decisions. For instance, numerous tweets contained sarcasm and dark humor which may result in annotators underestimating or overlooking actual distress. In addition, by pulling data from Twitter, critical information such as pictures and the context behind information that has been retweeted.  Specifically, a few individuals retweeted in a humorous manner about what to say to someone who considering suicide; however, without any knowing the circumstances of the original message it was difficult to classify this tweet.  It could represent dark humor or it could be a form of bullying.
 
 
 \subsection{Limitations}
@@ -330,13 +400,13 @@ Higher levels of suicidal ideation have an inverse relationship with all types o
    Gun Ownership                         & gun suicide, shooting range went, gun range my                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            \\ \hline
    Psychological Disorders               & diagnosed schizophrenia, diagnosed anorexia, diagnosed bulimia, i diagnosed ocd, i diagnosed bipolar, i diagnosed ptsd, diagnosed borderline personality disorder, diagnosed panic disorder, diagnosed social anxiety disorder, diagnosed post traumatic stress disorder, sleep apnea                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\ \hline
    Family Violence Discord               & dad fight again, parents fight again, lost my friend, argument with wife, argument with husband, shouted at each other                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    \\ \hline
-   Impulsivity                           & i impulsive, i am impulsive                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \hline
-   Sad                                   & abandon, ache, aching, agoniz, agony, alone, broke,cried, cries, crushed, cry, crying, damag, defeat, depress, depriv, despair, devastat, disadvantage, disappoint, discourag, dishearten, disillusion, dissatisf, doom, dull, empt, fail, fatigu, flunk, gloom, grave, grief, griev, grim, heartbreak, heartbroke, helpless, homesick, hopeless, hurt, inadequa, inferior, isolat, lame, lone, longing, lose, loser, loses, losing, loss, lostlow, melanchol, miser, miss, missed, misses, missing, mourn, neglectoverwhelm, pathetic, pessimis, piti, pity , regret, reject, remorse, resign, ruin, sad, sadde, sadly, sadness, sob, sobbed, sobbing, sobs, solemn, sorrow, suffer, suffered, sufferer, suffering, tears, traged, tragic , unhapp,unimportant, unsuccessful, useless, weep, wept, whine, whining, woe, worthless, yearn \\ \hline
+   Impulsivity                           & i impulsive, i am impulsive                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \\ \hline \hline
+   LIWC Sad                                   & abandon, ache, aching, agoniz, agony, alone, broke,cried, cries, crushed, cry, crying, damag, defeat, depress, depriv, despair, devastat, disadvantage, disappoint, discourag, dishearten, disillusion, dissatisf, doom, dull, empt, fail, fatigu, flunk, gloom, grave, grief, griev, grim, heartbreak, heartbroke, helpless, homesick, hopeless, hurt, inadequa, inferior, isolat, lame, lone, longing, lose, loser, loses, losing, loss, lostlow, melanchol, miser, miss, missed, misses, missing, mourn, neglectoverwhelm, pathetic, pessimis, piti, pity , regret, reject, remorse, resign, ruin, sad, sadde, sadly, sadness, sob, sobbed, sobbing, sobs, solemn, sorrow, suffer, suffered, sufferer, suffering, tears, traged, tragic , unhapp,unimportant, unsuccessful, useless, weep, wept, whine, whining, woe, worthless, yearn \\ \hline
 
   
     \end{tabulary}
 \caption{Search phrases for categories}
-  \label{Table:1}
+  \label{tab:filter}
 \end{table*}
 %  remember to run:
 % latex bibtex latex latex
