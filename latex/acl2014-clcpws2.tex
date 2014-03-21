@@ -33,7 +33,7 @@
  % smaller than 5cm (the original size); we will check this
 % in the camera-ready version and ask you to change it back.
 
-\title{Toward Macro-Insights  for Suicide Prevention: \\ Analyzing Fine-Grained Distress at Scale}
+\title{Toward Macro-Insights  for Suicide Prevention: \\ Anaylzing Fine-Grain Distress at Scale}
 
 %\author{Ravdeep Johar\\
  % Department of Computer Science \\
@@ -50,7 +50,8 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Suicide is a leading cause of death in the United States and one that has grown to nearly epidemic proportions in some communities. One of the major challenges to suicide prevention is that those who may be most at risk cannot be relied upon to report their condition. This paper takes an initial step toward the automated detection of suicidal risk factors through social media activity, with no reliance on self-reporting.  We consider the performance of annotators with various degrees of expertise in suicide prevention at annotating microblog data for the purpose of training text-based models for detecting suicide risk behaviors.
+
+This paper is an initial exploratory research 
  \end{abstract}
 
 \section{Introduction}
@@ -102,9 +103,24 @@ Level of distress is a key element to consider when evaluating at-risk behaviors
 Sentiment analysis has been widely studied in a number of computational settings, including on various social networking sites. Relatively little of this work has focused on suicide or related psychological conditions. \newcite{masuda2013suicide} study suicide on mixi. \newcite{cheng2012opportunities} consider the ethical and political implications of online data collection for suicide prevention. \newcite{Jay} show correlations between frequency in tweets related to suicide and actual suicide in the 50 United States of America. \newcite{sadilek2014modeling} study depression on Twitter. De Choudhury and collaborators studied depression---in general and post-partem---in Twitter~\cite{de2012not,de2012happy,de2013major,de2013understanding} and Facebook~\cite{de2014characterizing}. \newcite{homan2014social} investigate depression in TrevorSpace. A number of social theories of suicide have been proposed~\cite{wray2011sociology}. Most of this work was with respect to offline social systems. 
 
 A rather substantial body of work already exists on the use of Twitter to study emotion~\cite{bollen2011twitter,dodds2011temporal,wang2012harnessing,pfitzner2012emotional,kim2012you,bollen2011happiness,pfitzner2012emotional,bollen2011modeling,mohammad2012emotional,golder2011diurnal,de2012not,de2012happy,de2013major,de2013understanding,hannak2012tweetin,thelwall2011sentiment,pak2010twitter}. For instance,
-Golder and and Macy study aggregate global trends in ``mood,'' and show, among other things, that people wake up in a relatively good mood that decays as the day progresses \cite{golder2011diurnal}, Bollen et al.~\cite{bollen2011modeling} show that tweets from users who took a standard diagnostic instrument for mood are often tied to current events, such as elections and holidays.
+Golder and and Macy study aggregate global trends in ``mood,'' and show, among other , that people wake up in a relatively good mood that decays as the day progresses \cite{golder2011diurnal}, Bollen et al.~\cite{bollen2011modeling} show that tweets from users who took a standard diagnostic instrument for mood are often tied to current events, such as elections and holidays.
 
+\begin{comment}
+A common theme in social network analysis is that actors who share ties generally share similar properties. A widely-used~\cite{bliss2012twitter,coviello2014,bollen2011happiness} metric for testing the overall similarity between 
+actors in a network for some property $X$ is \emph{assortativity}, defined as  the Pearson correlation coefficient of $X$ over all pairs of actors who share a tie~\cite{newman2002assortative}.  One line of research seeks
+to discover the mechanism through which such correlations occur~\cite{newman2002assortative}. 
+At the most fundamental level, this is a matter of whether like individuals seek each other out (called selection, or---confusingly enough---homophily) or whether related individuals influence one another. Teasing apart which of these two processes can be rather challenging and generally requires some level of experimental design~\cite{centola2010spread,centola2011experimental}
+For instance, \newcite{coviello2014} study the spread of mood in Twitter. They notice a very small---but statistically significant---spreading of mood over Facebook. 
 
+From the clinical perspective of detecting individuals who exhibit a high risk for suicidal behavior, determining  causality remains a challenge to this multidimensional problem; however, finding patterns in the social interactions of individuals who exhibit distress and/or talk about suicide or suicide risk factors may provide additional insight. For our purposes, then a more relevant theory is perhaps that of social support~\cite{wellman1990different} which seeks to clarify the social forces---protective, preventative, persuasive, or coercive---that affect behavior. 
+
+At the most basic level, one can distinguish between \emph{weak} and \emph{strong} social ties and observe different behavior and effects between them.  
+
+Following in the work of Bliss et al.~\cite{coviello2014} and Bollen et al.~\cite{bollen2011happiness} we show that 
+mood is assortative. We additionally consider the predictive power of various measureable notions of tie strength.
+We study suicide risk levels here but we would expect our methods would apply to other domains.
+
+\end{comment}
 
 \section{Methods}
 In this section, we describe the methods we use to label and detect distress in Twitter data. Our process involves four main phases: (1) We filter a corpus, obtained from~\newcite{sadilek2012predicting}, of approximately 2.5 million tweets from 6,237 unique users in the New York City area that were sent during a 1-month period between May and June, 2010, into a set of 2,000 tweets that are relatively likely to be centered around suicide risk factors. (2) We annotated each of these 2,000 tweets with their level of distress. (3) We then train support vector machines and topic models with the annotated data, except for a held-out subset of 200 tweets. (4) Finally, we assess the effectiveness of these methods on the held-out set.
@@ -156,15 +172,15 @@ Next, we adopted a collection of inclusive search terms/phrases from \cite{Jay},
   \centering
 {\small
 \begin{verbatim}
-978: Date: XXXX 
+978: Date: fri, 04 jun 2010 13:46:21 +00 
     -3: dat man on maury is overreacting
     -2: @XXXX cedes!!! [-0:21:25]
     -1: yesssss! da weatherman was wronq
->>> @XXXX awwww thanks trae-trae
+>>> @tragedytm812 awwww thanks trae-trae
      1: rt @XXXX: abt 2 hop in a kab to 
      2: @XXXX yeaa [+0:03:59]
      3: @XXXX wassup? [+0:05:28]
-Msg_id: XXXX  [Distress: ND, LIWC Sad: N
+Msg_id: 15416569951  [Distress: ND, LIWC
 \end{verbatim}}
   \caption{Example input for annotator. Each line is one tweet. The tweet being annotated is indicated by $>>>$.}
   \label{fig:annotateeg}
@@ -188,7 +204,7 @@ HD &high distress
 \end{table}
 
 
-For the annotation process itself, each tweet was provided with a context, i.e., three tweets before and after the tweet to be annotated, along with the timestamp of these tweets and thematic category to which the tweet belonged (Figure~\ref{fig:annotateeg}).
+For the annotation process itself each tweet was provided with a context, i.e., three tweets before and after the tweet to be annotated, along with the timestamp of these tweets and thematic category to which the tweet belonged (Figure~\ref{fig:annotateeg}).
 
 
 
@@ -224,119 +240,138 @@ We use Support Vector Machines (SVM) to evaluate the statistical power of our an
 \label{fig:distress-distrib2}
 \end{figure}
 
-Figures \ref{fig:distress-distrib1} and \ref{fig:distress-distrib2} show the distribution of the annotation labels each annotator makes. Interestly, the novices' distributions are fairly consistent, whereas the expert's exhibits a higher sensitivity toward no distress than either of the novice's.  
+Figures \ref{fig:distress-distrib1} and \ref{fig:distress-distrib2} show the distribution of the annotation labels each annotator makes. Interestly, the novices' distributions are fairly consistent, whereas the expert's exhibits a higher sensitivity toward distress at the high and low levels than either of the novice's.  
 
 
 \begin{table}[h]
  \centering
 \begin{tabular}{|c|c|}
 \hline
-\textbf{Filtering method}                    & \textbf{Kappa}  \\ \hline
-LIWC Sad              & 0.3562 \\ \hline
-\cite{Jay}& 0.5567 \\ \hline
-Both               & 0.4925 \\ \hline
+\textbf{Group}                    & \textbf{Kappa}  \\ \hline
+LIWC              & 0.3562 \\ \hline
+Thematic Category & 0.5567 \\ \hline
+250 Tweets               & 0.4925 \\ \hline
 \end{tabular}
-\caption {Cohen kappa interannotator agreement between Novice 1 and 2.}
-\label{tab:kappa}
+\caption {Inter Annotator Agreement for Novice 1 and 2}
 \end{table}
 
 
 \begin{table}[h]
 \centering
-\begin{tabular}{c|c|l||l|l|}
+\begin{tabular}{c|c|l|l|l|}
 \cline{2-5}
                          & H                       & ND & LD & HD \\ \hline
 \multicolumn{1}{|c|}{H}  & 0                       & 2  & 0  & 0  \\ \hline
-\multicolumn{1}{|c|}{ND} & 1                       & 85 & 2  & 1  \\ \hline \hline
+\multicolumn{1}{|c|}{ND} & 1                       & 85 & 2  & 1  \\ \hline
 \multicolumn{1}{|c|}{LD} & 0                       & 22 & 9  & 0  \\ \hline
 \multicolumn{1}{|l}{HD}  & \multicolumn{1}{|l|}{0} & 1  & 0  & 2  \\ \hline
 \end{tabular}
-\caption {Confusion matrix between Novices 1 and 2 on annotations of the LIWC-sad-based filtered tweets.}
-\label{tab:liwc-conf}
+\caption {Confusion Matrix for LIWC for Novice 1 and 2}
 \end{table}
 
 \begin{table}[h]
 \centering
-\begin{tabular}{c|c|l||l|l|}
+\begin{tabular}{c|c|l|l|l|}
 \cline{2-5}
                          & H                       & ND & LD & HD \\ \hline
 \multicolumn{1}{|c|}{H}  & 4                       & 6  & 0  & 0  \\ \hline
-\multicolumn{1}{|c|}{ND} & 0                       & 55 & 12 & 1  \\ \hline \hline
+\multicolumn{1}{|c|}{ND} & 0                       & 55 & 12 & 1  \\ \hline
 \multicolumn{1}{|c|}{LD} & 0                       & 12 & 22 & 5  \\ \hline
-\multicolumn{1}{|l}{HD}  & \multicolumn{1}{|l|}{0} & 1  & 3  & 4  \\ \hline
+\multicolumn{1}{|l}{HD}  & \multicolumn{1}{|l|}{0} & 1  & 0  & 4  \\ \hline
 \end{tabular}
-\caption {Confusion matrix between Novices 1 and 2 on annotations of tweets filtered by \newcite{Jay}'s inclusion terms.}
-\label{tab:j-conf}
+\caption {Confusion Matrix for Thematic Category for Novice 1 and 2}
 \end{table}
 
 \begin{table}[h]
 \centering
-\begin{tabular}{c|c|l||l|l|}
+\begin{tabular}{c|c|l|l|l|}
 \cline{2-5}
                          & H                       & ND  & LD & HD \\ \hline
 \multicolumn{1}{|c|}{H}  & 4                       & 8   & 0  & 0  \\ \hline
-\multicolumn{1}{|c|}{ND} & 1                      & 140 & 14 & 2  \\ \hline \hline
+\multicolumn{1}{|c|}{ND} & 0                       & 150 & 14 & 2  \\ \hline
 \multicolumn{1}{|c|}{LD} & 0                       & 34  & 31 & 5  \\ \hline
-\multicolumn{1}{|l}{HD}  & \multicolumn{1}{|l|}{0} & 2   & 3  & 6  \\ \hline
+\multicolumn{1}{|l}{HD}  & \multicolumn{1}{|l|}{0} & 2   & 3  & 4  \\ \hline
 \end{tabular}
-\caption {Confusion matrix between Novices 1 and 2 on annotations of all common tweets between the two annotators.}
-\label{tab:both-conf}
+\caption {Confusion Matrix for 250 tweets for Novice 1 and 2}
 \end{table}
 
 
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|l|}
+\cline{2-3}
+                         & ND  & D   \\ \hline
+\multicolumn{1}{|c|}{ND} & 153 & 16  \\ \hline
+\multicolumn{1}{|c|}{D}  & 36  & 150 \\ \hline
+\end{tabular}
+\caption {Confusion Matrix for 250 tweets for Novice 1 and 2}
+\end{table}
 
-Table~\ref{tab:kappa} shows the Cohen kappa score between Novices one and two, where high and low distress, respectively, no distress and happy, are grouped in a single category and Tables~\ref{tab:liwc-conf}---\ref{tab:both-conf} show the confusion matrices between Novices one and two. In all cases the kappa score is relatively low. However, it improves greatly when annotation is restricted to just those tweets filtered using the suicide-specific inclusion terms of~\newcite{Jay}.
 
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|l|}
+\cline{2-3}
+                         & ND & D  \\ \hline
+\multicolumn{1}{|c|}{ND} & 88 & 3  \\ \hline
+\multicolumn{1}{|c|}{D}  & 23 & 45 \\ \hline
+\end{tabular}
+\caption {Confusion Matrix for LIWC tweets for Novice 1 and 2}
+\end{table}
 
-
-%There are unique challenges in annotating data from Twitter.  Aside from having to become familiar with different types of slang and abbreviations that could have multiple meanings, this format provides limited background context to inform the annotation process.  
-
-Here are two examples of tweets labeled as highly distressed by two annotators. 
-\begin{itemize}
-\item \texttt{i need to leave this world for good}
-
-\item \texttt{i'm not committing suicide or anything of that nature so don't panic. maybe i'm going through a phase, maybe not. just tired of loneliness.}
-\end{itemize}
-
-And here are two examples of tweets labels as low distress by two annotators.
-
-\begin{itemize}
-\item \texttt{i did mad push-ups tryna get that cut up look, then look at myself after a shower ... \#plandidntwork; thats \#whyiaintgotomiami}
-
-\item \texttt{my son is gonna have blues eyes and nappy hair! yes yes yes}
-\end{itemize}
-
-The above examples are rather clear cut, however in many cases the tweets were rather ambiguous, even when annotators have the previous and subsequent three tweets from the user of the label tweet to rely on for context. 
-
-Beyond the targeted annotation categories of distress level, there were emerging themes of aggression, privilege and oppression, and daily struggles, among other.  For instance, jobs were a popular source of distress:
-
-\begin{itemize}
-\item \texttt{i friggin hate these bastards \@ my job grimey ass bastards knew i wanted the day off and tell me some next shit}
-\item \texttt{as much as i hate my job some of the people i work with are amazing.}
-\end{itemize}
-
-The last example also shows that tweets sometimes expressed very strong ambivalence.
-
-Personal bias may have impacted annotation decisions. For instance, numerous tweets contained sarcasm and dark humor which may result in annotators underestimating or overlooking actual distress. In addition, by pulling data from Twitter, critical information such as pictures and the context behind information that has been retweeted was not available.  For example, a few individuals retweeted in a humorous manner about what individuals should say to someone who considering suicide:
-
-\begin{itemize}
-\item \texttt{you wish!!! rt @XXXX: i think suicide is funny. especially once my mom does it}
-\item \texttt{rt @XXXX: what do i say to a person thats asking me for advice becuz they thinking bout committing suicide when i see there point? «lmao}
-\end{itemize}
-Without knowing the circumstances of the original message it was difficult to classify this tweet.  %It could represent dark humor or it could be a form of bullying.
-
-Finally, a number of tweets seemed to show compassion or empathy for others experience stress. This suggest to us the profound role that social support places in well-being and depression, that one's friends and associates can also provide clues into one's emotional state, and that social media can reveal such behavior.
-
-\begin{itemize}
-\item \texttt{rt @XXXX: damn now what do i do? i feel empty as f\$\% damit!! breathe ocho, *tears* from liberty city to (cont) http://XXXX}
-\item \texttt{@XXXX that's just sad i feel for you }
-\end{itemize}
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c|l|}
+\cline{2-3}
+                         & ND & D  \\ \hline
+\multicolumn{1}{|c|}{ND} & 65 & 13 \\ \hline
+\multicolumn{1}{|c|}{D}  & 23 & 34 \\ \hline
+\end{tabular}
+\caption {Confusion Matrix for Thematic Category tweets for Novice 1 and 2}
+\end{table}
 
 
 \begin{table}[h]
 \footnotesize
+\begin{tabular}{|p{0.8cm}|p{4.25cm}|p{1.2cm}|}
+\hline
+%\textbf{64:}                         & Date: XXXX                                                                                                        & Category: suicide\_ideation \\ \hline
+-3:                                  & i wish i had an older brother...                                                                                                             & {[}-0:06:08{]}              \\
+-2:                                  & i'll be alright though. one day...                                                                                                           & {[}-0:02:38{]}              \\
+-1:                                  & @XXXX yeah i'll be alright, it must be a phase...                                                                                          & {[}-0:02:00{]}              \\
+\textgreater\textgreater\textgreater & i'm not committing suicide or anything of that nature so don't panic. maybe i'm going through a phase, maybe not. just tired of loneliness.  & \textless\textless\textless \\
+1:                                   & @XXXX that's easier said then done though, you don't just break out of it overnight bro. especially if you've been a loner for a while.. & {[}+0:07:07{]}              \\
+2:                                   & @silentbx i hear you.                                                                                                                        & {[}+0:07:37{]}              \\
+3:                                   &   N/A                                                                                                                                           & {[}+0:07:56{]}              \\ \hline
+%Msg\_id: 14481906554,                & Distress: HD                                                                                                                                 & suicide\_ideation: Y        \\ \hline
+\end{tabular}
+\caption{Example of a tweet labeled for high distress (HD).}
+\label{fig-hdeg1}
+\end{table}
+
+
+\begin{table}[h]
+\footnotesize
+\begin{tabular}{|p{0.8cm}|p{4.25cm}|p{1.2cm}|}
+\hline
+%\textbf{64:}                         &Date: XXXX                                                                                                     & Category: suicide\_ideation \\ \hline
+-3:                                  & highed up right now watching bloopers                                                                                                              & {[}-11:33:54{]}              \\
+-2:                                  & rt @XXXX: good morning to everybody !!!!                                                                                                            & {[}-8:25:21{]}              \\
+-1:                                  & hate in my heart                                                                                                        & {[}-0:38:44{]}              \\
+\textgreater\textgreater\textgreater & i need to leave this world for good  & \textless\textless\textless \\
+1:                                   & i need a break from life & {[}+0:00:33{]}              \\
+2:                                   & all you hypocrites of the world will perish in hell one day                                                                                                                        & {[}+1:29:39{]}              \\
+3:                                   & watching every body hates chris                                                                                                                                           & {[}+2:02:56{]}              \\ \hline
+%Msg\_id: 14481906554,                & Distress: HD                                                                                                                                 & suicide\_ideation: Y        \\ \hline
+\end{tabular}
+\caption{Another example of a tweet labeled for high distress (HD).}
+\label{fig-hdeg2}
+\end{table}
+
+\begin{table}[h]
+\tiny
 \centering
-\begin{tabular}{|>{\centering\arraybackslash}m{1.4in}| >{\centering\arraybackslash}m{1.2in}|}
+\begin{tabular}{|>{\centering\arraybackslash}m{1.2in}| >{\centering\arraybackslash}m{1.2in}|}
 \hline
 HD & Random \\ \hline
 feel like, wanna cry, get hurt, miss 2, ima miss, win lose, tired everything, broke bitches, gun range, one person & good morning, last night, happy birthday, look like, bout 2, can't wait, video , know (cont), chris brown, jus got \\ \hline
@@ -347,7 +382,6 @@ hate job, feel sad, tummy hurts, lost friend, feel helpless, leave alone, don't 
 \label{tab:tm}
 \end{table}
 
-Table~\ref{tab:tm} shows the results of a 3-category topic model on bigrams.  The first column is taken just from tweets labeled high distress by any one of the three annotators (72 tweets total). The second column comes from a randomly-chosen sample of 2000 tweets from the 2.3 million tweet corpus. These show results show that the language of the annotated tweets is very different from the random sample. By our judgement, the rows of the HD column could be labeled top to bottom: ``failure and defeat,'' ``loss,'' and ``loneliness.''  The rows of the second column are less clear-cut, perhaps reflecting the much broader scope of topics. One interesting aspect of the second column is that recording artist Chris Brown had released a new album during the collection period, which seems to explain why his name was so frequent.
 
 \begin{table}[h]
 \small
@@ -355,29 +389,48 @@ Table~\ref{tab:tm} shows the results of a 3-category topic model on bigrams.  Th
 \hline
 Train Set         & Test Set          & Precision & Recall & F-Measure \\ \hline
 N1          & N1          & 0.53      & 0.63   & 0.58      \\ \hline
-N1          & E & 0.58       & 0.27   & 0.37       \\ \hline
+N1          & E & .58       & 0.27   & .37       \\ \hline
 E           & E     & 0.59      & 0.71   & 0.64      \\ \hline
 E            & N1          & 0.34      & 0.85   & 0.48      \\ \hline
 N1 + E & N1 + E & 0.33      & 0.41   &  0.37         \\ \hline
 \end{tabular}
-\caption{Performance of SVN-based classification when the training and testing sets are alternately Novice 1 (N1) or the Expert (E). In cases where the training and test source coincide, the test set is a held-out set of 100 randomly selected tweets (or 200 when N1 and E both used for test data, as in the last row) tweets. Otherwise, the training and test sets have 1000 tweets each and are disjoint.}
-\label{tab:svm}
+\caption{Perform of SVN-based classification when the training and testing sets are alternately Novice 1 (N1) or the Expert (E). In cases where the training and test source coincide, the test set is a held-out set of 100 randomly selected (or 200 when N1 and E both used as in the last row) tweets. Otherwise, the training and test sets have 1000 tweets each and are disjoint.}
 \end{table}
 
+\begin{comment}
+\subsection{Geography and Emotional Language}
+\begin{figure}
+  \centering
+  \includegraphics[scale=.4]{nyc-emo.pdf}
+  \caption{Heatmaps showing the most common tweet location for those individuals who (clockwise from upper left) are among the top 25\% in using negative and positive emotional language, in the bottom 25\%  of both categories, in the top 25\% of negative language and bottom 25\% of positive language, and in the top 25\% of positive language and bottom 25\% of negative language.}
+  \label{fig:geo}
+\end{figure}
 
-Tabel~\ref{tab:svm} shows the performance of the support vector when trained and tested on either on the expert and novice training sets. Three themes emerge: (1) the SVN is much more accurate when the testing and training data come from the same source (taken from 100 tweets in the annotation set that are randomly held out of the training set, so that the training and test sets are disjoint); (2) when testing and training data are from different sources the SVM suffers less of an accuracy drop when the training set is from the expert than from the novice; (3) the losses in accuracy when the training and testing data are from different sources come from a loss in precision when the training set is from the expert and from a loss in recall when the trainer is the novice.
+\subsection{Strength of Ties}
+One of the fundamental properties of social networks appears to be \emph{tie strength}, or how ``close'' socially two people are. A large body of literature suggests that people are more likely to share personal information with stronger ties, and that weak ties play an important role in providing new information.  
+Measuring tie strength is problematic, as there is no gold standard here. Social networking services seem to exacerbate the disparity between strong and weak ties, as many have ``friends'' or ``followers'' whom they may not even know personally, and also create their own problems and opportunities for estimating tie strength. In large-scale network analysis, researchers have sometimes characterized tie strength by the 
+\emph{embeddedness} of an edge, which is the number of friends in common that two actors sharing a tie have. Highly embedded links are part of a strong social fabric, and represent strong ties. Another method of estimating tie strength is to measure the amount of activity between users. In this study, we investigate both the role that embeddness and activity play in correlating suicide-related language. 
 
+Figure~\ref{fig:strength} shows how the use of sad language (measure by the LIWC sad feature) correlates among users sharing different tie strength and between personal and broadcast messages.
+
+\begin{figure}
+\centering
+\begin{tabular}{cc}
+\includegraphics[scale=.2]{sad_corr.pdf} &
+\includegraphics[scale=.2]{anx_corr.pdf} \\
+\includegraphics[scale=.2]{negemo_corr.pdf} &
+\includegraphics[scale=.2]{posemo_corr.pdf}\\
+\includegraphics[scale=.2]{health_corr.pdf} &
+\includegraphics[scale=.2]{family_corr.pdf}
+\end{tabular}
+\label{fig:strength}
+  \caption{Correlations between twitter friends of various LIWC scores increase as the strength of ties increase, while others behave very differently. Interestingly, two of the LIWC scores most closely associated with distress, sadness and anxiety, are among those most strongly affected by ignoring those friendships having fewer than a certain number mutal friends (i.e., embeddedness).}
+\end{figure}
+\end{comment}
 
 \section{Discussion}
 
-As previously mentioned, many of the risk factors for suicidal behavior may be linked to other expressions of distress such as aggression and interpersonal violence (Mann et al., 1999).  The goal of this study is to classify whether or not tweets were related to distress in order to determine the feasibility of classifying suicidal behaviors.  However, due to the overlap between internal and external expressions of anger, it is difficult to classify suicidal behavior without more contextual information.  Consistent with the stress diathesis model for suicidal behavior, aggression was an emerging theme that arose from the data.  Here are some examples:
-
-\begin{itemize}
-\item \texttt{@XXXX i don't feel sad 4 him. he gets pissed n says wat he wants then sends out fony apologies}
-\item \texttt{@XXXX cuz he's n a relationship with that horseface bitch \&amp; he lied 2 me \&amp; i feel so used \&amp; worthless now}
-\end{itemize}
-
-A number of individuals tweeted about feeling empty, hopeless, angry, frustrated, and alone.  While these are risk factors for internalizing aggression (i.e., suicidal behavior); these states are also associated with externalizing aggression.  In addition to overt expressions of anger and violence, many of the humorous tweets had an aggressive undertone. 
+As previously mentioned, many of the risk factors for suicidal behavior may be linked to other expressions of distress such as aggression and interpersonal violence (Mann et al., 1999).  The goal of this study is to classify whether or not tweets were related to distress in order to determine the feasibility of classifying suicidal behaviors.  However, due to the overlap between internal and external expressions of anger, it is difficult to classify suicidal behavior without more contextual information.  Consistent with the stress diathesis model for suicidal behavior, aggression was an emerging theme that arose from the data. A number of individuals tweeted about feeling empty, hopeless, angry, frustrated, and alone.  While these are risk factors for internalizing aggression (i.e., suicidal behavior); these states are also associated with externalizing aggression.  In addition to overt expressions of anger and violence, many of the humorous tweets had an aggressive undertone. 
 
 \begin{comment}
  Individuals often exert dominance by using pejorative and derogatory language, and the content of these tweets was often suggestive of past or current distress.  
@@ -385,19 +438,25 @@ A number of individuals tweeted about feeling empty, hopeless, angry, frustrated
 
 
 
+%There are unique challenges in annotating data from Twitter.  Aside from having to become familiar with different types of slang and abbreviations that could have multiple meanings, this format provides limited background context to inform the annotation process.  
+
+Figures~\ref{fig-hdeg1}--\ref{fig-hdeg2} show examples of two tweets labeled as high distress by two annotators, along with the contextual tweets provided to help the annotation process. 
+Beyond the targeted annotation categories of distress level, there were emerging themes of aggression, privilege and oppression, and daily struggles, among other.  As a result of the aggressive context, personal bias may have impacted annotation decisions. For instance, numerous tweets contained sarcasm and dark humor which may result in annotators underestimating or overlooking actual distress. In addition, by pulling data from Twitter, critical information such as pictures and the context behind information that has been retweeted was not available.  Specifically, a few individuals retweeted in a humorous manner about what individuals should say to someone who considering suicide; however, without any knowing the circumstances of the original message it was difficult to classify this tweet.  %It could represent dark humor or it could be a form of bullying.
+
 
 \subsection{Limitations}
-As ground truth, we rely on tweets hand-annotated by experts and non-experts. However, the mental state of another individual, observed from a line or two of text  often written in an informal register is necessarily hard to discern and, even under less noisy conditions, extremely subjective; even the observers' personal understandings of such concepts as ``distress'' may differ drastically. This makes inter-annotator agreement quite a challenge, to say nothing of observation in some objective fashion of the true mental state. As we have mention earlier, self-reporting has its own limitations, yet it is often regarded as the gold standard for ground truth about emotional state. We hope to explore in future work the relationship between clinical observation in both on- and off- line settings and self-reporting.
+As ground truth, we rely on tweets hand-annotated by experts and non-experts. However, the mental state of another individual, observed from a line or two of text  often written in an informal register is necessarily hard to discern and, even under less noisy conditions, extremely subjective; even the observers' personal understandings of such concepts as ``distress'' may differ drastically. This makes inter-annotator agreement quite a challenge, to say nothing of observation in some objective fashion of the true mental state.
 
 
-Higher levels of suicidal ideation have an inverse relationship with all types of help-seeking and a positive correlation with the decision to not seek support \cite{deane2001suicidal}. Thus, we would expect suicidal individuals to generally be less active on social media than those who are not. (Fortunately, a number of studies have shown a positive correlation between online social network use and negative mood. Perhaps this means in part that individuals who are depressed are slower to disengage on- rather than off-line.)
+Higher levels of suicidal ideation have an inverse relationship with all types of help-seeking and a positive correlation with the decision to not seek support \cite{deane2001suicidal}. Thus we would expect suicidal individuals to generally be less active on social media than those who are not. (Fortunately, a number of studies have shown a positive correlation between online social network use and negative mood. Perhaps this means in part that individuals who are depressed are slower to disengage on- rather than off-line.)
  Part of the problem in assessing the effectiveness of self-reporting is the relative rareness by which suicide occurs, and by the inherent subjectivity of the act, which makes any data on suicide fuzzy.
 
 
-
+\subsection{Tools Used}
  
 \section{Conclusion and Future Work}
-We studied the performance of different approaches to training systems to detect evidence of suicide risk behavior in microblog data. We showed that both the methods used to automatically collect training sets, as well as the expertise level of the annotation affect greatly the performance of automatic systems for detecting suicide risk factors.
+\section*{Acknowledgments}
+
 
 % include your own bib file like this:
 
