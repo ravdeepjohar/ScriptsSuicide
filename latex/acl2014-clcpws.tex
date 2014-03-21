@@ -24,11 +24,13 @@
 \usepackage{comment}
 \usepackage{graphicx}
 \usepackage{array}
+\usepackage{multirow}
+
 %\setlength\titlebox{5cm}
 
 % You can expand the titlebox if you need extra space
 % to show all the authors. Please do not make the titlebox
-% smaller than 5cm (the original size); we will check this
+ % smaller than 5cm (the original size); we will check this
 % in the camera-ready version and ask you to change it back.
 
 \title{Toward Macro-Insights  for Suicide Prevention: \\ Anaylzing Fine-Grain Distress at Scale}
@@ -73,7 +75,9 @@ whom are experts, and some of whom are not---to rate the level of distress of ea
 % that is free of the sort of self-reporting biases that plague suicidality. 
 We show that keyword based retrieval of training data results in better interannotator aggreement between non-experts and between experts and non-experts when the keywords are tuned toward the task at hand.
 
-We also discover social and geographic patterns related to mood that microblogging sites such as Twitter reveal. Social support theory suggests that suicide and related mental health problems are strongly affected by one's physical and social environment~\cite{wellman1990different}. Twitter provides a very noisy frame into the offline state of its participants. The trick to using it effectively is in aggregating the data in a manner that is appropriate to the task at hand, based on appropriate principles. We show that otherwise weak correlations in the use of affective language between friends become very strong when one considers only friendships that are strongly \emph{embedded} (informally speaking, in a relatively dense region of a social network) in the social network.
+We additionally discover social and geographic patterns related to mood that microblogging sites such as Twitter reveal. Social support theory suggests that suicide and related mental health problems are strongly affected by one's physical and social environment~\cite{wellman1990different}. 
+%Twitter provides a very noisy frame into the offline state of its participants. The trick to using it effectively is in aggregating the data in a manner that is appropriate to the task at hand, based on appropriate principles.
+ We show that otherwise weak correlations in the use of affective language between friends become very strong when one considers only friendships that are strongly \emph{embedded} (informally speaking, in a relatively dense region of a social network) in the social network.
 
 \begin{comment}
 Finally, we use our hand-annotated data to classify, at the level of individual tweets, risk factors for suicidal  behavior from a highly-connected, geographically dense collection of over 2.5 million tweets from 6,000 highly active Twitter users. We use time-series analysis of these noisily classified tweets to detecting individuals who express high-distress episodes. Our outperforms very reasonable and baseline approaches.
@@ -120,39 +124,44 @@ We study suicide risk levels here but we would expect our methods would apply to
 \section{Methods}
 In this section, we describe the methods we use to label and detect distress in Twitter data. Our process involves four main phases: (1) We filter a corpus, obtained from~\newcite{sadilek2012predicting}, of approximately 2.5 million tweets from 6,237 unique users in the New York City area that were sent during a 1-month period between May and June, 2010, into a set of 2,000 tweets that are relatively likely to be centered around suicide risk factors. (2) We annotated each of these 2,000 tweets with their level of distress. (3) We then train support vector machines and topic models with the annotated data, except for a held-out subset of 200 tweets. (4) Finally, we assess the effectiveness of these methods on the held-out set.
 
-\begin{table}[t]
-\small
-\centering
-\begin{tabular}{ l | r }
-\multicolumn{2}{c}{\textbf{New York City Dataset}} \\
+
+\begin{table}[h]
+\footnotesize
+\begin{tabular}{|c|c|c|}
 \hline
-\textbf{Unique users}&       632,611      \\
-\hline
-\textbf{Unique geo-active users}&        6,237       \\
-\hline
-\textbf{Tweets total}&        15,944,084\\
-\hline
-\textbf{GPS-tagged tweets}&   4,405,961\\
-\hline
-\textbf{GPS-tagged tweets by geo-active users}&  2,535,706\\
-\hline
-\textbf{GPS-tagged tweets by geo-active users}&  2,047 \\
-\textbf{that show a symptom of an illness}&\\
-\hline
-\textbf{``Follows'' relationships}&  102,739  \\
-\textbf{between geo-active users}&\\
-\hline
-\textbf{``Friends'' relationships}&   31,874   \\
-\textbf{between geo-active users}&\\
+\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}}Source\\ tweets\end{tabular}}              &   Number of tweets           &   2,535,706  \\ 
+                                                                                    &  Unique geo-active users           &   6,237 \\ 
+                                                                                    & ``Follows'' relationships           &  102,739 \\ 
+                                                                                    & ``Friends'' relationships &   31,874   \\\cline{1-3} 
+\multirow{5}{*}{\begin{tabular}[c]{@{}c@{}}Filtered\\ tweets\end{tabular}}              & Number of tweets              & 2000    \\ 
+                                                                                    & Unique users              & 1467    \\ 
+                                                                                    & Unique tokens             & 1714167 \\ 
+                                                                                    & Unique bigrams             & 9246715 \\
+                                                                                    & Unique trigrams             & 13061142 \\ \hline
+\multirow{13}{*}{\begin{tabular}[c]{@{}c@{}}Categories\\ distribution\end{tabular}} & LIWC sad                       & 1370    \\ \cline{2-3} 
+                                                                                    & Depressive feeling        & 283     \\
+                                                                                    & Suicide ideation          & 123     \\ 
+                                                                                    & Depression symptoms       & 72      \\ 
+                                                                                    & Self harm                 & 67      \\ 
+                                                                                    & Family violence/discord   & 47      \\ 
+                                                                                    & Bullying                  & 10      \\ 
+                                                                                    & Gun ownership             & 10 \\ 
+                                                                                    & Drug abuse                & 6       \\ 
+                                                                                    & Impulsivity               & 6       \\ 
+                                                                                    & Prior suicide attempts    & 2       \\ 
+                                                                                    & Suicide around individual & 2       \\ 
+                                                                                    & Psychological disorders   & 2       \\ \hline 
+                                                                                          
 \end{tabular}
-\caption{\small Summary statistics of the data collected from NYC. Geo-active users are those who geo-tag their tweets (i.e., include the location from where they tweet) relatively frequently (more than 100 times per month).} 
+\caption {Summary statistics of the and thematic categories distributions of the collected dataset. The data was collected from NYC. Geo-active users are those who geo-tag (i.e., automatically post the GPS location of) their tweets relatively frequently (more than 100 times per month).} 
 \label{table::dataset}
 \end{table}
+
 \subsection{Filtering tweets}
 
 We first preprocessed each tweet in the corpus by (a) converting all text to lower case; (b) stripping out punctuation and special characters; and (c) building a dictionary of more than 5,400 terms that captured informal Twitter registers, such as abbreviations and netspeak, based on http://www.noslang.com/dictionary. 
 
-In order to test the effectiveness of various methods of capturing training data, we used two different methods to filter for tweets that are relatively likely to center on suicide risk factors (Table~\ref{tab:filter}). The first method, we used the Linguistic Inquiry and Word Count (LIWC) to... capture 1,370 tweets. LIWC has been widely used to estimate emotion in online social networks, and specifically capture mood. 
+In order to test the effectiveness of various methods of capturing training data, we used two different methods to filter for tweets that are relatively likely to center on suicide risk factors. The first method, we used the Linguistic Inquiry and Word Count (LIWC) to capture 1,370 tweets by sampling randomly from the all tweets with at least the $2,000$th-highest LIWC sad score. LIWC has been widely used to estimate emotion in online social networks, and specifically to  mood on Twitter. This slight amount of randomness in filtering tweets this way was intended to avoid selecting obvious false positives, such as the use of ``sad'' in nicknames.
 
 Next, we adopted a collection of of inclusive search terms/phrases from \cite{Jay}, which was designed specifically for capturing tweets related to suicide risk factors, and applied them to our source corpus. These terms yielded 630 tweets.
 
@@ -176,7 +185,7 @@ Msg_id: 15416569951  [Distress: ND, LIWC
   \label{fig:annotateeg}
 \end{figure}
 
-We then divided the resulting set of 2,000 filtered tweets (1,370 from the LIWC sad dimension and 630 from suicide-specific search terms), into two sets of 1,000 tweets each. Two non-experts annotated the first set and a clinical psychologist specializing in suicide prevent annotated the second set. Each tweet in each set was rated on a four-point scale (H, ND, LD, HD) according to the level of distress evident (Table~\ref{tab:distress}).
+We then divided the resulting set of 2,000 filtered tweets (1,370 from the LIWC sad dimension and 630 from suicide-specific search terms), into two sets of 1,000 tweets each. Both sets had the same proportion of LIWC-filtered and suicide-specific-filtered tweets. Two non-experts annotated the first set and a clinical psychologist specializing in suicide prevent annotated the second set. Each tweet in each set was rated on a four-point scale (H, ND, LD, HD) according to the level of distress evident (Table~\ref{tab:distress}).
 
 
 \begin{table}[h]
@@ -223,6 +232,42 @@ We use Support Vector Machines (SVM) to evaluate the statistical power of our an
 \end{figure}
 
 \subsection{Annotation}
+
+\begin{table}[h]
+\footnotesize
+\begin{tabular}{|p{0.8cm}|p{4.25cm}|p{1.2cm}|}
+\hline
+%\textbf{64:}                         & Date: XXXX                                                                                                        & Category: suicide\_ideation \\ \hline
+-3:                                  & i wish i had an older brother...                                                                                                             & {[}-0:06:08{]}              \\
+-2:                                  & i'll be alright though. one day...                                                                                                           & {[}-0:02:38{]}              \\
+-1:                                  & @XXXX yeah i'll be alright, it must be a phase...                                                                                          & {[}-0:02:00{]}              \\
+\textgreater\textgreater\textgreater & i'm not committing suicide or anything of that nature so don't panic. maybe i'm going through a phase, maybe not. just tired of loneliness.  & \textless\textless\textless \\
+1:                                   & @XXXX that's easier said then done though, you don't just break out of it overnight bro. especially if you've been a loner for a while.. & {[}+0:07:07{]}              \\
+2:                                   & @silentbx i hear you.                                                                                                                        & {[}+0:07:37{]}              \\
+3:                                   &   N/A                                                                                                                                           & {[}+0:07:56{]}              \\ \hline
+%Msg\_id: 14481906554,                & Distress: HD                                                                                                                                 & suicide\_ideation: Y        \\ \hline
+\end{tabular}
+\caption{Example for High Distress}
+\end{table}
+
+
+\begin{table}[h]
+\footnotesize
+\begin{tabular}{|p{0.8cm}|p{4.25cm}|p{1.2cm}|}
+\hline
+%\textbf{64:}                         &Date: XXXX                                                                                                     & Category: suicide\_ideation \\ \hline
+-3:                                  & highed up right now watching bloopers                                                                                                              & {[}-11:33:54{]}              \\
+-2:                                  & rt @XXXX: good morning to everybody !!!!                                                                                                            & {[}-8:25:21{]}              \\
+-1:                                  & hate in my heart                                                                                                        & {[}-0:38:44{]}              \\
+\textgreater\textgreater\textgreater & i need to leave this world for good  & \textless\textless\textless \\
+1:                                   & i need a break from life & {[}+0:00:33{]}              \\
+2:                                   & all you hypocrites of the world will perish in hell one day                                                                                                                        & {[}+1:29:39{]}              \\
+3:                                   & watching every body hates chris                                                                                                                                           & {[}+2:02:56{]}              \\ \hline
+%Msg\_id: 14481906554,                & Distress: HD                                                                                                                                 & suicide\_ideation: Y        \\ \hline
+\end{tabular}
+\caption{Example for High Distress}
+\end{table}
+
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|}
@@ -327,6 +372,20 @@ Thematic Category & 0.5567 \\ \hline
 \label{tab:tm}
 \end{table}
 
+\begin{table}[h]
+\small
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Train Set         & Test Set          & Precision & Recall & F-Measure \\ \hline
+N1          & N1          & 0.53      & 0.63   & 0.58      \\ \hline
+N1          & E & .58       & 0.27   & .37       \\ \hline
+E           & E     & 0.59      & 0.71   & 0.64      \\ \hline
+E            & N1          & 0.34      & 0.85   & 0.48      \\ \hline
+N1 + E & N1 + E & 0.33      & 0.41   &  0.37         \\ \hline
+\end{tabular}
+\caption{Perform of SVN-based classification when the training and testing sets are alternately Novice 1 (N1) or the Expert (E). In cases where the training and test source coincide, the test set is a held-out set of 100 randomly selected (or 200 when N1 and E both used as in the last row) tweets. Otherwise, the training and test sets have 1000 tweets each and are disjoint.}
+\end{table}
+
 \subsection{Geography and Emotional Language}
 \begin{figure}
   \centering
@@ -384,6 +443,7 @@ Higher levels of suicidal ideation have an inverse relationship with all types o
 \bibliographystyle{acl}
 \bibliography{acl2014-clcpws}
 
+\begin{comment}
 \begin{table*}
     \centering
     \begin{tabulary}{500pt}{|C|C|}
@@ -411,5 +471,5 @@ Higher levels of suicidal ideation have an inverse relationship with all types o
 %  remember to run:
 % latex bibtex latex latex
 % to resolve all references
-
+\end{comment}
 \end{document}
