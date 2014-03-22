@@ -158,7 +158,7 @@ Next, we adopted a collection of inclusive search terms/phrases from \cite{Jay},
      1: rt @XXXX: abt 2 hop in a kab to 
      2: @XXXX yeaa [+0:03:59]
      3: @XXXX wassup? [+0:05:28]
-Msg_id: XXXX  [Distress: ND, LIWC Sad: N
+Msg_id: XXXX  [Distress: ND, LIWC Sad: No]
 \end{verbatim}}
   \caption{Example input for annotator. Each line is one tweet. The tweet being annotated is indicated by $>>>$. Annotators were given context in the form of a window of three immediately preceding tweets s well as three immediately following tweets, including their respective time-stamped offsets compared to the annotation target tweet. 
 (Tweeter information has been blanked out.)}
@@ -206,7 +206,7 @@ We use Support Vector Machines (SVM), a machine learning method that is used to 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.65]{ChrisCissi4cat.jpg}
-\caption{Distribution of distress level annotations on the common tweets (N=250, indentical set) between annotators Novice 1 and Novice 2.}
+\caption{Distribution of distress level annotations on the common tweets between annotators Novice 1 and Novice 2 (N=250, indentical set).}
 \label{fig:distress-distrib1}
 \end{figure}
 
@@ -217,7 +217,7 @@ We use Support Vector Machines (SVM), a machine learning method that is used to 
 \label{fig:distress-distrib2}
 \end{figure}
 
-Figures \ref{fig:distress-distrib1} and \ref{fig:distress-distrib2} show the distribution of the annotation labels each annotator makes. Interestly, the novices are fairly consistently highly conservative with assigning distressed labels, whereas the expert exhibits a higher sensitivity toward low distress than either of the novices. This suggests that it is is important in this domain to not rely too much on novice judgments, as novices are not trained to pick up on subtle cues---in contrast to the clinically trained eye.   
+Figure \ref{fig:distress-distrib1} shows the distribution of annotation labels for the subset of tweets that Novices 1 and 2 both annotated, and Figure \ref{fig:distress-distrib2} compares the overall annotation distributions between Novice 1 and the Expert. Interestly, the novices are fairly consistently highly conservative with assigning distressed labels, whereas the expert exhibits a higher sensitivity toward low distress than either of the novices. This suggests that it is is important in this domain to not rely too much on novice judgments, as novices are not trained to pick up on subtle cues---in contrast to the clinically trained eye.   
 
  Note that there are very few happy tweets, which confirms that with the filtering, we do not generally pick up tweets that are of the opposing polarity than we intended, which is good.
 
@@ -347,25 +347,25 @@ hate job, feel sad, tummy hurts, lost friend, feel helpless, leave alone, don't 
 \label{tab:tm}
 \end{table}
 
-Table~\ref{tab:tm} shows the results of a 3-category topic model on bigrams.  The first column is taken just from tweets labeled high distress by any one of the three annotators (72 tweets total). The second column comes from a randomly-chosen sample of 2000 tweets from the 2.3 million tweet corpus. These results show that the lexical contents of the annotated tweets are recognizeably different from the random sample. By our judgement, the topical groupings in the rows of the high distress column are all clearly marked by strong negative affect, and additionally they could be labeled--from top to bottom--as: ``failure and defeat,'' ``loss,'' and ``loneliness.''  The rows of the second column are less clear-cut, and appear to reflect a much broader scope of topics. One interesting aspect of the second column is that recording artist Chris Brown had released a new album during the collection period, which seems to explain why his name appeared as prevalent..
+Table~\ref{tab:tm} shows the results of a 3-category topic model on bigrams.  The first column is taken just from tweets labeled high distress by any one of the three annotators (72 tweets total). The second column comes from a randomly-chosen sample of 2000 tweets from the 2.3 million tweet corpus. These results show that the lexical contents of the annotated tweets are recognizeably different from the random sample. By our judgement, the topical groupings in the rows of the high distress column are all clearly marked by strong negative affect, and additionally they could arguably be labeled---from top to bottom---as: ``failure and defeat,'' ``loss,'' and ``loneliness.''  The rows of the second column are less clear cut, and appear to reflect a much broader scope of topics. One interesting aspect of the second, random column is that recording artist Chris Brown had released a new album during the collection period, which seems to explain why his name appeared as prevalent.
 
 \begin{table}[h]
 \small
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-Train Set         & Test Set          & Precision & Recall & F-Measure \\ \hline
+Training         & Testing         & Precision & Recall & F-Measure \\ \hline
 N1          & N1          & 0.53      & 0.63   & 0.58      \\ \hline
 N1          & E & 0.58       & 0.27   & 0.37       \\ \hline
 E           & E     & 0.59      & 0.71   & 0.64      \\ \hline
 E            & N1          & 0.34      & 0.85   & 0.48      \\ \hline
 N1 + E & N1 + E & 0.33      & 0.41   &  0.37         \\ \hline
 \end{tabular}
-\caption{Performance of SVN-based classification when the training and testing sets are alternately Novice 1 (N1) or the Expert (E). In each case,  the test set is a held-out set of 100 randomly selected tweets and the remaining 900 tweets from that annotator were used as training data. The last row shows results when N1 and E data are combined into a train set of 1800 tweets and a test set of 200 tweets (with 50\% of each set consisting of data annotated by Novice 1, and the Expert respectively). Because we are focused on Distress classification, Precision and Recall are reported for the Distress class, which combine LD and HD into a single D label in this binary classification.}
+\caption{Performance of SVN-based classification when the training and testing sets are alternately Novice 1 (N1) or the Expert (E). In each case,  the test set is a held-out set of 100 randomly selected tweets and the remaining 900 tweets from that annotator were used as training data. The last row shows results when N1 and E data are combined into a training set of 1800 tweets and a test set of 200 tweets (with 50\% of each set consisting of data annotated by Novice 1, and the Expert respectively). Because we are focused on Distress classification, Precision and Recall are reported for the Distress class, which combined LD and HD into a single D label in this binary classification.}
 \label{tab:svm}
 \end{table}
 
 
-For classification, because we are most interested in being able to separate distressed from non-distressed tweets, we combine low distress and high distress into a single distress class, and no distress and happy into another class. Table~\ref{tab:svm} shows the performance of the support vector when trained and tested on either on the Expert and Novice 1 training sets. Four themes emerge: (1) the SVN classifier is much more accurate when the testing and training data come from the same source (taken from 100 tweets in the annotation set that are randomly held out of the training set, so that the training and test sets are disjoint); (2) when testing and training data are from different sources the SVM suffers less of an accuracy drop when the training set is from the expert than from the novice; (3) when the train set is from Novice 1, the classifier suffers a loss in recall on the Distress class, and when the train set is from the Expert, there is a loss in precision instead. If our goal is to identify distress tweets for further scientific study of how such cases express suicide risk factors, the high precision classifier trained on Expert annotations is preferable. (4) Integrating more but mixed data does not improve performance.
+For classification, because we are most interested in being able to separate distressed from non-distressed tweets, we combine low distress and high distress into a single distress class, and no distress and happy into another class. Table~\ref{tab:svm} shows the performance of the support vector when trained and tested on either on the Expert and Novice 1 training sets. Four themes emerge: (1) the SVN classifier is much more accurate when the testing and training data come from the same source (taken from 100 tweets in the annotation set that are randomly held out of the training set, so that the training and test sets are disjoint); (2) when testing and training data are from different sources the SVM suffers less of an accuracy drop when the training set is from the expert than from the novice; (3) when the training set is from Novice 1, the classifier suffers a loss in recall on the Distress class, and when the training set is from the Expert, there is a loss in precision instead. If our goal is to identify distress tweets for further scientific study of how such cases express suicide risk factors, the high precision classifier trained on Expert annotations is preferable. (4) Integrating more but mixed data does not improve performance.
 
 
 \section{Discussion}
@@ -378,7 +378,7 @@ As previously mentioned, many of the risk factors for suicidal behavior may be l
 \item \texttt{@XXXX cuz he's n a relationship with that horseface bitch \&amp; he lied 2 me \&amp; i feel so used \&amp; worthless now}
 \end{itemize}
 
-A number of individuals tweeted about feeling empty, hopeless, angry, frustrated, and alone.  Behaviors indicating bullying and Schadenfreude were also observed. While these are risk factors for internalizing aggression (i.e., suicidal behavior); these states are also associated with externalizing aggression.  In addition to overt expressions of anger and violence, many of the humorous, ironic tweets also had an aggressive undertone. 
+A number of individuals tweeted about feeling empty, hopeless, angry, frustrated, and alone.  Behaviors indicating bullying and schadenfreude were also observed. While these are risk factors for internalizing aggression (i.e., suicidal behavior); these states are also associated with externalizing aggression.  In addition to overt expressions of anger and violence, many of the humorous, ironic tweets also had an aggressive undertone. 
 
 \begin{comment}
  Individuals often exert dominance by using pejorative and derogatory language, and the content of these tweets was often suggestive of past or current distress.  
@@ -388,7 +388,7 @@ A number of individuals tweeted about feeling empty, hopeless, angry, frustrated
 
 
 \subsection{Limitations}
-As ``ground truth,'' we rely on tweets hand-annotated by an expert and a novice for classification. However, the mental state of another individual, observed from a few lines of text of text  often written in an informal register is necessarily hard to discern and, even under less noisy conditions, extremely subjective; even the observers' personal understandings of such concepts as ``distress'' may differ drastically. This makes annotation quite a challenge, and does not reveal in an objective objective fashion of a tweeter's true mental state. As we have mentioned earlier, self-reporting has its own limitations, yet it is often regarded as the gold standard for ground truth about emotional state.
+As ``ground truth,'' we rely on tweets hand-annotated by an expert and a novice for classification. However, the mental state of another individual, observed from a few lines of text  often written in an informal register is necessarily hard to discern and, even under less noisy conditions, extremely subjective; even the observers' personal understandings of such concepts as ``distress'' may differ drastically. This makes annotation quite a challenge, and does not reveal in an objective fashion of a tweeter's true mental state. As we have mentioned earlier, self-reporting has its own limitations, yet it is often regarded as the gold standard for ground truth about emotional state.
 Part of the problem in assessing the effectiveness of self-reporting is the relative rareness by which suicide occurs, and by the inherent subjectivity of the act, which makes any data on suicide fuzzy. We hope to explore in future work the relationship between clinical observation in both on- and off- line settings and self-reporting, including the integration of natural language data of patients from clinical settings.
 
 
@@ -398,7 +398,7 @@ Higher levels of suicidal ideation have an inverse relationship with all types o
 \section{Conclusion and Future Work}
 
 \begin{comment}
-We studied the performance of different approaches to training systems to detect evidence of suicide risk behavior in microblog data. We showed that both the methods used to automatically collect training sets, as well as the expertise level of the annotator affect greatly the performance of automatic systems for detecting suicide risk factors. In general, our study and it results---from filtering via data annotation too classification---confirmed the critical importance of bringing clinical expertise into the computational modeling loop. 
+We studied the performance of different approaches to training systems to detect evidence of suicide risk behavior in microblog data. We showed that both the methods used to automatically collect training sets, as well as the expertise level of the annotator affect greatly the performance of automatic systems for detecting suicide risk factors. In general, our study and its results---from filtering via data annotation too classification---confirmed the critical importance of bringing clinical expertise into the computational modeling loop. 
 \end{comment}
 
 This research was conducted within a multidisciplinary group with backgrounds in computer science, linguistics and psychiatry. This allowed us to understand the data from multiple perspectives, both clinical psychology and data mining. We analyzed the presence of suicidality or suicide risk behavior in microblog data collected from twitter. The dataset was filtered based on terms in thematic categories and sad scores from LIWC. Text-based features were extracted to represent the suicide risk factors. Using these features, the performance of different approaches of training a system to detect evidence of suicide risk behavior in microblog data was studied. We showed that both the methods used to automatically collect training sets, as well as the expertise level of the annotators, greatly affect the performance of automatic systems for detecting suicide risk behavior.
