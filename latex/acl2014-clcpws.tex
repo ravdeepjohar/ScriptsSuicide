@@ -202,26 +202,30 @@ We use Support Vector Machines (SVM), a machine learning method that is used to 
 
 \section{Results}
 
-
+Figures \ref{fig:distress-distrib1} and \ref{fig:distress-distrib2} show the distribution of the annotation labels each annotator makes. Interestly, the novices' distributions are fairly consistently highly conservative with assigning distressed labels, whereas the expert's exhibits a higher sensitivity toward no distress than either of the novice's.  Note that there are very few happy tweets, which confirm that with the filtering, we do not generally pick up tweets that are of the opposing polarity than we intended, which is good.
 
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.7]{ChrisCissi4cat.jpg}
+\includegraphics[scale=0.65]{ChrisCissi4cat.jpg}
 \caption{Distribution of distress level annotations on the common tweets (N=250, indentical set) between annotators Novice 1 and Novice 2.}
 \label{fig:distress-distrib1}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.7]{ChrisMegan4Cat.jpg}
+\includegraphics[scale=0.65]{ChrisMegan4Cat.jpg}
 \caption{Distribution of distress level annotations from Novice 1 and Expert. Note the these two datasets are disjoint (N = 1000 tweets, respectively).}
 \label{fig:distress-distrib2}
 \end{figure}
 
+<<<<<<< HEAD
 Figures \ref{fig:distress-distrib1} and \ref{fig:distress-distrib2} show the distribution of the annotation labels each annotator makes. Interestly, the novices are fairly consistently highly conservative with assigning distressed labels, whereas the expert exhibits a higher sensitivity toward low distress than either of the novices. This suggests that it is is important in this domain to not rely too much on novice judgments, as novices are not trained to pick up on subtle cues - in contrast to the clinically trained eye.   
 
  Note that there are very few happy tweets, which confirms that with the filtering, we do not generally pick up tweets that are of the opposing polarity than we intended, which is good.
+=======
+
+>>>>>>> dce2adda04f39f3aaba99e512a27dd50f86e510d
 
 
 \begin{table}[h]
@@ -397,17 +401,17 @@ Part of the problem in assessing the effectiveness of self-reporting is the rela
 Higher levels of suicidal ideation have an inverse relationship with all types of help-seeking and a positive correlation with the decision to not seek support \cite{deane2001suicidal}. Thus, we would expect suicidal individuals to generally be less active on social media than those who are not. (Nevertheless, a number of studies have shown a positive correlation between online social network use and negative mood. (Perhaps this means in part that individuals who are depressed are slower to disengage on- rather than off-line.)
  
 
-
-
- 
 \section{Conclusion and Future Work}
-We studied the performance of different approaches to training systems to detect evidence of suicide risk behavior in microblog data. We showed that both the methods used to automatically collect training sets, as well as the expertise level of the annotator affect greatly the performance of automatic systems for detecting suicide risk factors. In general, our study and it results---from filtering via data annotation too classification---confirmed the critical importance of bringing clinical expertise into the computational modeling loop. 
 
 \begin{comment}
+We studied the performance of different approaches to training systems to detect evidence of suicide risk behavior in microblog data. We showed that both the methods used to automatically collect training sets, as well as the expertise level of the annotator affect greatly the performance of automatic systems for detecting suicide risk factors. In general, our study and it results---from filtering via data annotation too classification---confirmed the critical importance of bringing clinical expertise into the computational modeling loop. 
+\end{comment}
+
 This research was conducted within a multidisciplinary group with backgrounds in computer science, linguistics and psychiatry. This allowed us to understand the data from multiple perspectives, both clinical psychology and data mining. We analyzed the presence of suicidality or suicide risk behavior in microblog data collected from twitter. The dataset was filtered based on terms in thematic categories and sad scores from LIWC. Text-based features were extracted to represent the suicide risk factors. Using these features, the performance of different approaches of training a system to detect evidence of suicide risk behavior in microblog data was studied. We showed that both the methods used to automatically collect training sets, as well as the expertise level of the annotators, greatly affect the performance of automatic systems for detecting suicide risk behavior.
 
 Our current work suggests that text-based features can lead to a system for detecting suicidal behavior. The biggest challenge was handling the noise in twitter data. For example, the prominent usage of sarcasm and schadenfreude in social context leads to false positives for distress symptoms, which at this stage can be detected only via manual examination. To avoid this, data can be collected from microblogs and support forums which provide assistance to individuals at risk. Another area for future work includes prediction at the user level that utilizes social data, via social network analysis, and geographic location. 
-\end{comment}
+
+
 % include your own bib file like this:
 
 \bibliographystyle{acl}
