@@ -140,7 +140,7 @@ In this section, we describe the methods we use to label and detect distress in 
 
 We first preprocessed each tweet in the corpus by (a) converting all text to lower case; (b) stripping out punctuation and special characters; and (c) building a dictionary of more than 5,400 terms that captured informal Twitter registers, such as abbreviations and netspeak, based on http://www.noslang.com/dictionary. 
 
-In order to test the effectiveness of various methods of capturing training data, we used two different methods to filter for tweets that are relatively likely to center on suicide risk factors. The first method, we used the Linguistic Inquiry and Word Count (LIWC) to capture 1,370 tweets by sampling randomly from the all tweets with at least the $2,000$th-highest LIWC sad score. LIWC has been widely used to estimate emotion in online social networks, and specifically to  mood on Twitter. This slight amount of randomness in filtering tweets this way was intended to avoid selecting obvious false positives, such as the use of ``sad'' in nicknames.
+In order to test the effectiveness of various methods of capturing useful corpus data, we used two different methods to filter for tweets that are relatively likely to center on suicide risk factors. As the first method, we used the Linguistic Inquiry and Word Count (LIWC) to capture 1,370 tweets by sampling randomly from the all tweets with at least the $2,000$th-highest LIWC sad score. LIWC has been widely used to estimate emotion in online social networks, and specifically to  mood on Twitter. This slight amount of randomness in filtering tweets this way was intended to avoid selecting obvious false positives, such as the use of ``sad'' in nicknames.
 
 Next, we adopted a collection of inclusive search terms/phrases from \cite{Jay}, which was designed specifically for capturing tweets related to suicide risk factors, and applied them to our source corpus. These terms yielded 630 tweets.
 
@@ -202,8 +202,6 @@ We use Support Vector Machines (SVM), a machine learning method that is used to 
 
 \section{Results}
 
-Figures \ref{fig:distress-distrib1} and \ref{fig:distress-distrib2} show the distribution of the annotation labels each annotator makes. Interestly, the novices' distributions are fairly consistently highly conservative with assigning distressed labels, whereas the expert's exhibits a higher sensitivity toward no distress than either of the novice's.  Note that there are very few happy tweets, which confirm that with the filtering, we do not generally pick up tweets that are of the opposing polarity than we intended, which is good.
-
 
 \begin{figure}
 \centering
@@ -219,13 +217,9 @@ Figures \ref{fig:distress-distrib1} and \ref{fig:distress-distrib2} show the dis
 \label{fig:distress-distrib2}
 \end{figure}
 
-<<<<<<< HEAD
-Figures \ref{fig:distress-distrib1} and \ref{fig:distress-distrib2} show the distribution of the annotation labels each annotator makes. Interestly, the novices are fairly consistently highly conservative with assigning distressed labels, whereas the expert exhibits a higher sensitivity toward low distress than either of the novices. This suggests that it is is important in this domain to not rely too much on novice judgments, as novices are not trained to pick up on subtle cues - in contrast to the clinically trained eye.   
+Figures \ref{fig:distress-distrib1} and \ref{fig:distress-distrib2} show the distribution of the annotation labels each annotator makes. Interestly, the novices are fairly consistently highly conservative with assigning distressed labels, whereas the expert exhibits a higher sensitivity toward low distress than either of the novices. This suggests that it is is important in this domain to not rely too much on novice judgments, as novices are not trained to pick up on subtle cues---in contrast to the clinically trained eye.   
 
  Note that there are very few happy tweets, which confirms that with the filtering, we do not generally pick up tweets that are of the opposing polarity than we intended, which is good.
-=======
-
->>>>>>> dce2adda04f39f3aaba99e512a27dd50f86e510d
 
 
 \begin{table}[h]
@@ -286,7 +280,7 @@ Both               & 0.5 \\ \hline
 
 
 
-Table~\ref{tab:kappa} shows the Cohen kappa score between Novices 1 and 2, when high and low distress vs.\ no distress and happy, are grouped in a single category and Tables~\ref{tab:liwc-conf} thru \ref{tab:both-conf} show the confusion matrices between Novices one and two. In all cases the kappa score is moderate. However, it clearly improves when annotation is restricted to just those tweets filtered using the suicide-thematic inclusion terms of~\newcite{Jay}. This again seems to point to the usefulness of integrating clinically acknowledge insights.
+Table~\ref{tab:kappa} shows the Cohen kappa score between Novices 1 and 2, when high and low distress vs.\ no distress and happy, are grouped in a single category and Tables~\ref{tab:liwc-conf} thru \ref{tab:both-conf} show the confusion matrices between Novices 1 and 2. In all cases the kappa score is moderate. However, it clearly improves when annotation is restricted to just those tweets filtered using the suicide-thematic inclusion terms of~\newcite{Jay}. This again seems to point to the usefulness of integrating clinically acknowledge insights.
 
 
 
@@ -309,7 +303,7 @@ And here are two examples of tweets labels as no distress by two annotators.
 \item \texttt{my son is gonna have blues eyes and nappy hair! yes yes yes}
 \end{itemize}
 
-The above examples are rather clear cut, however in many cases the tweets were rather ambiguous, even when annotators have the previous and subsequent three tweets from the user of the label tweet to rely on for context. 
+The above examples are rather clear cut, however in many cases the tweets were rather ambiguous, even when annotators have the previous and subsequent three tweets from the user of the label tweet to rely on for context. While context and time offset information was useful for annotators, distress annotation is clearly a challenging tasks, as the confusion matrices in Tables 5-6 reveal. The lower agreement levels, and particularly the fuzzy boarder between 'no distress' and 'low distress' are completely in line with prior research, discussed above, on affective language phenomena.
 
 Beyond the targeted annotation categories of distress level, there were emerging themes of aggression, privilege and oppression, and daily struggles, among other.  For instance, jobs were a popular source of distress:
 
