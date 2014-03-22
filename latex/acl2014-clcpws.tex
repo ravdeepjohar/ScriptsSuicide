@@ -206,7 +206,7 @@ We use Support Vector Machines (SVM), a machine learning method that is used to 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.65]{ChrisCissi4cat.jpg}
-\caption{Distribution of distress level annotations on the common tweets between annotators Novice 1 and Novice 2 (N=250, indentical set).}
+\caption{Distribution of distress level annotations on the tweets annotated by Novices 1 and 2 (N=250, identical set).}
 \label{fig:distress-distrib1}
 \end{figure}
 
@@ -291,7 +291,7 @@ Due to their sensitive nature, we decided not to provide examples of high distre
 \footnotesize
 \item \texttt{insomnia night\#56325897521365!! sheesh can't deal w/ this shit! i have class in the morning got dammit.... }
 
-\item \texttt{@XXXX that's just sad i feel for you}
+\item \texttt{@XXXX i'm still sad thoo. i feel neglected! and i miss XXXX }
 \end{itemize}
 
 And here are two examples of tweets labeled as no distress by two annotators.
@@ -405,16 +405,22 @@ Part of the problem in assessing the effectiveness of self-reporting is the rela
 Higher levels of suicidal ideation have an inverse relationship with all types of help-seeking and a positive correlation with the decision to not seek support \cite{deane2001suicidal}. Thus, we would expect suicidal individuals to generally be less active on social media than those who are not. (Nevertheless, a number of studies have shown a positive correlation between online social network use and negative mood. (Perhaps this means in part that individuals who are depressed are slower to disengage on- rather than off-line.)
  
 
-\section{Conclusion and Future Work}
+\section{Conclusion}
+
 
 
 We studied the performance of different approaches to training systems to detect evidence of suicide risk behavior in microblog data. We showed that both the methods used to automatically collect training sets, as well as the expertise level of the annotator affect greatly the performance of automatic systems for detecting suicide risk factors. In general, our study and its results---from filtering via data annotation too classification---confirmed the critical importance of bringing clinical expertise into the computational modeling loop. 
 
+
+
 \begin{comment}
 
-This research was conducted within a multidisciplinary group with backgrounds in computer science, linguistics and psychiatry. This allowed us to understand the data from multiple perspectives, both clinical psychology and data mining. We analyzed the presence of suicidality or suicide risk behavior in microblog data collected from twitter. The dataset was filtered based on terms in thematic categories and sad scores from LIWC. Text-based features were extracted to represent the suicide risk factors. Using these features, the performance of different approaches of training a system to detect evidence of suicide risk behavior in microblog data was studied. We showed that both the methods used to automatically collect training sets, as well as the expertise level of the annotators, greatly affect the performance of automatic systems for detecting suicide risk behavior.
+This research was conducted within a multidisciplinary group with backgrounds in computer science, linguistics, and
+ psychiatry. This allowed us to understand the data from multiple perspectives, from clinical psychology to data mining. We analyzed the presence of distress, informed by its relationship to suicide risk, in microblog data collected from Twitter. The dataset
+ was filtered based on terms in relevant thematic categories and sad scores from LIWC. Using text-based features, we studied the performance of different approaches of training a system to detect evidence of distress as a key indicator of suicide risk in microblog
+ data. We showed that both the methods used to automatically filter data, as well as the expertise level of the annotators who labeled the resulting data, greatly affect the performance of detecting distress. In general, our study and it results  -- from filtering via data annotation to classification -- confirmed the critical importance of bringing clinical expertise into the computational modeling loop. 
 
-Our current work suggests that text-based features can lead to a system for detecting suicidal behavior. The biggest challenge was handling the noise in twitter data. For example, the prominent usage of sarcasm and schadenfreude in social context leads to false positives for distress symptoms, which at this stage can be detected only via manual examination. To avoid this, data can be collected from microblogs and support forums which provide assistance to individuals at risk. Another area for future work includes prediction at the user level that utilizes social data, via social network analysis, and geographic location. 
+
 \end{comment}
 
 % include your own bib file like this:
