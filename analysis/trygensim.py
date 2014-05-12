@@ -1,9 +1,11 @@
 import logging, gensim, bz2
 from gensim import corpora, models, similarities
 
-tweetfile = open("../data/sad_tweets.txt","rb")
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
-stoplist = open("../data/stopwords.txt","rb")
+tweetfile = open("../data/tweets.txt","rb")
+stoplist = open("../data/stopwords.txt", "rb")
+
 
 tweets = [] 
 
@@ -29,7 +31,9 @@ texts = [[word for word in text if word not in tokens_once]
 dictionary = corpora.Dictionary(texts)
 corpus = [dictionary.doc2bow(text) for text in texts]
 
-#dictionary.save('sad_tweets.dict') 
+dictionary.save('sad_tweets.dict') 
+exit()
+('sad_tweets.corpus')
 
 #lsi = gensim.models.lsimodel.LsiModel(corpus=corpus, id2word=dictionary, num_topics=400)
 
@@ -39,11 +43,11 @@ corpus = [dictionary.doc2bow(text) for text in texts]
 # 	print bla
 
 
-lda = gensim.models.ldamodel.LdaModel(corpus=corpus, id2word=dictionary, num_topics=10, update_every=1, chunksize=10000, passes=5)
+lda = gensim.models.ldamodel.LdaModel(corpus=corpus, id2word=dictionary, num_topics=10, update_every=1, chunksize=10000, passes=10)
 
-#lda.print_topics(20)
+lda.print_topics(20)
 
 
-for bla in lda.print_topics(10):
-	print bla
-	print " "
+# for bla in lda.print_topics(10):
+# 	print bla
+# 	print " "
