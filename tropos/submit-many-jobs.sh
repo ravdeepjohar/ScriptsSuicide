@@ -24,22 +24,22 @@ echo
 echo " * Getting ready to submit a number of jobs:"
 echo
 for alpha in $(seq 1 $param_limit_alpha); do
-	for beta in $(seq 1 $param_limit_beta); do
-		# Give our job a meaningful name
-		jobname=$basejobname-$alpha-$beta
-		echo "Submitting job $jobname"
+    for beta in $(seq 1 $param_limit_beta); do
+        # Give our job a meaningful name
+        jobname=$basejobname-$alpha-$beta
+        echo "Submitting job $jobname"
 
-		# Setup where we want the output from each job to go
-		outfile=output/output-alpha.$alpha-beta.$beta.txt
-		
-		# "exporting" variables in bash make them available to your slurm
-		# workload.
-		export alpha;
-		export beta;
-			
-		# Actually submit the job.
-		sbatch --qos=rc-normal -J $jobname -o $outfile $jobfile
-	done;
+        # Setup where we want the output from each job to go
+        outfile=output/output-alpha.$alpha-beta.$beta.txt
+
+        # "exporting" variables in bash make them available to your slurm
+        # workload.
+        export alpha;
+        export beta;
+
+        # Actually submit the job.
+        sbatch --qos=rc-normal -J $jobname -o $outfile $jobfile
+    done;
 done
 
 echo
